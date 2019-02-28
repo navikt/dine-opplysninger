@@ -1,6 +1,7 @@
 import * as React from 'react';
 import AppProviders from './AppProvider';
 import Banner from './components/banner/Banner';
+import Registreringsinfo from './components/registreringsinfo/Registreringsinfo';
 
 interface State {}
 
@@ -16,6 +17,7 @@ class App extends React.Component<AppProps, State> {
         return (
             <AppProviders>
                 <Banner/>
+                <Registreringsinfo/>
             </AppProviders>
         );
     }

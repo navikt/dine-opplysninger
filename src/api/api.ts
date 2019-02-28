@@ -1,5 +1,5 @@
 import { fetchData } from '../utils/fetchData';
-import SisteStillingType, { RegistreringDataType } from '../datatyper/sisteStillingFraRegistrering';
+import { RegistreringDataType } from '../datatyper/registreringData';
 export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
 export const API_VEILARBOPPFOLGING = '/veilarboppfolging/api/oppfolging';
 
@@ -25,14 +25,14 @@ const CONFIG = {
     headers: getHeaders(),
 };
 
-export function hentSisteStilling(errorHandler: (response?: Response) => Promise<SisteStillingType>): Promise<SisteStillingType> {
+export function hentRegistreringData(): Promise<RegistreringDataType> {
     return fetchData<RegistreringDataType>(API_VEILARBREGISTRERING, CONFIG)
-        .then((registeringsData: RegistreringDataType) => ({sisteStilling: registeringsData.registrering.sisteStilling}))
-        .catch(() => ({sisteStilling: {label: 'Kunne ikke hente data', konseptId: 0, styrk08: ''}}));
+        .then((registeringsData: RegistreringDataType) => ({
+            registrering: registeringsData.registrering
+        }));
 }
 
 export function hentOppfolgingStatus(): Promise<OppfolgingStatusType> {
     return fetchData<OppfolgingStatusType>(API_VEILARBOPPFOLGING, CONFIG)
-        .then((oppfolgingStatus: OppfolgingStatusType) => ({underOppfolging: oppfolgingStatus.underOppfolging}))
-        .catch(() => ({underOppfolging: false}));
+        .then((oppfolgingStatus: OppfolgingStatusType) => ({underOppfolging: oppfolgingStatus.underOppfolging}));
 }

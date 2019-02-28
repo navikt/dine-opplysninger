@@ -1,8 +1,6 @@
 import * as React from 'react';
 import OppfolgingStatus from './context/oppfolgningStatus/OppfolgingStatus';
-import SisteStillingProvider from './context/sisteStilling/SisteStillingProvider';
-import KommuneOgLedigeStillingerProvider from './context/kommuneOgLedigeStillinger/KommuneOgLedigeStillingerProvider';
-import GeografiskTilknytningProvider from './context/geografiskTilknytning/GeografiskTilknytningProvider';
+import RegistreringDataProvider from './context/registreringData/RegistreringDataProvider';
 
 interface AppProviderProps {
     children: React.ReactNode;
@@ -11,9 +9,9 @@ interface AppProviderProps {
 function AppProviders(props: AppProviderProps) {
     return (
         <OppfolgingStatus>
-            <SisteStillingProvider>
+            <RegistreringDataProvider>
                         {props.children}
-            </SisteStillingProvider>
+            </RegistreringDataProvider>
         </OppfolgingStatus>
     );
 }
