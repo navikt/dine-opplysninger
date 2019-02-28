@@ -1,0 +1,5 @@
+proxy:
+  - contextPath: "/veilarboppfolging"
+    baseUrl: "http://veilarbproxy"
+  - contextPath: "/veilarbregistrering"
+    baseUrl: "http://veilarbproxy"

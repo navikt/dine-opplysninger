@@ -1,0 +1,10 @@
+links:
+  - link: http://registreringsinformasjon.herokuapp.com/
+    options:
+      ignoreRules: "hidden-content"
+
+  - link: http://registreringsinformasjon.herokuapp.com/
+    options:
+      ignoreRules: "hidden-content"
+      commands:
+        - clickOn: "#mitt-behov-knapp > button"
