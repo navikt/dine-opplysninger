@@ -14,7 +14,18 @@ export const initalStateRegistreringData: RegistreringDataType = {
             sporsmalId: '',
             sporsmal: '',
             svar: '',
-        }]
+        }],
+        besvarelse: {
+            andreForhold: '',
+            dinSituasjon: '',
+            fremtidigSituasjon: '',
+            helseHinder: '',
+            sisteStilling: '',
+            tilbakeIArbeid: '',
+            utdanning: '',
+            utdanningBestatt: '',
+            utdanningGodkjent: ''
+        },
     }
 };
 

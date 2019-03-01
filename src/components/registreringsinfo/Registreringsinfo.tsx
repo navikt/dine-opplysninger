@@ -3,6 +3,7 @@ import { registreringDataContextConsumerHoc } from '../../context/registreringDa
 import { RegistreringDataType } from '../../datatyper/registreringData';
 import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import './Registreringsinfo.less';
+import { registreringsInfoConfig } from './utils';
 
 function Registreringsinfo(props: RegistreringDataType) {
     return (
@@ -10,18 +11,11 @@ function Registreringsinfo(props: RegistreringDataType) {
             <Normaltekst>Følgende informasjon bruker veilederen din for å vurdere dine behov</Normaltekst>
             <Innholdstittel tag="h2">Svar i registrering</Innholdstittel>
             <ul>
-                <li className="typo-normal"><strong>Situasjon&nbsp;</strong>
-
-                    {
-                        props.registrering.teksterForBesvarelse.forEach((spm) => {
-                            if (spm.sporsmalId === 'dinSituasjon') {
-                                return <div>{spm.svar}</div>;
-                            } else {
-                                return null;
-                            }
-                        })
-                    }
-                </li>
+                {
+                    registreringsInfoConfig(props).map((regInfo) => {
+                        return regInfo.element;
+                    })
+                }
             </ul>
         </div>
     );

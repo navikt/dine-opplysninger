@@ -11,6 +11,17 @@ interface RegistreringsType {
             svar: string
         }
     ];
+    'besvarelse': {
+        andreForhold: string,
+        dinSituasjon: string,
+        fremtidigSituasjon: string,
+        helseHinder: string,
+        sisteStilling: string,
+        tilbakeIArbeid: string,
+        utdanning: string,
+        utdanningBestatt: string,
+        utdanningGodkjent: string
+    };
 }
 
 export interface RegistreringDataType {
