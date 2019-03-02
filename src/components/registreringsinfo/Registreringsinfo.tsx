@@ -3,20 +3,31 @@ import { registreringDataContextConsumerHoc } from '../../context/registreringDa
 import { RegistreringDataType } from '../../datatyper/registreringData';
 import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import './Registreringsinfo.less';
-import { registreringsInfoConfig } from './utils';
+import { registreringsInfoConfig } from './config';
 
 function Registreringsinfo(props: RegistreringDataType) {
     return (
-        <div className="registrerings-info-container">
-            <Normaltekst>Følgende informasjon bruker veilederen din for å vurdere dine behov</Normaltekst>
-            <Innholdstittel tag="h2">Svar i registrering</Innholdstittel>
-            <ul>
-                {
-                    registreringsInfoConfig(props).map((regInfo) => {
-                        return regInfo.element;
-                    })
-                }
-            </ul>
+        <div className="registrerings-info">
+            <Normaltekst className="registrerings-info__tittel">Følgende informasjon bruker veilederen din for å vurdere dine behov</Normaltekst>
+            {
+                registreringsInfoConfig(props).map((gruppe) => {
+                    if (gruppe === null) {
+                        return null;
+                    }
+                    return (
+                        <section key={gruppe.gruppeTittel} className="registrerings-info__gruppe">
+                            <Innholdstittel tag="h2" className="gruppe-tittel">{gruppe.gruppeTittel}</Innholdstittel>
+                            <ul className="gruppe-liste">
+                                {
+                                    gruppe.gruppeInnhold.map((innhold) => {
+                                        return innhold.element;
+                                    })
+                                }
+                            </ul>
+                        </section>
+                    );
+                })
+            }
         </div>
     );
 }

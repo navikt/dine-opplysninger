@@ -28,6 +28,7 @@ const CONFIG = {
 export function hentRegistreringData(): Promise<RegistreringDataType> {
     return fetchData<RegistreringDataType>(API_VEILARBREGISTRERING, CONFIG)
         .then((registeringsData: RegistreringDataType) => ({
+            type: registeringsData.type,
             registrering: registeringsData.registrering
         }));
 }

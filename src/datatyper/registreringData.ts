@@ -1,3 +1,6 @@
+export const ORDINAER = 'ORDINAER';
+export const SYKMELDT = 'SYKMELDT';
+
 interface RegistreringsType {
     sisteStilling: {
         label: string,
@@ -25,7 +28,7 @@ interface RegistreringsType {
 }
 
 export interface RegistreringDataType {
+    type: string;
     registrering: RegistreringsType;
 
 }
-export default RegistreringsType;
