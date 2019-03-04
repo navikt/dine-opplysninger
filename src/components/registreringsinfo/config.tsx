@@ -85,6 +85,7 @@ const sykmeldtConfig = (registreringState: RegistreringDataType) => [
             }
         ],
     },
+    gruppeUtdanningCV(registreringState),
     {
         gruppeTittel: teksterGruppeTittel.behov,
         gruppeInnhold: [

@@ -12,7 +12,7 @@ export const elementLiSvar = (registreringState: RegistreringDataType, spmId: st
     return svar
         ?
         (
-            <li className="typo-normal">
+            <li className="typo-normal" key={spmId}>
                 <strong>{tekster[spmId]}:&nbsp;</strong>{svar}
             </li>
         )
@@ -22,7 +22,7 @@ export const elementLiSvar = (registreringState: RegistreringDataType, spmId: st
 
 export const elementLiMedTekst = (tekstId: string, tekster: teksterType) => {
     return (
-        <li className="typo-normal">
+        <li className="typo-normal" key={tekstId}>
             <strong>{tekster[tekstId]}:&nbsp;</strong>{tekster[`${tekstId}Tekst`]}
         </li>
     );
@@ -30,7 +30,7 @@ export const elementLiMedTekst = (tekstId: string, tekster: teksterType) => {
 
 export const elementLiMedLenke = (tekstId: string, tekster: teksterType) => {
     return (
-        <li className="typo-normal lenke-element">
+        <li className="typo-normal lenke-element" key={tekstId}>
             <section className="lenke-tittel">
                 <strong>{tekster[tekstId]}</strong>
                 <br/>

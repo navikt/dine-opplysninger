@@ -1,5 +1,10 @@
 import FetchMock, { Middleware, MiddlewareUtils } from 'yet-another-fetch-mock';
-import Registrering from './registrering';
+import {
+    OrdinaerHarJobbOnskerFortsette,
+    OrdinaerMistetJobbenIngenUtdanning, SykmeldtIngenPasser,
+    SykmeldtNyArbeidsgiverHarUtdanning, SykmeldtNyArbeidsgiverIngenUtdanning,
+    SykmeldtSammeArbeidsgiverFullStilling
+} from './registrering';
 import OppfolgingStatus from './oppfolging';
 
 const loggingMiddleware: Middleware = (request, response) => {
@@ -30,6 +35,28 @@ const mock = FetchMock.configure({
         loggingMiddleware
     )
 });
+
+const reginfo = new URL(window.location.href).searchParams.get('reginfo');
+let Registrering;
+switch (reginfo) {
+    case 'SykmeldtSammeArbeidsgiverFullStilling':
+        Registrering = SykmeldtSammeArbeidsgiverFullStilling;
+        break;
+    case 'SykmeldtNyArbeidsgiverHarUtdanning':
+        Registrering = SykmeldtNyArbeidsgiverHarUtdanning;
+        break;
+    case 'SykmeldtNyArbeidsgiverIngenUtdanning':
+        Registrering = SykmeldtNyArbeidsgiverIngenUtdanning;
+        break;
+    case 'SykmeldtIngenPasser':
+        Registrering = SykmeldtIngenPasser;
+        break;
+    case 'OrdinaerHarJobbOnskerFortsette':
+        Registrering = OrdinaerHarJobbOnskerFortsette;
+        break;
+    default:
+        Registrering = OrdinaerMistetJobbenIngenUtdanning;
+}
 
 mock.get('/veilarbregistrering/api/registrering', Registrering );
 mock.get('/veilarboppfolging/api/oppfolging', OppfolgingStatus );
