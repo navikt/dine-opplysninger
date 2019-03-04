@@ -1,7 +1,7 @@
 Registreringsinformasjon
 ================
 
-En frontendapp som viser brukeres registreringsinformasjon 
+En frontendapp som viser brukeres registreringsinformasjon. 
 
 # Kjøre appen
 ```console
