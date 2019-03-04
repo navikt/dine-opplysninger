@@ -37,8 +37,6 @@ fasitResources:
       resourceType: baseUrl
     - alias: appdynamics
       resourceType: applicationproperties
-    - alias: loadbalancer:registreringsinformasjon
-      resourceType: loadbalancerconfig
 
     # oidc med AzureAD B2C
     - alias: loginservice
