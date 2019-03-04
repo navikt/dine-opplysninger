@@ -8,7 +8,7 @@ import { registreringsInfoConfig } from './config';
 function Registreringsinfo(props: RegistreringDataType) {
     return (
         <div className="registrerings-info">
-            <Normaltekst className="registrerings-info__tittel">Hei Følgende informasjon bruker veilederen din for å vurdere dine behov</Normaltekst>
+            <Normaltekst className="registrerings-info__tittel">Følgende informasjon bruker veilederen din for å vurdere dine behov</Normaltekst>
             {
                 registreringsInfoConfig(props).map((gruppe) => {
                     if (gruppe === null) {
