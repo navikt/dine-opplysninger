@@ -1,6 +1,6 @@
 import FetchMock, { Middleware, MiddlewareUtils } from 'yet-another-fetch-mock';
-import Registrering from './registrering';
 import OppfolgingStatus from './oppfolging';
+import Registrering from './registrering';
 
 const loggingMiddleware: Middleware = (request, response) => {
     // tslint:disable
