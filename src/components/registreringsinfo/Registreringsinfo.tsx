@@ -4,10 +4,12 @@ import { RegistreringDataType } from '../../datatyper/registreringData';
 import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import './Registreringsinfo.less';
 import { registreringsInfoConfig } from './config';
+import EndreRegistreringerMock from '../../mock/EndreRegistreringerMock';
 
 function Registreringsinfo(props: RegistreringDataType) {
     return (
         <div className="registrerings-info">
+            <EndreRegistreringerMock/>
             <Normaltekst className="registrerings-info__tittel">Følgende informasjon bruker veilederen din for å vurdere dine behov</Normaltekst>
             {
                 registreringsInfoConfig(props).map((gruppe) => {
