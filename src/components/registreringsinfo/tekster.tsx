@@ -44,7 +44,7 @@ export const teksterTilLenker = {
     jobbProfilLenke: 'Gå til din jobbprofil',
     jobbProfilHref: 'https://arbeidsplassen.nav.no',
     sykeFravaer: 'Sykefravær',
-    sykeFravaerLenke: 'Gå til ditt Sykefravær',
+    sykeFravaerLenke: 'Gå til ditt sykefravær',
     sykeFravaerHref: 'https://tjeneste.nav.no/sykefravaer',
     sykeFravaerBeskrivelse: 'Sykmeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt.'
 };

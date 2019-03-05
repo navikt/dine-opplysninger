@@ -7,3 +7,7 @@ proxy:
     baseUrl: "http://veilarbproxy"
   - contextPath: "/veilarbregistrering"
     baseUrl: "http://veilarbproxy"
+
+redirect:
+  - from: /sykefravaer
+    to: {{ SYKEFRAVAER_URL }}

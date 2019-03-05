@@ -46,4 +46,8 @@ fasitResources:
     - alias: aad_b2c_discovery
       resourceType: baseurl
 
+    # lenker
+    - alias: sykefravaer
+      resourceType: baseUrl
+
 webproxy: true
