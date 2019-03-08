@@ -19,6 +19,7 @@ function Registreringsinfo(props: RegistreringDataType) {
                     return (
                         <section key={gruppe.gruppeTittel} className="registrerings-info__gruppe">
                             <Innholdstittel tag="h2" className="gruppe-tittel">{gruppe.gruppeTittel}</Innholdstittel>
+                            <div>{gruppe.gruppeBeskrivelse}</div>
                             <ul className="gruppe-liste">
                                 {
                                     gruppe.gruppeInnhold.map((innhold) => {

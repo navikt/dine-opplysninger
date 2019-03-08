@@ -52,5 +52,12 @@ export const teksterTilLenker = {
 export const teksterGruppeTittel = {
     svarIRegistrering: 'Svar i registrering',
     behov: 'Behov',
-    utdanningCV: 'Utdanning og CV'
+    jobbprofilCV: 'Jobbprofil og CV',
+    moteReferater: 'Møtereferater'
+};
+
+export const teksterGruppeBeskrivelse = {
+    jobbprofilCV: 'Hold opplysningene i CV-en og jobbprofilen din oppdatert for å få riktig veiledning.',
+    moteReferater: 'Møtene mellom deg og veilederen din er relevante for vurderingen av behovene dine.',
+    svarIRegistrering: 'Opplysningene under er fra da du registrerte deg 6. februar 2019. Hvis situasjonen din endrer seg, bør du informere veilederen din om dette.',
 };

@@ -1,8 +1,8 @@
 import { ORDINAER, RegistreringDataType, SYKMELDT } from '../../datatyper/registreringData';
 import {
-    elementLiSvar, elementLiMedLenke, elementLiMedTekst,
-} from './utils';
+    elementLiSvar, elementLiMedLenke } from './utils';
 import {
+    teksterGruppeBeskrivelse,
     teksterGruppeTittel,
     teksterOrdinaer,
     teksterSykmeldt,
@@ -10,94 +10,103 @@ import {
     teksterUtdCV
 } from './tekster';
 
-const gruppeUtdanningCV = (registreringState: RegistreringDataType) => {
+const gruppeJobbprofilCV = () => {
+    return [
+        {
+            id: 'cv',
+            element: elementLiMedLenke('cv', teksterTilLenker)
+        },
+        {
+            id: 'jobbProfil',
+            element: elementLiMedLenke('jobbProfil', teksterTilLenker)
+        },
+    ];
+};
+
+const dinSituasjon = (registreringState: RegistreringDataType) => {
+    return [
+        {
+            id: 'dinSituasjon',
+            element: elementLiSvar(registreringState, 'dinSituasjon', teksterOrdinaer)
+        },
+    ];
+};
+
+const gruppeUtdanning = (registreringState: RegistreringDataType) => {
     const elementUtdanning = elementLiSvar(registreringState, 'utdanning', teksterUtdCV);
 
     if (elementUtdanning === null) {
-        return null;
+        return [];
     }
-    return {
-        gruppeTittel: teksterGruppeTittel.utdanningCV,
-        gruppeInnhold: [
-            {
-                id: 'utdanning',
-                element: elementUtdanning
-            },
-            {
-                id: 'utdanningGodkjent',
-                element: elementLiSvar(registreringState, 'utdanningGodkjent', teksterUtdCV)
-            },
-            {
-                id: 'utdanningBestatt',
-                element: elementLiSvar(registreringState, 'utdanningBestatt', teksterUtdCV)
-            },
-            {
-                id: 'cv',
-                element: elementLiMedLenke('cv', teksterTilLenker)
-            },
-            {
-                id: 'jobbProfil',
-                element: elementLiMedLenke('jobbProfil', teksterTilLenker)
-            },
-        ]
-    };
+    return [
+        {
+            id: 'utdanning',
+            element: elementUtdanning
+        },
+        {
+            id: 'utdanningGodkjent',
+            element: elementLiSvar(registreringState, 'utdanningGodkjent', teksterUtdCV)
+        },
+        {
+            id: 'utdanningBestatt',
+            element: elementLiSvar(registreringState, 'utdanningBestatt', teksterUtdCV)
+        },
+    ];
+};
+
+const gruppeHelse = (registreringState: RegistreringDataType) => {
+    return [{
+        id: 'helseHinder',
+        element: elementLiSvar(registreringState, 'helseHinder', teksterOrdinaer)            },
+        {
+            id: 'andreForhold',
+            element: elementLiSvar(registreringState, 'andreForhold', teksterOrdinaer)
+        }];
 };
 
 const ordinaerConfig = (registreringState: RegistreringDataType) => [
     {
-        gruppeTittel: teksterGruppeTittel.svarIRegistrering,
-        gruppeInnhold: [
-            {
-                id: 'dinSituasjon',
-                element: elementLiSvar(registreringState, 'dinSituasjon', teksterOrdinaer)
-            },
-        ],
+        gruppeTittel: teksterGruppeTittel.jobbprofilCV,
+        gruppeBeskrivelse: teksterGruppeBeskrivelse.jobbprofilCV,
+        gruppeInnhold: gruppeJobbprofilCV(),
     },
-    gruppeUtdanningCV(registreringState),
     {
-        gruppeTittel: teksterGruppeTittel.behov,
-        gruppeInnhold: [{
-                id: 'helseHinder',
-                element: elementLiSvar(registreringState, 'helseHinder', teksterOrdinaer)            },
-            {
-                id: 'andreForhold',
-                element: elementLiSvar(registreringState, 'andreForhold', teksterOrdinaer)
-            }],
+        gruppeTittel: teksterGruppeTittel.moteReferater,
+        gruppeBeskrivelse: teksterGruppeBeskrivelse.moteReferater,
+        gruppeInnhold: [],
     },
-
+    {
+        gruppeTittel: teksterGruppeTittel.svarIRegistrering,
+        gruppeBeskrivelse: teksterGruppeBeskrivelse.svarIRegistrering,
+        gruppeInnhold: dinSituasjon(registreringState)
+            .concat(gruppeUtdanning(registreringState))
+            .concat(gruppeHelse(registreringState)),
+    },
 ];
 
 const sykmeldtConfig = (registreringState: RegistreringDataType) => [
     {
+        gruppeTittel: teksterGruppeTittel.jobbprofilCV,
+        gruppeBeskrivelse: teksterGruppeBeskrivelse.jobbprofilCV,
+        gruppeInnhold: gruppeJobbprofilCV(),
+    },
+    {
+        gruppeTittel: teksterGruppeTittel.moteReferater,
+        gruppeBeskrivelse: teksterGruppeBeskrivelse.moteReferater,
+        gruppeInnhold: [],
+    },
+    {
         gruppeTittel: teksterGruppeTittel.svarIRegistrering,
-        gruppeInnhold: [
-            {
-                id: 'dinSituasjon',
-                element: elementLiMedTekst('dinSituasjon', teksterSykmeldt)
-            },
-            {
+        gruppeBeskrivelse: teksterGruppeBeskrivelse.svarIRegistrering,
+        gruppeInnhold: [{
                 id: 'fremtidigSituasjon',
                 element: elementLiSvar(registreringState, 'fremtidigSituasjon', teksterSykmeldt)
-            },
-            {
-                id: 'tilbakeIArbeid',
-                element: elementLiSvar(registreringState, 'tilbakeIArbeid', teksterSykmeldt)
-            }
-        ],
-    },
-    gruppeUtdanningCV(registreringState),
-    {
-        gruppeTittel: teksterGruppeTittel.behov,
-        gruppeInnhold: [
-            {
-                id: 'helseHinder',
-                element: elementLiSvar(registreringState, 'helseHinder', teksterSykmeldt)
-            },
-            {
-                id: 'sykeFravaer',
-                element: elementLiMedLenke('sykeFravaer', teksterTilLenker)
-            }
-            ],
+            }]
+            .concat(gruppeUtdanning(registreringState))
+            .concat([{
+                    id: 'helseHinder',
+                    element: elementLiSvar(registreringState, 'helseHinder', teksterSykmeldt)
+                }]),
     },
 ];
 

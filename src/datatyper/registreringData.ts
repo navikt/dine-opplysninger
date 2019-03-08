@@ -2,6 +2,7 @@ export const ORDINAER = 'ORDINAER';
 export const SYKMELDT = 'SYKMELDT';
 
 interface RegistreringsType {
+    opprettetDato: string;
     sisteStilling: {
         label: string,
         konseptId: number,
