@@ -22,6 +22,14 @@ const gruppeJobbprofilCV = () => {
         },
     ];
 };
+const gruppeMoteReferater = () => {
+    return [
+        {
+            id: 'moteReferater',
+            element: elementLiMedLenke('moteReferater', teksterTilLenker)
+        }
+    ];
+};
 
 const dinSituasjon = (registreringState: RegistreringDataType) => {
     return [
@@ -73,7 +81,7 @@ const ordinaerConfig = (registreringState: RegistreringDataType) => [
     {
         gruppeTittel: teksterGruppeTittel.moteReferater,
         gruppeBeskrivelse: teksterGruppeBeskrivelse.moteReferater,
-        gruppeInnhold: [],
+        gruppeInnhold: gruppeMoteReferater(),
     },
     {
         gruppeTittel: teksterGruppeTittel.svarIRegistrering,
@@ -93,7 +101,7 @@ const sykmeldtConfig = (registreringState: RegistreringDataType) => [
     {
         gruppeTittel: teksterGruppeTittel.moteReferater,
         gruppeBeskrivelse: teksterGruppeBeskrivelse.moteReferater,
-        gruppeInnhold: [],
+        gruppeInnhold: gruppeMoteReferater(),
     },
     {
         gruppeTittel: teksterGruppeTittel.svarIRegistrering,

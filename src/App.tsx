@@ -2,6 +2,7 @@ import * as React from 'react';
 import AppProviders from './AppProvider';
 import Banner from './components/banner/Banner';
 import Registreringsinfo from './components/registreringsinfo/Registreringsinfo';
+import 'moment/locale/nb';
 
 interface State {}
 

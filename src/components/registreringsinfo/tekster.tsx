@@ -43,10 +43,15 @@ export const teksterTilLenker = {
     jobbProfil: 'Jobbprofil',
     jobbProfilLenke: 'Gå til din jobbprofil',
     jobbProfilHref: 'https://arbeidsplassen.nav.no',
+    moteReferater: 'Møtereferater',
+    moteReferaterHref: '/aktivitetesplan',
+    moteReferaterLenke: 'Se referatene i Aktivitetsplanen',
     sykeFravaer: 'Sykefravær',
     sykeFravaerLenke: 'Gå til ditt sykefravær',
     sykeFravaerHref: '/sykefravaer',
-    sykeFravaerBeskrivelse: 'Sykmeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt.'
+    sykeFravaerBeskrivelse: 'Sykmeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt.',
+    informereVeilederenHref: '/dialog',
+    informereVeilederenLenke: 'informere veilederen'
 };
 
 export const teksterGruppeTittel = {
@@ -59,5 +64,5 @@ export const teksterGruppeTittel = {
 export const teksterGruppeBeskrivelse = {
     jobbprofilCV: 'Hold opplysningene i CV-en og jobbprofilen din oppdatert for å få riktig veiledning.',
     moteReferater: 'Møtene mellom deg og veilederen din er relevante for vurderingen av behovene dine.',
-    svarIRegistrering: 'Opplysningene under er fra da du registrerte deg 6. februar 2019. Hvis situasjonen din endrer seg, bør du informere veilederen din om dette.',
+    svarIRegistrering: 'Opplysningene under er fra da du registrerte deg {registrertDato}. Hvis situasjonen din endrer seg, bør du {infoVeilLenke} din om dette.',
 };
