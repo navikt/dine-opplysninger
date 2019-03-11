@@ -1,6 +1,7 @@
 import * as React from 'react';
 import AppProviders from './AppProvider';
 import Banner from './components/banner/Banner';
+import VeilederBanner from './components/veilederpanel/Veilederpanel';
 import Registreringsinfo from './components/registreringsinfo/Registreringsinfo';
 import 'moment/locale/nb';
 
@@ -18,6 +19,7 @@ class App extends React.Component<AppProps, State> {
         return (
             <AppProviders>
                 <Banner/>
+                <VeilederBanner/>
                 <Registreringsinfo/>
             </AppProviders>
         );
