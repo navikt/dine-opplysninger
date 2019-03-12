@@ -2,6 +2,7 @@ import * as React from 'react';
 import './Veilederpanel.less';
 import Veilederpanel from 'nav-frontend-veilederpanel';
 import veilederSvg from './veileder-syfo.svg';
+import { teksterVeilederBanner } from '../registreringsinfo/tekster';
 
 function VeilederBanner () {
     let veilederpanelKompakt;
@@ -22,7 +23,7 @@ function VeilederBanner () {
                 kompakt={veilederpanelKompakt}
                 svg={<img src={veilederSvg}/>}
             >
-                Den klare luft, høylukten, blomsterduften, gangen, fuglekvitteret og de friske, luftningene ved elven, virket i høy grad opplivende på mitt sinn.
+                {teksterVeilederBanner.veilederBanner}
             </Veilederpanel>
         </div>
     );

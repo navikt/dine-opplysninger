@@ -13,7 +13,6 @@ function Registreringsinfo(props: RegistreringDataType) {
     return (
         <div className="registrerings-info">
             <EndreRegistreringerMock/>
-            <Normaltekst className="registrerings-info__tittel">Følgende informasjon bruker veilederen din for å vurdere dine behov</Normaltekst>
             {
                 registreringsInfoConfig(props).map((gruppe) => {
                     if (gruppe === null) {

@@ -16,6 +16,10 @@ export type teksterType = {
     sykeFravaerBeskrivelse?: string
 };
 
+export const teksterVeilederBanner = {
+    veilederBanner: 'Veilederen din bruker følgende informasjon for å vurdere behovene dine for veiledning.',
+};
+
 export const teksterOrdinaer = {
     dinSituasjon: 'Situasjon',
     andreForhold: 'Andre problemer',
