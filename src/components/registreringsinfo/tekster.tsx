@@ -16,6 +16,10 @@ export type teksterType = {
     sykeFravaerBeskrivelse?: string
 };
 
+export const teksterVeilederBanner = {
+    veilederBanner: 'Veilederen din bruker følgende informasjon for å vurdere behovene dine for veiledning.',
+};
+
 export const teksterOrdinaer = {
     dinSituasjon: 'Situasjon',
     andreForhold: 'Andre problemer',
@@ -43,14 +47,26 @@ export const teksterTilLenker = {
     jobbProfil: 'Jobbprofil',
     jobbProfilLenke: 'Gå til din jobbprofil',
     jobbProfilHref: 'https://arbeidsplassen.nav.no',
+    moteReferater: 'Møtereferater',
+    moteReferaterHref: '/aktivitetesplan',
+    moteReferaterLenke: 'Se referatene i Aktivitetsplanen',
     sykeFravaer: 'Sykefravær',
     sykeFravaerLenke: 'Gå til ditt sykefravær',
     sykeFravaerHref: '/sykefravaer',
-    sykeFravaerBeskrivelse: 'Sykmeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt.'
+    sykeFravaerBeskrivelse: 'Sykmeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt.',
+    informereVeilederenHref: '/dialog',
+    informereVeilederenLenke: 'informere veilederen'
 };
 
 export const teksterGruppeTittel = {
     svarIRegistrering: 'Svar i registrering',
     behov: 'Behov',
-    utdanningCV: 'Utdanning og CV'
+    jobbprofilCV: 'Jobbprofil og CV',
+    moteReferater: 'Møtereferater'
+};
+
+export const teksterGruppeBeskrivelse = {
+    jobbprofilCV: 'Hold opplysningene i CV-en og jobbprofilen din oppdatert for å få riktig veiledning.',
+    moteReferater: 'Møtene mellom deg og veilederen din er relevante for vurderingen av behovene dine.',
+    svarIRegistrering: 'Opplysningene under er fra da du registrerte deg {registrertDato}. Hvis situasjonen din endrer seg, bør du {infoVeilLenke} din om dette.',
 };

@@ -6,6 +6,7 @@ import DataFetcher from '../../utils/dataFetcher';
 export const initalStateRegistreringData: RegistreringDataType = {
     type: '',
     registrering: {
+        opprettetDato: '',
         sisteStilling : {
             label: '',
             konseptId: 0,
