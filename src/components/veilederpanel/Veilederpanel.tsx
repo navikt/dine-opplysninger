@@ -5,22 +5,17 @@ import veilederSvg from './veileder-syfo.svg';
 import { teksterVeilederBanner } from '../registreringsinfo/tekster';
 
 function VeilederBanner () {
-    let veilederpanelKompakt;
-    let veilederpanelType: 'normal' | 'plakat';
+    let veilederpanelType: 'normal' | 'plakat' = 'plakat';
 
     if (window.matchMedia('(min-width: 768px)').matches) {
-        veilederpanelKompakt = true;
         veilederpanelType = 'normal';
-    } else {
-        veilederpanelKompakt = false;
-        veilederpanelType = 'plakat';
     }
 
     return(
         <div className="veileder-banner">
             <Veilederpanel
                 type={veilederpanelType}
-                kompakt={veilederpanelKompakt}
+                kompakt={true}
                 svg={<img src={veilederSvg}/>}
             >
                 {teksterVeilederBanner.veilederBanner}
