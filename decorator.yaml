@@ -11,3 +11,5 @@ proxy:
 redirect:
   - from: /sykefravaer
     to: {{ SYKEFRAVAER_URL }}
+  - from: /aktivitetsplan
+    to: {{ AKTIVITETSPLAN_URL }}

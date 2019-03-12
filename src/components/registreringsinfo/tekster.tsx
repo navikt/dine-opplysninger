@@ -54,7 +54,7 @@ export const teksterTilLenker = {
     sykeFravaerLenke: 'Gå til ditt sykefravær',
     sykeFravaerHref: '/sykefravaer',
     sykeFravaerBeskrivelse: 'Sykmeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt.',
-    informereVeilederenHref: '/dialog',
+    informereVeilederenHref: '/aktivitetsplan/dialog/ny',
     informereVeilederenLenke: 'informere veilederen'
 };
 

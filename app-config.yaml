@@ -49,5 +49,7 @@ fasitResources:
     # lenker
     - alias: sykefravaer
       resourceType: baseUrl
+    - alias: aktivitetsplan
+      resourceType: baseUrl
 
 webproxy: true
