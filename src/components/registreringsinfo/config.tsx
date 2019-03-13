@@ -31,15 +31,6 @@ const gruppeMoteReferater = () => {
     ];
 };
 
-const dinSituasjon = (registreringState: RegistreringDataType) => {
-    return [
-        {
-            id: 'dinSituasjon',
-            element: elementLiSvar(registreringState, 'dinSituasjon', teksterOrdinaer)
-        },
-    ];
-};
-
 const gruppeUtdanning = (registreringState: RegistreringDataType) => {
     const elementUtdanning = elementLiSvar(registreringState, 'utdanning', teksterUtdCV);
 
@@ -86,7 +77,16 @@ const ordinaerConfig = (registreringState: RegistreringDataType) => [
     {
         gruppeTittel: teksterGruppeTittel.svarIRegistrering,
         gruppeBeskrivelse: teksterGruppeBeskrivelse.svarIRegistrering,
-        gruppeInnhold: dinSituasjon(registreringState)
+        gruppeInnhold: [
+                {
+                    id: 'dinSituasjon',
+                    element: elementLiSvar(registreringState, 'dinSituasjon', teksterOrdinaer)
+                },
+                {
+                    id: 'sisteStilling',
+                    element: elementLiSvar(registreringState, 'sisteStilling', teksterOrdinaer)
+                },
+            ]
             .concat(gruppeUtdanning(registreringState))
             .concat(gruppeHelse(registreringState)),
     },
@@ -109,7 +109,12 @@ const sykmeldtConfig = (registreringState: RegistreringDataType) => [
         gruppeInnhold: [{
                 id: 'fremtidigSituasjon',
                 element: elementLiSvar(registreringState, 'fremtidigSituasjon', teksterSykmeldt)
-            }]
+            },
+            {
+                id: 'tilbakeIArbeid',
+                element: elementLiSvar(registreringState, 'tilbakeIArbeid', teksterSykmeldt)
+            }
+        ]
             .concat(gruppeUtdanning(registreringState))
             .concat([{
                     id: 'helseHinder',

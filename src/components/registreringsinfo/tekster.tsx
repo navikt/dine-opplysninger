@@ -22,6 +22,7 @@ export const teksterVeilederBanner = {
 
 export const teksterOrdinaer = {
     dinSituasjon: 'Situasjon',
+    sisteStilling: 'Siste stilling',
     andreForhold: 'Andre problemer',
     helseHinder: 'Helseproblemer',
 };
@@ -37,7 +38,7 @@ export const teksterSykmeldt = {
 export const teksterUtdCV = {
     utdanning: 'Utdanning',
     utdanningBestatt: 'Utdanning bestått',
-    utdanningGodkjent: 'Utanning godkjent i Norge'
+    utdanningGodkjent: 'Utdanning godkjent i Norge'
 };
 
 export const teksterTilLenker = {
