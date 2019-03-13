@@ -31,6 +31,15 @@ const gruppeMoteReferater = () => {
     ];
 };
 
+const gruppeDittSykefravaer = () => {
+    return [
+        {
+            id: 'sykeFravaer',
+            element: elementLiMedLenke('sykeFravaer', teksterTilLenker)
+        }
+    ];
+};
+
 const gruppeUtdanning = (registreringState: RegistreringDataType) => {
     const elementUtdanning = elementLiSvar(registreringState, 'utdanning', teksterUtdCV);
 
@@ -92,36 +101,51 @@ const ordinaerConfig = (registreringState: RegistreringDataType) => [
     },
 ];
 
-const sykmeldtConfig = (registreringState: RegistreringDataType) => [
-    {
-        gruppeTittel: teksterGruppeTittel.jobbprofilCV,
-        gruppeBeskrivelse: teksterGruppeBeskrivelse.jobbprofilCV,
-        gruppeInnhold: gruppeJobbprofilCV(),
-    },
-    {
-        gruppeTittel: teksterGruppeTittel.moteReferater,
-        gruppeBeskrivelse: teksterGruppeBeskrivelse.moteReferater,
-        gruppeInnhold: gruppeMoteReferater(),
-    },
-    {
-        gruppeTittel: teksterGruppeTittel.svarIRegistrering,
-        gruppeBeskrivelse: teksterGruppeBeskrivelse.svarIRegistrering,
-        gruppeInnhold: [{
-                id: 'fremtidigSituasjon',
-                element: elementLiSvar(registreringState, 'fremtidigSituasjon', teksterSykmeldt)
-            },
-            {
-                id: 'tilbakeIArbeid',
-                element: elementLiSvar(registreringState, 'tilbakeIArbeid', teksterSykmeldt)
-            }
-        ]
-            .concat(gruppeUtdanning(registreringState))
-            .concat([{
-                    id: 'helseHinder',
-                    element: elementLiSvar(registreringState, 'helseHinder', teksterSykmeldt)
-                }]),
-    },
-];
+const sykmeldtConfig = (registreringState: RegistreringDataType) => {
+
+    const skalJobbCVVises =
+    registreringState.registrering.besvarelser.fremtidigSituasjon === 'NY_ARBEIDSGIVER' ||
+    registreringState.registrering.besvarelser.fremtidigSituasjon === 'USIKKER'
+    ?
+        {
+            gruppeTittel: teksterGruppeTittel.jobbprofilCV,
+            gruppeBeskrivelse: teksterGruppeBeskrivelse.jobbprofilCV,
+            gruppeInnhold: gruppeJobbprofilCV()
+        }
+        :
+        null;
+    return [
+        skalJobbCVVises,
+        {
+            gruppeTittel: teksterGruppeTittel.moteReferater,
+            gruppeBeskrivelse: teksterGruppeBeskrivelse.moteReferater,
+            gruppeInnhold: gruppeMoteReferater(),
+        },
+        {
+            gruppeTittel: teksterGruppeTittel.sykeFravaer,
+            gruppeBeskrivelse: '',
+            gruppeInnhold: gruppeDittSykefravaer(),
+        },
+        {
+            gruppeTittel: teksterGruppeTittel.svarIRegistrering,
+            gruppeBeskrivelse: teksterGruppeBeskrivelse.svarIRegistrering,
+            gruppeInnhold: [{
+                    id: 'fremtidigSituasjon',
+                    element: elementLiSvar(registreringState, 'fremtidigSituasjon', teksterSykmeldt)
+                },
+                {
+                    id: 'tilbakeIArbeid',
+                    element: elementLiSvar(registreringState, 'tilbakeIArbeid', teksterSykmeldt)
+                }
+            ]
+                .concat(gruppeUtdanning(registreringState))
+                .concat([{
+                        id: 'helseHinder',
+                        element: elementLiSvar(registreringState, 'helseHinder', teksterSykmeldt)
+                    }]),
+        },
+    ];
+};
 
 export const registreringsInfoConfig = (registreringState: RegistreringDataType) => {
     switch (registreringState.type) {

@@ -23,16 +23,22 @@ function Registreringsinfo(props: RegistreringDataType) {
                     return (
                         <section key={gruppe.gruppeTittel} className="registrerings-info__gruppe">
                             <Innholdstittel tag="h2" className="gruppe-tittel">{gruppe.gruppeTittel}</Innholdstittel>
-                            <Normaltekst>
-                                <FormattedMessage
-                                    id="gruppeBeskrivelse"
-                                    defaultMessage={gruppe.gruppeBeskrivelse}
-                                    values={{
-                                        registrertDato: opprettet,
-                                        infoVeilLenke: <a href={teksterTilLenker.informereVeilederenHref} className="lenke">{teksterTilLenker.informereVeilederenLenke}</a>
-                                    }}
-                                />
-                            </Normaltekst>
+                            {
+                                gruppe.gruppeBeskrivelse
+                                    ?
+                                    <Normaltekst>
+                                        <FormattedMessage
+                                            id="gruppeBeskrivelse"
+                                            defaultMessage={gruppe.gruppeBeskrivelse}
+                                            values={{
+                                                registrertDato: opprettet,
+                                                infoVeilLenke: <a href={teksterTilLenker.informereVeilederenHref} className="lenke">{teksterTilLenker.informereVeilederenLenke}</a>
+                                            }}
+                                        />
+                                    </Normaltekst>
+                                    :
+                                    null
+                            }
                             <ul className="gruppe-liste">
                                 {
                                     gruppe.gruppeInnhold.map((innhold) => {

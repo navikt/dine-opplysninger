@@ -49,12 +49,11 @@ export const teksterTilLenker = {
     jobbProfilLenke: 'Gå til din jobbprofil',
     jobbProfilHref: 'https://arbeidsplassen.nav.no',
     moteReferater: 'Møtereferater',
-    moteReferaterHref: '/aktivitetsplan',
+    moteReferaterHref: '/aktivitetsplan?filter=mote,samtalereferater',
     moteReferaterLenke: 'Se referatene i Aktivitetsplanen',
-    sykeFravaer: 'Sykefravær',
+    sykeFravaer: 'Sykmeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt.',
     sykeFravaerLenke: 'Gå til ditt sykefravær',
     sykeFravaerHref: '/sykefravaer',
-    sykeFravaerBeskrivelse: 'Sykmeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt.',
     informereVeilederenHref: '/aktivitetsplan/dialog/ny',
     informereVeilederenLenke: 'informere veilederen'
 };
@@ -63,7 +62,8 @@ export const teksterGruppeTittel = {
     svarIRegistrering: 'Svar i registrering',
     behov: 'Behov',
     jobbprofilCV: 'Jobbprofil og CV',
-    moteReferater: 'Møtereferater'
+    moteReferater: 'Møtereferater',
+    sykeFravaer: 'Ditt sykefravær'
 };
 
 export const teksterGruppeBeskrivelse = {

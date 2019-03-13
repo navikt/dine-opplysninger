@@ -5,16 +5,10 @@ const SykmeldtSammeArbeidsgiverFullStilling = {
     'registrering': {
         'id': 1187,
         'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
+        'besvarelser': {
+            fremtidigSituasjon: 'SAMME_ARBEIDSGIVER'
+        },
         'teksterForBesvarelse': [{'sporsmalId': 'fremtidigSituasjon', 'sporsmal': 'Hva tenker du om din fremtidige situasjon?', 'svar': 'Jeg skal tilbake til jobben jeg har'}, {'sporsmalId': 'tilbakeIArbeid', 'sporsmal': 'Tror du at du kommer tilbake i jobb før du har vært sykmeldt i 52 uker?', 'svar': 'Ja, i full stilling'}],
-    }
-};
-
-const SykmeldtNyArbeidsgiverHarUtdanning = {
-    'type': SYKMELDT,
-    'registrering': {
-        'id': 1187,
-        'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
-        'teksterForBesvarelse': [{'sporsmalId': 'fremtidigSituasjon', 'sporsmal': 'Hva tenker du om din fremtidige situasjon?', 'svar': 'Jeg trenger ny jobb'}, {'sporsmalId': 'utdanningBestatt', 'sporsmal': 'Er utdanningen din bestått?', 'svar': 'Ja'}, {'sporsmalId': 'utdanningGodkjent', 'sporsmal': 'Er utdanningen din godkjent i Norge?', 'svar': 'Nei'}, {'sporsmalId': 'utdanning', 'sporsmal': 'Hva er din høyeste fullførte utdanning?', 'svar': 'Høyere utdanning (1 til 4 år)'}, {'sporsmalId': 'andreForhold', 'sporsmal': 'Er det noe annet enn helsen din som NAV bør ta hensyn til?', 'svar': 'Ja'}],
     }
 };
 
@@ -23,7 +17,22 @@ const SykmeldtNyArbeidsgiverIngenUtdanning = {
     'registrering': {
         'id': 1187,
         'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
+        'besvarelser': {
+            fremtidigSituasjon: 'NY_ARBEIDSGIVER'
+        },
         'teksterForBesvarelse': [{'sporsmalId': 'fremtidigSituasjon', 'sporsmal': 'Hva tenker du om din fremtidige situasjon?', 'svar': 'Jeg trenger ny jobb'}, {'sporsmalId': 'utdanningBestatt', 'sporsmal': 'Er utdanningen din bestått?', 'svar': 'Ikke aktuelt'}, {'sporsmalId': 'utdanningGodkjent', 'sporsmal': 'Er utdanningen din godkjent i Norge?', 'svar': 'Ikke aktuelt'}, {'sporsmalId': 'utdanning', 'sporsmal': 'Hva er din høyeste fullførte utdanning?', 'svar': 'Ingen utdanning'}, {'sporsmalId': 'andreForhold', 'sporsmal': 'Er det noe annet enn helsen din som NAV bør ta hensyn til?', 'svar': 'Ja'}],
+    }
+};
+
+const SykmeldtUsikker = {
+    'type': SYKMELDT,
+    'registrering': {
+        'id': 1187,
+        'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
+        'besvarelser': {
+            fremtidigSituasjon: 'USIKKER'
+        },
+        'teksterForBesvarelse': [{'sporsmalId': 'fremtidigSituasjon', 'sporsmal': 'Hva tenker du om din fremtidige situasjon?', 'svar': 'Jeg er usikker'}, {'sporsmalId': 'utdanningBestatt', 'sporsmal': 'Er utdanningen din bestått?', 'svar': 'Ikke aktuelt'}, {'sporsmalId': 'utdanningGodkjent', 'sporsmal': 'Er utdanningen din godkjent i Norge?', 'svar': 'Ikke aktuelt'}, {'sporsmalId': 'utdanning', 'sporsmal': 'Hva er din høyeste fullførte utdanning?', 'svar': 'Ingen utdanning'}, {'sporsmalId': 'andreForhold', 'sporsmal': 'Er det noe annet enn helsen din som NAV bør ta hensyn til?', 'svar': 'Ja'}],
     }
 };
 
@@ -32,6 +41,9 @@ const SykmeldtIngenPasser = {
     'registrering': {
         'id': 1187,
         'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
+        'besvarelser': {
+            fremtidigSituasjon: 'INGEN_PASSER'
+        },
         'teksterForBesvarelse': [{'sporsmalId': 'fremtidigSituasjon', 'sporsmal': 'Hva tenker du om din fremtidige situasjon?', 'svar': 'Ingen av disse alternativene passer'}],
     }
 };
@@ -67,14 +79,14 @@ switch (registrering) {
     case 'SykmeldtSammeArbeidsgiverFullStilling':
         Registrering = SykmeldtSammeArbeidsgiverFullStilling;
         break;
-    case 'SykmeldtNyArbeidsgiverHarUtdanning':
-        Registrering = SykmeldtNyArbeidsgiverHarUtdanning;
-        break;
     case 'SykmeldtNyArbeidsgiverIngenUtdanning':
         Registrering = SykmeldtNyArbeidsgiverIngenUtdanning;
         break;
     case 'SykmeldtIngenPasser':
         Registrering = SykmeldtIngenPasser;
+        break;
+    case 'SykmeldtUsikker':
+        Registrering = SykmeldtUsikker;
         break;
     case 'OrdinaerHarJobbOnskerFortsette':
         Registrering = OrdinaerHarJobbOnskerFortsette;
