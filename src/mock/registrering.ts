@@ -49,7 +49,15 @@ const OrdinaerHarJobbOnskerFortsette = {
     'registrering': {
         'id': 1187,
         'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
-        'teksterForBesvarelse': [{'sporsmalId': 'sisteStilling', 'sporsmal': 'Hva er din siste jobb?', 'svar': 'Ingen yrkeserfaring'}, {'sporsmalId': 'utdanning', 'sporsmal': 'Hva er din høyeste fullførte utdanning?', 'svar': 'Ikke aktuelt'}, {'sporsmalId': 'utdanningBestatt', 'sporsmal': 'Er utdanningen din bestått?', 'svar': 'Ikke aktuelt'}, {'sporsmalId': 'utdanningGodkjent', 'sporsmal': 'Er utdanningen din godkjent i Norge?', 'svar': 'Ikke aktuelt'}, {'sporsmalId': 'dinSituasjon', 'sporsmal': 'Velg den situasjonen som passer deg best', 'svar': 'Har jobb og ønsker å fortsette i den jobben jeg er i'}, {'sporsmalId': 'helseHinder', 'sporsmal': 'Har du helseproblemer som hindrer deg i å søke eller være i jobb?', 'svar': 'Ja'}, {'sporsmalId': 'andreForhold', 'sporsmal': 'Har du andre problemer med å søke eller være i jobb?', 'svar': 'Nei'}],
+        'teksterForBesvarelse': [{'sporsmalId': 'sisteStilling', 'sporsmal': 'Hva er din siste jobb?', 'svar': 'Daglig leder'}, {'sporsmalId': 'utdanning', 'sporsmal': 'Hva er din høyeste fullførte utdanning?', 'svar': 'Ikke aktuelt'}, {'sporsmalId': 'utdanningBestatt', 'sporsmal': 'Er utdanningen din bestått?', 'svar': 'Ikke aktuelt'}, {'sporsmalId': 'utdanningGodkjent', 'sporsmal': 'Er utdanningen din godkjent i Norge?', 'svar': 'Ikke aktuelt'}, {'sporsmalId': 'dinSituasjon', 'sporsmal': 'Velg den situasjonen som passer deg best', 'svar': 'Har jobb og ønsker å fortsette i den jobben jeg er i'}, {'sporsmalId': 'helseHinder', 'sporsmal': 'Har du helseproblemer som hindrer deg i å søke eller være i jobb?', 'svar': 'Ja'}, {'sporsmalId': 'andreForhold', 'sporsmal': 'Har du andre problemer med å søke eller være i jobb?', 'svar': 'Nei'}],
+    }
+};
+const OrdinaerHarMistetJobben = {
+    'type': ORDINAER,
+    'registrering': {
+        'id': 1187,
+        'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
+        'teksterForBesvarelse': [{'sporsmal': 'Hva er din siste jobb?', sporsmalId: 'sisteStilling', svar: 'Ingen yrkeserfaring'}, {sporsmal: 'Hva er din høyeste fullførte utdanning?', sporsmalId: 'utdanning', svar: 'Videregående grunnutdanning (1 til 2 år)'}, {sporsmalId: 'utdanningBestatt', sporsmal: 'Er utdanningen din bestått?', svar: 'Ja'}, {sporsmalId: 'utdanningGodkjent', sporsmal: 'Er utdanningen din godkjent i Norge?', svar: 'Ja'}, {sporsmalId: 'dinSituasjon', sporsmal: 'Velg den situasjonen som passer deg best', svar: 'Har aldri vært i jobb'}, {sporsmalId: 'helseHinder', sporsmal: 'Har du helseproblemer som hindrer deg i å søke eller være i jobb?', svar: 'Ja'}, {sporsmalId: 'andreForhold', sporsmal: 'Har du andre problemer med å søke eller være i jobb?', svar: 'Ja'}]
     }
 };
 
@@ -73,6 +81,9 @@ switch (registrering) {
         break;
     case 'OrdinaerMistetJobbenIngenUtdanning':
         Registrering = OrdinaerMistetJobbenIngenUtdanning;
+        break;
+    case 'OrdinaerHarMistetJobben':
+        Registrering = OrdinaerHarMistetJobben;
         break;
     default:
 }

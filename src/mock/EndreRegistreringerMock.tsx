@@ -29,6 +29,9 @@ function EndreRegistreringerMock() {
                 <li>
                     <a href="/?registrering=OrdinaerHarJobbOnskerFortsette" className="lenke">Ordinær: har jobb og ønsker å fortsette</a>
                 </li>
+                <li>
+                    <a href="/?registrering=OrdinaerHarMistetJobben" className="lenke">Ordinær: har mistet jobben</a>
+                </li>
             </ul>
         </div>
     );
