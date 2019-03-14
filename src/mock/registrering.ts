@@ -5,7 +5,7 @@ const SykmeldtSammeArbeidsgiverFullStilling = {
     'registrering': {
         'id': 1187,
         'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
-        'besvarelser': {
+        'besvarelse': {
             fremtidigSituasjon: 'SAMME_ARBEIDSGIVER',
             andreForhold: '',
             dinSituasjon: '',
@@ -25,7 +25,7 @@ const SykmeldtNyArbeidsgiverIngenUtdanning = {
     'registrering': {
         'id': 1187,
         'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
-        'besvarelser': {
+        'besvarelse': {
             fremtidigSituasjon: 'NY_ARBEIDSGIVER',
             andreForhold: '',
             dinSituasjon: '',
@@ -45,7 +45,7 @@ const SykmeldtUsikker = {
     'registrering': {
         'id': 1187,
         'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
-        'besvarelser': {
+        'besvarelse': {
             fremtidigSituasjon: 'USIKKER',
             andreForhold: '',
             dinSituasjon: '',
@@ -65,7 +65,7 @@ const SykmeldtIngenPasser = {
     'registrering': {
         'id': 1187,
         'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
-        'besvarelser': {
+        'besvarelse': {
             fremtidigSituasjon: 'INGEN_PASSER',
             andreForhold: '',
             dinSituasjon: '',
@@ -85,7 +85,7 @@ const OrdinaerMistetJobbenIngenUtdanning = {
     'registrering': {
         'id': 1187,
         'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
-        'besvarelser': {
+        'besvarelse': {
             dinSituasjon: 'INGEN_PASSER',
             andreForhold: '',
             helseHinder: '',
@@ -103,7 +103,7 @@ const OrdinaerHarJobbOnskerFortsette = {
     'registrering': {
         'id': 1187,
         'opprettetDato': '2018-12-14T14:32:23.468221+01:00',
-        'besvarelser': {
+        'besvarelse': {
             dinSituasjon: '',
             andreForhold: '',
             helseHinder: '',
@@ -120,7 +120,7 @@ const OrdinaerHarMistetJobben = {
     'type': ORDINAER,
     'registrering': {
         'id': 1187,
-        'besvarelser': {
+        'besvarelse': {
             dinSituasjon: '',
             andreForhold: '',
             helseHinder: '',

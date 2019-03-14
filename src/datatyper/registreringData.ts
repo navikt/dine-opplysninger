@@ -15,7 +15,7 @@ interface RegistreringsType {
             svar: string
         }
     ];
-    'besvarelser': {
+    'besvarelse': {
         andreForhold: string,
         dinSituasjon: string,
         fremtidigSituasjon: string,

@@ -99,8 +99,8 @@ const ordinaerConfig = (registreringState: RegistreringDataType) => [
 const sykmeldtConfig = (registreringState: RegistreringDataType) => {
 
     const skalJobbCVVises =
-    registreringState.registrering.besvarelser.fremtidigSituasjon === 'NY_ARBEIDSGIVER' ||
-    registreringState.registrering.besvarelser.fremtidigSituasjon === 'USIKKER'
+    registreringState.registrering.besvarelse.fremtidigSituasjon === 'NY_ARBEIDSGIVER' ||
+    registreringState.registrering.besvarelse.fremtidigSituasjon === 'USIKKER'
     ?
         {
             gruppeTittel: teksterGruppeTittel.jobbprofilCV,

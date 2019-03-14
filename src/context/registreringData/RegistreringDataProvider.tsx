@@ -17,7 +17,7 @@ export const initalStateRegistreringData: RegistreringDataType = {
             sporsmal: '',
             svar: '',
         }],
-        besvarelser: {
+        besvarelse: {
             andreForhold: '',
             dinSituasjon: '',
             fremtidigSituasjon: '',
