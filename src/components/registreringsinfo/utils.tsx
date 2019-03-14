@@ -8,6 +8,9 @@ export const hentSvar = (svarState: any, sporsmalId: string) => { // tslint:disa
 };
 
 export const elementLiSvar = (registreringState: RegistreringDataType, spmId: string, tekster: teksterType) => {
+    if (registreringState.registrering.besvarelser[spmId] === 'INGEN_SVAR') {
+        return null;
+    }
     const svar = hentSvar(registreringState.registrering.teksterForBesvarelse, spmId);
     return svar
         ?

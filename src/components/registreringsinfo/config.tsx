@@ -41,15 +41,10 @@ const gruppeDittSykefravaer = () => {
 };
 
 const gruppeUtdanning = (registreringState: RegistreringDataType) => {
-    const elementUtdanning = elementLiSvar(registreringState, 'utdanning', teksterUtdCV);
-
-    if (elementUtdanning === null) {
-        return [];
-    }
     return [
         {
             id: 'utdanning',
-            element: elementUtdanning
+            element: elementLiSvar(registreringState, 'utdanning', teksterUtdCV)
         },
         {
             id: 'utdanningGodkjent',
