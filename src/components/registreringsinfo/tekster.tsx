@@ -49,7 +49,7 @@ export const teksterTilLenker = {
     jobbProfilLenke: 'Gå til din jobbprofil',
     jobbProfilHref: 'https://arbeidsplassen.nav.no',
     moteReferater: 'Møtereferater',
-    moteReferaterHref: '/aktivitetsplan?filter=mote,samtalereferater',
+    moteReferaterHref: '/aktivitetsplan?filter=mote,samtalereferat',
     moteReferaterLenke: 'Se referatene i Aktivitetsplanen',
     sykeFravaer: 'Sykmeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt.',
     sykeFravaerLenke: 'Gå til ditt sykefravær',
