@@ -4,6 +4,7 @@ import Banner from './components/banner/Banner';
 import VeilederBanner from './components/veilederpanel/Veilederpanel';
 import Registreringsinfo from './components/registreringsinfo/Registreringsinfo';
 import 'moment/locale/nb';
+import Mal from './components/mal/Mal';
 
 interface State {}
 
@@ -20,6 +21,7 @@ class App extends React.Component<AppProps, State> {
             <AppProviders>
                 <Banner/>
                 <VeilederBanner/>
+                <Mal/>
                 <Registreringsinfo/>
             </AppProviders>
         );
