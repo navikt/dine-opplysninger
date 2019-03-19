@@ -1,6 +1,7 @@
 import FetchMock, { Middleware, MiddlewareUtils } from 'yet-another-fetch-mock';
 import OppfolgingStatus from './oppfolging';
 import Registrering from './registrering';
+import { Mal, opprettMal } from './mal';
 
 const loggingMiddleware: Middleware = (request, response) => {
     // tslint:disable
@@ -33,5 +34,11 @@ const mock = FetchMock.configure({
 
 mock.get('/veilarbregistrering/api/registrering', Registrering );
 mock.get('/veilarboppfolging/api/oppfolging', OppfolgingStatus );
+mock.get('/veilarboppfolging/api/oppfolging/mal', Mal);
+
+// tslint:disable-next-line
+mock.post('/veilarboppfolging/api/oppfolging/mal', ({ body }): any => {
+    return opprettMal(body.mal);
+});
 
 export default mock;
