@@ -1,6 +1,6 @@
 export const Mal = {
     mal: 'Beskriv gjerne både kortsiktig og langsiktig mål og hva slags arbeidssoppgaver du ønsker deg,\n' +
-    'slik veilederen din kan gi deg best mulig oppfølging',
+    'slik at veilederen din kan gi deg best mulig oppfølging',
     endretAv: 'BRUKER',
     dato: '2019-12-12',
 };
