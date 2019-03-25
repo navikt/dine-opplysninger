@@ -1,6 +1,6 @@
 import { fetchData } from '../utils/fetchData';
 import { RegistreringDataType } from '../datatyper/registreringData';
-import { MalType } from '../components/mal/Mal';
+import { MalType } from '../components/mal/DelMal';
 export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
 export const API_VEILARBOPPFOLGING = '/veilarboppfolging/api/oppfolging';
 

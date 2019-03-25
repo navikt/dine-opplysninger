@@ -1,8 +1,10 @@
-export const Mal = {
-    mal: 'Beskriv gjerne både kortsiktig og langsiktig mål og hva slags arbeidssoppgaver du ønsker deg,\n' +
-    'slik at veilederen din kan gi deg best mulig oppfølging',
+import { MalType } from '../components/mal/DelMal';
+import { JSONObject } from 'yet-another-fetch-mock/dist/types/types';
+
+export const Mal: MalType & JSONObject = {
+    mal: null,
     endretAv: 'BRUKER',
-    dato: '2019-12-12',
+    dato: null,
 };
 
 export const maler = [
