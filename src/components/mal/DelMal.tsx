@@ -137,14 +137,6 @@ const RedigerDelMal = (props: RedigerDelMal) => {
             />
             <div className="del-mal-aksjoner">
                 <DelMalKnapp
-                    tekst="Avbryt"
-                    onClick={(e: React.MouseEvent<HTMLElement>) => {
-                        e.preventDefault();
-                        props.setMalState(originalMal);
-                        props.setSkalEndreState(false);
-                    }}
-                />
-                <DelMalKnapp
                     tekst="Lagre"
                     onClick={(e: React.MouseEvent<HTMLElement>) => {
                         e.preventDefault();
@@ -158,6 +150,14 @@ const RedigerDelMal = (props: RedigerDelMal) => {
                         } else {
                             props.setSkalEndreState(false);
                         }
+                    }}
+                />
+                <DelMalKnapp
+                    tekst="Avbryt"
+                    onClick={(e: React.MouseEvent<HTMLElement>) => {
+                        e.preventDefault();
+                        props.setMalState(originalMal);
+                        props.setSkalEndreState(false);
                     }}
                 />
             </div>
