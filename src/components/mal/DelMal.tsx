@@ -7,11 +7,12 @@ import { hentMal, oppdaterMal } from '../../api/api';
 import Textarea from 'nav-frontend-skjema/lib/textarea';
 import { MouseEventHandler } from 'react';
 import { SetStateAction } from 'react';
+import { teksterMaal } from './tekster';
 
 export interface MalType {
-    mal: string;
+    mal: string | null;
     endretAv: string;
-    dato: string;
+    dato: string | null;
 }
 
 function DelMal () {
@@ -23,7 +24,11 @@ function DelMal () {
     useEffect(() => {
         hentMal()
             .then((res: MalType) => {
-                setMalState(res.mal);
+                let mal = teksterMaal.default;
+                if (!!res.mal) {
+                    mal = res.mal;
+                }
+                setMalState(mal);
             })
             .catch(() => {
                 setFeilState(true);
