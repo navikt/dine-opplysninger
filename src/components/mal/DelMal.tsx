@@ -88,13 +88,15 @@ const VisDelMal = (props: VisDelMalProps) => {
         <>
             <Systemtittel className="del-mal-tittel">{teksterMaal.delMalTittel}</Systemtittel>
             <Normaltekst className="del-mal-beskrivelse">{props.malState}</Normaltekst>
-            <DelMalKnapp
-                tekst="Endre"
-                onClick={(e: React.MouseEvent<HTMLElement>) => {
-                    e.preventDefault();
-                    props.setSkalEndreState(true);
-                }}
-            />
+            <div className="del-mal-aksjoner">
+                <DelMalKnapp
+                    tekst="Endre"
+                    onClick={(e: React.MouseEvent<HTMLElement>) => {
+                        e.preventDefault();
+                        props.setSkalEndreState(true);
+                    }}
+                />
+            </div>
         </>
     );
 };
@@ -108,13 +110,14 @@ const MALTEKST_MAKSLENGDE = 500;
 const RedigerDelMal = (props: RedigerDelMal) => {
     const [erMaksLengde, setErMaksLengde] = useState(false);
     const [skalLagres, setSkalLagres] = useState(false);
+    const [originalMal] = useState(props.malState);
 
     let feilProp = null;
     if (erMaksLengde) {
         feilProp = { feil: { feilmelding: teksterMaal.feilmelding} };
     }
 
-    const oppdatererMaksLengdeState = (mal: string) => mal.length > MALTEKST_MAKSLENGDE ? setErMaksLengde(true) : setErMaksLengde(false);
+    const oppdatererErMaksLengdeState = (mal: string) => mal.length > MALTEKST_MAKSLENGDE ? setErMaksLengde(true) : setErMaksLengde(false);
     const oppdatererSkalLagresState = (mal: string) => mal.trim() === props.malState.trim() ? setSkalLagres(false) : setSkalLagres(true);
 
     return (
@@ -124,7 +127,7 @@ const RedigerDelMal = (props: RedigerDelMal) => {
                 value={props.malState}
                 onChange={(e) => {
                     const mal = (e.target as HTMLInputElement).value;
-                    oppdatererMaksLengdeState(mal);
+                    oppdatererErMaksLengdeState(mal);
                     oppdatererSkalLagresState(mal);
                     props.setMalState(mal);
                 }}
@@ -132,20 +135,32 @@ const RedigerDelMal = (props: RedigerDelMal) => {
                 maxLength={MALTEKST_MAKSLENGDE}
                 {...feilProp}
             />
-            <DelMalKnapp
-                tekst="Lagre"
-                onClick={(e: React.MouseEvent<HTMLElement>) => {
-                    e.preventDefault();
-                    if (erMaksLengde) { return; }
+            <div className="del-mal-aksjoner">
+                <DelMalKnapp
+                    tekst="Avbryt"
+                    onClick={(e: React.MouseEvent<HTMLElement>) => {
+                        e.preventDefault();
+                        props.setMalState(originalMal);
+                        props.setSkalEndreState(false);
+                    }}
+                />
+                <DelMalKnapp
+                    tekst="Lagre"
+                    onClick={(e: React.MouseEvent<HTMLElement>) => {
+                        e.preventDefault();
+                        if (erMaksLengde) { return; }
 
-                    if (skalLagres) {
-                        oppdaterMal(props.malState)
-                            .then(() => {
-                                props.setSkalEndreState(false);
-                            });
-                    }
-                }}
-            />
+                        if (skalLagres) {
+                            oppdaterMal(props.malState)
+                                .then(() => {
+                                    props.setSkalEndreState(false);
+                                });
+                        } else {
+                            props.setSkalEndreState(false);
+                        }
+                    }}
+                />
+            </div>
         </>
     );
 };
