@@ -99,6 +99,7 @@ interface RedigerDelMal {
     setMalState: Dispatch<SetStateAction<string>>;
     setSkalEndreState: Dispatch<SetStateAction<boolean>>;
 }
+const MALTEKST_MAKSLENGDE = 500;
 const RedigerDelMal = (props: RedigerDelMal) => {
     return (
         <>
@@ -110,6 +111,7 @@ const RedigerDelMal = (props: RedigerDelMal) => {
                     props.setMalState(mal);
                 }}
                 label={<Systemtittel className="del-mal-tittel">Forklaring og delmål</Systemtittel>}
+                maxLength={MALTEKST_MAKSLENGDE}
             />
             <DelMalKnapp
                 tekst="Lagre"
