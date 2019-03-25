@@ -86,7 +86,7 @@ interface VisDelMalProps {
 const VisDelMal = (props: VisDelMalProps) => {
     return (
         <>
-            <Systemtittel className="del-mal-tittel">Forklaring og delmål</Systemtittel>
+            <Systemtittel className="del-mal-tittel">{teksterMaal.delMalTittel}</Systemtittel>
             <Normaltekst className="del-mal-beskrivelse">{props.malState}</Normaltekst>
             <DelMalKnapp
                 tekst="Endre"
@@ -106,6 +106,17 @@ interface RedigerDelMal {
 }
 const MALTEKST_MAKSLENGDE = 500;
 const RedigerDelMal = (props: RedigerDelMal) => {
+    const [erMaksLengde, setErMaksLengde] = useState(false);
+    const [skalLagres, setSkalLagres] = useState(false);
+
+    let feilProp = null;
+    if (erMaksLengde) {
+        feilProp = { feil: { feilmelding: teksterMaal.feilmelding} };
+    }
+
+    const oppdatererMaksLengdeState = (mal: string) => mal.length > MALTEKST_MAKSLENGDE ? setErMaksLengde(true) : setErMaksLengde(false);
+    const oppdatererSkalLagresState = (mal: string) => mal.trim() === props.malState.trim() ? setSkalLagres(false) : setSkalLagres(true);
+
     return (
         <>
             <Textarea
@@ -113,19 +124,26 @@ const RedigerDelMal = (props: RedigerDelMal) => {
                 value={props.malState}
                 onChange={(e) => {
                     const mal = (e.target as HTMLInputElement).value;
+                    oppdatererMaksLengdeState(mal);
+                    oppdatererSkalLagresState(mal);
                     props.setMalState(mal);
                 }}
-                label={<Systemtittel className="del-mal-tittel">Forklaring og delmål</Systemtittel>}
+                label={<Systemtittel className="del-mal-tittel">{teksterMaal.delMalTittel}</Systemtittel>}
                 maxLength={MALTEKST_MAKSLENGDE}
+                {...feilProp}
             />
             <DelMalKnapp
                 tekst="Lagre"
                 onClick={(e: React.MouseEvent<HTMLElement>) => {
                     e.preventDefault();
-                    oppdaterMal(props.malState)
-                        .then(() => {
-                            props.setSkalEndreState(false);
-                        });
+                    if (erMaksLengde) { return; }
+
+                    if (skalLagres) {
+                        oppdaterMal(props.malState)
+                            .then(() => {
+                                props.setSkalEndreState(false);
+                            });
+                    }
                 }}
             />
         </>
