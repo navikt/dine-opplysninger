@@ -1,5 +1,6 @@
 import { fetchData } from '../utils/fetchData';
 import { RegistreringDataType } from '../datatyper/registreringData';
+import { MalType } from '../components/mal/DelMal';
 export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
 export const API_VEILARBOPPFOLGING = '/veilarboppfolging/api/oppfolging';
 
@@ -36,4 +37,12 @@ export function hentRegistreringData(): Promise<RegistreringDataType> {
 export function hentOppfolgingStatus(): Promise<OppfolgingStatusType> {
     return fetchData<OppfolgingStatusType>(API_VEILARBOPPFOLGING, CONFIG)
         .then((oppfolgingStatus: OppfolgingStatusType) => ({underOppfolging: oppfolgingStatus.underOppfolging}));
+}
+
+export function hentMal(): Promise<MalType> {
+    return fetchData<MalType>(`${API_VEILARBOPPFOLGING}/mal`, CONFIG);
+}
+
+export function oppdaterMal(mal: string): Promise<MalType> {
+    return fetchData<MalType>(`${API_VEILARBOPPFOLGING}/mal`, {method: 'post', body: JSON.stringify({mal}), ...CONFIG});
 }

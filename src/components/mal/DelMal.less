@@ -1,0 +1,35 @@
+@import '../../../node_modules/nav-frontend-core/less/_variabler';
+
+.del-mal {
+    text-align: initial;
+    margin: 1rem;
+    background-color: @white;
+    border-radius: 5px;
+    padding: 2rem 2rem 1.5rem 2rem;
+
+    &-tittel {
+        margin-bottom: 0.5rem;
+    }
+    &-beskrivelse {
+        margin-bottom: 1rem;
+    }
+
+    &-aksjoner {
+        display: flex;
+        justify-content: flex-end;
+        .del-mal-knapp {
+            color: @navBlaLighten20;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+    }
+
+}
+
+
+@media (min-width: @screen-sm-min) {
+  .del-mal {
+      margin: 1rem auto 0;
+      width: 710px;
+  }
+}
