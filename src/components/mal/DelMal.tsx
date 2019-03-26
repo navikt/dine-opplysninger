@@ -24,11 +24,9 @@ function DelMal () {
     useEffect(() => {
         hentMal()
             .then((res: MalType) => {
-                let mal = teksterMaal.default;
                 if (!!res.mal) {
-                    mal = res.mal;
+                    setMalState(res.mal);
                 }
-                setMalState(mal);
             })
             .catch(() => {
                 setFeilState(true);
@@ -84,10 +82,11 @@ interface VisDelMalProps {
     setSkalEndreState: Dispatch<SetStateAction<boolean>>;
 }
 const VisDelMal = (props: VisDelMalProps) => {
+    const mal = props.malState.length === 0 ? teksterMaal.default : props.malState;
     return (
         <>
             <Systemtittel className="del-mal-tittel">{teksterMaal.delMalTittel}</Systemtittel>
-            <Normaltekst className="del-mal-beskrivelse">{props.malState}</Normaltekst>
+            <Normaltekst className="del-mal-beskrivelse">{mal}</Normaltekst>
             <div className="del-mal-aksjoner">
                 <DelMalKnapp
                     tekst="Endre"
