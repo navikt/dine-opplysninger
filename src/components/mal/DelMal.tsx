@@ -100,13 +100,13 @@ const VisDelMal = (props: VisDelMalProps) => {
     );
 };
 
-interface RedigerDelMal {
+interface RedigerDelMalProps {
     malState: string;
     setMalState: Dispatch<SetStateAction<string>>;
     setSkalEndreState: Dispatch<SetStateAction<boolean>>;
 }
 const MALTEKST_MAKSLENGDE = 500;
-const RedigerDelMal = (props: RedigerDelMal) => {
+const RedigerDelMal = (props: RedigerDelMalProps) => {
     const [erMaksLengde, setErMaksLengde] = useState(false);
     const [skalLagres, setSkalLagres] = useState(false);
     const [originalMal] = useState(props.malState);
