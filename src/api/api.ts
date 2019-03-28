@@ -1,7 +1,12 @@
 import { fetchData } from '../utils/fetchData';
 import { RegistreringDataType } from '../datatyper/registreringData';
 import { MalType } from '../components/mal/DelMal';
+import { FremtidigSituasjonType } from '../datatyper/fremtidigSituasjonType';
+import { SituasjonAlternativ } from '../components/registreringsinfo/Alternativer';
+
 export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
+export const API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON = '/veilarbregistrering/api/sisteSituasjon/fremtidigSituasjon';
+
 export const API_VEILARBOPPFOLGING = '/veilarboppfolging/api/oppfolging';
 
 export interface OppfolgingStatusType {
@@ -32,6 +37,18 @@ export function hentRegistreringData(): Promise<RegistreringDataType> {
             type: registeringsData.type,
             registrering: registeringsData.registrering
         }));
+}
+
+export function hentFremtidigSituasjon(): Promise<FremtidigSituasjonType> {
+    return fetchData<FremtidigSituasjonType>(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, CONFIG)
+        .then((situasjonData: FremtidigSituasjonType) => ({
+            fremtidigSituasjon: situasjonData.fremtidigSituasjon ?
+                situasjonData.fremtidigSituasjon :
+                SituasjonAlternativ.IKKE_OPPGITT,
+        }));
+}
+export function oppdaterFremtidigSituasjon(fremtidigSituasjon: string): Promise<FremtidigSituasjonType> {
+    return fetchData<FremtidigSituasjonType>(`${API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON}`, {method: 'post', body: JSON.stringify(fremtidigSituasjon), ...CONFIG})
 }
 
 export function hentOppfolgingStatus(): Promise<OppfolgingStatusType> {

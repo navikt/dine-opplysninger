@@ -2,6 +2,8 @@ import FetchMock, { Middleware, MiddlewareUtils } from 'yet-another-fetch-mock';
 import OppfolgingStatus from './oppfolging';
 import Registrering from './registrering';
 import { Mal, opprettMal } from './mal';
+import { fremtidigSituasjon } from './sisteSituasjon';
+import { API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON } from '../api/api';
 
 const loggingMiddleware: Middleware = (request, response) => {
     // tslint:disable
@@ -33,6 +35,13 @@ const mock = FetchMock.configure({
 });
 
 mock.get('/veilarbregistrering/api/registrering', Registrering );
+mock.get(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, fremtidigSituasjon);
+mock.post(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ({ body }): any => {
+    return {
+        fremtidigSituasjon: body,
+    };
+});
+
 mock.get('/veilarboppfolging/api/oppfolging', OppfolgingStatus );
 mock.get('/veilarboppfolging/api/oppfolging/mal', Mal);
 
