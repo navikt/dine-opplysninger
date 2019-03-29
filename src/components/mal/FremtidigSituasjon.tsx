@@ -11,7 +11,7 @@ function FremtidigSituasjon () {
     const [endreVisning, setSkalEndreState] = useState(false);
     const [situasjonState, setSituasjonState] = useState(SituasjonAlternativ.IKKE_OPPGITT);
     const [knappeNavnState, setKnappState] = useState('Legg til');
-
+    const [feil, setFeilState] = useState(false);
     useEffect(() => {
         hentFremtidigSituasjon()
             .then((res: FremtidigSituasjonType) => {
@@ -19,6 +19,9 @@ function FremtidigSituasjon () {
                 if (res.fremtidigSituasjon !== SituasjonAlternativ.IKKE_OPPGITT) {
                     setKnappState('Endre');
                 }
+            })
+            .catch(() => {
+                setFeilState(true);
             });
     }, []);
 
@@ -46,7 +49,7 @@ function FremtidigSituasjon () {
                     <strong>Fremtidig situasjon: </strong>
                     <span>{hentTekst(SporsmalType.fremtidigSituasjon, situasjonState)}</span>
                 </div>
-                <a role="button" className="typo-element endre-knapp" id="btn-legg-til-situasjon" hidden={endreVisning} onClick={() => setSkalEndreState(!endreVisning)}>{knappeNavnState}</a>
+                <a role="button" className="typo-element endre-knapp" id="btn-legg-til-situasjon" hidden={endreVisning || feil} onClick={() => setSkalEndreState(!endreVisning)}>{knappeNavnState}</a>
 
             </li>
             <Collapse isOpened={endreVisning}>
