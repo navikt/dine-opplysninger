@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { SituasjonAlternativ } from '../registreringsinfo/Alternativer';
 import { RadioPanelGruppe } from 'nav-frontend-skjema';
 import * as React from 'react';
+import { KnappeGruppe } from './Knappegruppe';
 
 interface AlternativContainerProps {
     lagretSvar: string;
@@ -39,10 +40,8 @@ export function AlternativGruppe (props: AlternativContainerProps) {
                 checked={svar}
                 onChange={(event, value) => setSvar(value)}
             />
-            <div className="lenke-element knappegruppe">
-                <a role="button" className="typo-element lenke" onClick={() => onCancel()}>Avbryt</a>
-                <a role="button" className="typo-element lenke" onClick={() => props.onSave(svar)}>Lagre</a>
-            </div>
+            <KnappeGruppe onSave={() => props.onSave(svar)} onCancel={() => onCancel()}/>
+
         </>
     );
 }

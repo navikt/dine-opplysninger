@@ -41,12 +41,12 @@ function FremtidigSituasjon () {
 
     return (
         <div className="fremtidig-situasjon">
-            <li className="typo-normal lenke-element">
+            <li className="typo-normal lenke-element endre-knapp-boks">
                 <div>
                     <strong>Fremtidig situasjon: </strong>
                     <span>{hentTekst(SporsmalType.fremtidigSituasjon, situasjonState)}</span>
                 </div>
-                <a role="button" className="typo-element lenke" id="btn-legg-til-situasjon" hidden={endreVisning} onClick={() => setSkalEndreState(!endreVisning)}>{knappeNavnState}</a>
+                <a role="button" className="typo-element endre-knapp" id="btn-legg-til-situasjon" hidden={endreVisning} onClick={() => setSkalEndreState(!endreVisning)}>{knappeNavnState}</a>
 
             </li>
             <Collapse isOpened={endreVisning}>

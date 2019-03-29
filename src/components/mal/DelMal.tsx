@@ -5,9 +5,9 @@ import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import { Dispatch, useEffect, useState } from 'react';
 import { hentMal, oppdaterMal } from '../../api/api';
 import Textarea from 'nav-frontend-skjema/lib/textarea';
-import { MouseEventHandler } from 'react';
 import { SetStateAction } from 'react';
 import { teksterMaal } from './tekster';
+import { KnappeGruppe } from './Knappegruppe';
 
 export interface MalType {
     mal: string | null;
@@ -60,23 +60,6 @@ export default DelMal;
 * Kompenter
 *************/
 
-interface DelMalKnappType {
-    tekst: string;
-    onClick: MouseEventHandler;
-}
-const DelMalKnapp = ({tekst, onClick}: DelMalKnappType) => {
-    return (
-        <a
-            role="button"
-            href="/"
-            className="del-mal-knapp typo-element"
-            onClick={onClick}
-        >
-            {tekst}
-        </a>
-    );
-};
-
 interface VisDelMalProps {
     malState: string;
     setSkalEndreState: Dispatch<SetStateAction<boolean>>;
@@ -87,14 +70,17 @@ const VisDelMal = (props: VisDelMalProps) => {
         <>
             <Systemtittel className="del-mal-tittel">{teksterMaal.delMalTittel}</Systemtittel>
             <Normaltekst className="del-mal-beskrivelse">{mal}</Normaltekst>
-            <div className="del-mal-aksjoner">
-                <DelMalKnapp
-                    tekst="Endre"
+            <div className="endre-knapp-boks">
+                <a
+                    role="button"
+                    className="endre-knapp typo-element"
                     onClick={(e: React.MouseEvent<HTMLElement>) => {
                         e.preventDefault();
                         props.setSkalEndreState(true);
                     }}
-                />
+                >
+                    Endre
+                </a>
             </div>
         </>
     );
@@ -134,32 +120,24 @@ const RedigerDelMal = (props: RedigerDelMalProps) => {
                 maxLength={MALTEKST_MAKSLENGDE}
                 {...feilProp}
             />
-            <div className="del-mal-aksjoner">
-                <DelMalKnapp
-                    tekst="Lagre"
-                    onClick={(e: React.MouseEvent<HTMLElement>) => {
-                        e.preventDefault();
-                        if (erMaksLengde) { return; }
+            <KnappeGruppe
+                onSave={() => {
+                    if (erMaksLengde) { return; }
 
-                        if (skalLagres) {
-                            oppdaterMal(props.malState)
-                                .then(() => {
-                                    props.setSkalEndreState(false);
-                                });
-                        } else {
-                            props.setSkalEndreState(false);
-                        }
-                    }}
-                />
-                <DelMalKnapp
-                    tekst="Avbryt"
-                    onClick={(e: React.MouseEvent<HTMLElement>) => {
-                        e.preventDefault();
-                        props.setMalState(originalMal);
+                    if (skalLagres) {
+                        oppdaterMal(props.malState)
+                            .then(() => {
+                                props.setSkalEndreState(false);
+                            });
+                    } else {
                         props.setSkalEndreState(false);
-                    }}
-                />
-            </div>
+                    }
+                }}
+                onCancel={() => {
+                    props.setMalState(originalMal);
+                    props.setSkalEndreState(false);
+                }}
+            />
         </>
     );
 };
