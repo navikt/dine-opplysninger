@@ -7,10 +7,17 @@ export const initalStateRegistreringData: RegistreringDataType = {
     type: '',
     registrering: {
         opprettetDato: '',
+        manueltRegistrertAv: null,
+        id: 0,
         sisteStilling : {
             label: '',
             konseptId: 0,
             styrk08: '',
+        },
+        profilering: {
+            jobbetSammenhengendeSeksAvTolvSisteManeder: false,
+            alder: 0,
+            innsatsgruppe: ''
         },
         teksterForBesvarelse: [{
             sporsmalId: '',

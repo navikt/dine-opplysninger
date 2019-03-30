@@ -3,28 +3,34 @@ export const SYKMELDT = 'SYKMELDT';
 
 interface RegistreringsType {
     opprettetDato: string;
-    sisteStilling: {
+    manueltRegistrertAv: object  | null;
+    id: number;
+    sisteStilling?: {
         label: string,
         konseptId: number,
         styrk08: string,
     };
-    teksterForBesvarelse: [
+    profilering?: {
+        jobbetSammenhengendeSeksAvTolvSisteManeder: boolean,
+        alder: number,
+        innsatsgruppe: string
+    };
+    teksterForBesvarelse:
         {
             sporsmalId: string,
             sporsmal: string,
             svar: string
-        }
-    ];
+        }[];
     'besvarelse': {
-        andreForhold: string,
-        dinSituasjon: string,
-        fremtidigSituasjon: string,
-        helseHinder: string,
-        sisteStilling: string,
-        tilbakeIArbeid: string,
-        utdanning: string,
-        utdanningBestatt: string,
-        utdanningGodkjent: string
+        dinSituasjon: string | null,
+        fremtidigSituasjon: string | null,
+        sisteStilling: string | null,
+        tilbakeIArbeid: string | null,
+        andreForhold: string | null,
+        helseHinder: string | null,
+        utdanning: string | null,
+        utdanningBestatt: string | null,
+        utdanningGodkjent: string | null
     };
 }
 
