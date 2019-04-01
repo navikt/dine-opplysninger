@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './Knappegruppe.less';
 
 interface KnappegruppeProps {
     onSave: () => void;
@@ -9,8 +8,8 @@ interface KnappegruppeProps {
 export function KnappeGruppe(props: KnappegruppeProps) {
     return (
         <div className="knappegruppe">
-            <a role="button" className="typo-element lenke" onClick={() => props.onCancel()}>Avbryt</a>
-            <a role="button" className="typo-element lenke" onClick={() => props.onSave()}>Lagre</a>
+            <button className="typo-element lenke-knapp" onClick={() => props.onCancel()}>Avbryt</button>
+            <button className="typo-element lenke-knapp" onClick={() => props.onSave()}>Lagre</button>
         </div>
     );
 }

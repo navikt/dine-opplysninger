@@ -70,17 +70,13 @@ const VisDelMal = (props: VisDelMalProps) => {
         <>
             <Systemtittel className="del-mal-tittel">{teksterMaal.delMalTittel}</Systemtittel>
             <Normaltekst className="del-mal-beskrivelse">{mal}</Normaltekst>
-            <div className="endre-knapp-boks">
-                <a
-                    role="button"
-                    className="endre-knapp typo-element"
-                    onClick={(e: React.MouseEvent<HTMLElement>) => {
-                        e.preventDefault();
-                        props.setSkalEndreState(true);
-                    }}
+            <div className="knappegruppe">
+                <button
+                    className="typo-element lenke-knapp"
+                    onClick={() => props.setSkalEndreState(true)}
                 >
                     Endre
-                </a>
+                </button>
             </div>
         </>
     );
