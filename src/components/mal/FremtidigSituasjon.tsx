@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './FremtidigSituasjon.less';
 import { hentTekst, SituasjonAlternativ, SporsmalType } from '../registreringsinfo/Alternativer';
 import { FremtidigSituasjonType } from '../../datatyper/fremtidigSituasjonType';
@@ -12,6 +11,7 @@ function FremtidigSituasjon () {
     const [situasjonState, setSituasjonState] = useState(SituasjonAlternativ.IKKE_OPPGITT);
     const [knappeNavnState, setKnappState] = useState('Legg til');
     const [feil, setFeilState] = useState(false);
+
     useEffect(() => {
         hentFremtidigSituasjon()
             .then((res: FremtidigSituasjonType) => {

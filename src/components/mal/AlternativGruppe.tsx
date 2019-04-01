@@ -12,7 +12,7 @@ interface AlternativContainerProps {
 
 export function AlternativGruppe (props: AlternativContainerProps) {
     const [svar, setSvar] = useState(props.lagretSvar);
-    const rdioAlternativer = Object.keys(SituasjonAlternativ)
+    const alternativer = Object.keys(SituasjonAlternativ)
         .filter(x => SituasjonAlternativ[x] !== SituasjonAlternativ.IKKE_OPPGITT)
         .map(alternativ => {
                 return {
@@ -36,7 +36,7 @@ export function AlternativGruppe (props: AlternativContainerProps) {
             <RadioPanelGruppe
                 name="alternativ-gruppe"
                 legend=""
-                radios={rdioAlternativer}
+                radios={alternativer}
                 checked={svar}
                 onChange={(event, value) => setSvar(value)}
             />
