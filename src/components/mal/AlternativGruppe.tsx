@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SituasjonAlternativ } from '../registreringsinfo/Alternativer';
 import { RadioPanelGruppe } from 'nav-frontend-skjema';
 import * as React from 'react';
@@ -21,10 +21,6 @@ export function AlternativGruppe (props: AlternativContainerProps) {
                 };
             }
         );
-
-    useEffect(() => {
-        setSvar(props.lagretSvar);
-    }, [props.lagretSvar]);
 
     function onCancel() {
         props.onCancel();
