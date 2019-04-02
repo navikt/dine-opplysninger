@@ -3,12 +3,14 @@ import './Mal.less';
 import Systemtittel from 'nav-frontend-typografi/lib/systemtittel';
 import DelMal from './DelMal';
 import FremtidigSituasjon from './FremtidigSituasjon';
+import Malhistorikk from './Malhistorikk';
 
 function Mal () {
 
     return(
         <section className="mal-container">
-            <Systemtittel>Mål</Systemtittel>
+            <Systemtittel className="mal-tittel">Mål</Systemtittel>
+            <Malhistorikk/>
             <FremtidigSituasjon/>
             <DelMal/>
         </section>

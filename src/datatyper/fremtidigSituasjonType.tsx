@@ -2,4 +2,10 @@ import { SituasjonAlternativ } from '../components/registreringsinfo/Alternative
 
 export interface FremtidigSituasjonType {
     fremtidigSituasjon: SituasjonAlternativ;
+    endretAv?: string;
+    dato?: string | null;
+}
+
+export interface HistorikkType {
+    [propName: string]: string | null | SituasjonAlternativ;
 }
