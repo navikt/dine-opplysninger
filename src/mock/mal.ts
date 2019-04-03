@@ -32,7 +32,7 @@ export function opprettMal(mal: string) {
     let nyMal = {
         mal,
         endretAv: 'BRUKER',
-        dato: moment().format('YYYY-MM-DD HH:mm'),
+        dato: moment().format('YYYY-MM-DD HH:mm:ss'),
     };
     maler.push(nyMal);
     return nyMal;

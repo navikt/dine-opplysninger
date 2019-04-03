@@ -23,7 +23,7 @@ export function opprettSituasjon(situasjon: string) {
     let nySituasjon = {
         fremtidigSituasjon: situasjon,
         endretAv: 'BRUKER',
-        dato: moment().format('YYYY-MM-DD HH:mm'),
+        dato: moment().format('YYYY-MM-DD HH:mm:ss'),
     };
     situasjoner.push(nySituasjon);
     return nySituasjon;

@@ -1,7 +1,7 @@
 import { SituasjonAlternativ } from '../registreringsinfo/Alternativer';
 import { HistorikkType } from '../../datatyper/fremtidigSituasjonType';
 
-export function hentHistorikk(historikk: HistorikkType[]) {
+export function kombinerHistorikk(historikk: HistorikkType[]) {
 
     return historikk
         .sort((a , b) => {

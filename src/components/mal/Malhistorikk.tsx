@@ -7,7 +7,7 @@ import { hentFremtidigSituasjonList, hentMalList } from '../../api/api';
 import { FremtidigSituasjonType, HistorikkType } from '../../datatyper/fremtidigSituasjonType';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import Undertittel from 'nav-frontend-typografi/lib/undertittel';
-import { hentHistorikk } from './utils';
+import { kombinerHistorikk } from './utils';
 import { SituasjonAlternativ } from '../registreringsinfo/Alternativer';
 const moment = require('moment');
 
@@ -30,7 +30,8 @@ function Malhistorikk () {
 
                                         const historikkList = (malListe as Array<HistorikkType>).concat(fremtidigsituasjonListe);
 
-                                        setHistorikk(hentHistorikk(historikkList));
+                                        const kombinertHistorikk = kombinerHistorikk(historikkList);
+                                        setHistorikk(kombinertHistorikk);
                                     });
                             });
                     }
