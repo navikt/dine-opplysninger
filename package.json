@@ -2,6 +2,27 @@
   "name": "registreringsinformasjon",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "lint": "echo not implemented, part of the build script",
+    "tslint:fix": "tslint -c tslint.json 'src/**/*.ts*' --fix",
+    "test:coverage": "npm test -- --coverage",
+    "start": "cross-env REACT_APP_MOCK=true craco start",
+    "build": "craco build",
+    "test": "craco test --env=jsdom",
+    "eject": "craco eject",
+    "heroku-serve": "node heroku-server.js",
+    "heroku-postbuild": "cross-env REACT_APP_MOCK=true npm run build",
+    "uu": "nav-ally -f wcag.yml -r yes"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie < 11",
+    "not op_mini all"
+  ],
   "dependencies": {
     "@craco/craco": "^3.4.1",
     "@types/classnames": "2.2.7",
@@ -53,27 +74,6 @@
     "react-scripts": "2.1.3",
     "typescript": "^3.3.1"
   },
-  "scripts": {
-    "lint": "echo not implemented, part of the build script",
-    "tslint:fix": "tslint -c tslint.json 'src/**/*.ts*' --fix",
-    "test:coverage": "npm test -- --coverage",
-    "start": "cross-env REACT_APP_MOCK=true craco start",
-    "build": "craco build",
-    "test": "craco test --env=jsdom",
-    "eject": "craco eject",
-    "heroku-serve": "node heroku-server.js",
-    "heroku-postbuild": "cross-env REACT_APP_MOCK=true npm run build",
-    "uu": "nav-ally -f wcag.yml -r yes"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie < 11",
-    "not op_mini all"
-  ],
   "devDependencies": {
     "@types/enzyme": "^3.9.1",
     "@types/jest": "^23.3.12",
