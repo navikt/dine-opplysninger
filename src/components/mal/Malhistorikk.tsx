@@ -1,6 +1,5 @@
 import * as React from 'react';
 import './Malhistorikk.less';
-import { Collapse } from 'react-collapse';
 import { useState } from 'react';
 import { MalType } from './DelMal';
 import { hentFremtidigSituasjonList, hentMalList } from '../../api/api';
@@ -9,10 +8,13 @@ import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import Undertittel from 'nav-frontend-typografi/lib/undertittel';
 import { kombinerHistorikk } from './utils';
 import { SituasjonAlternativ } from '../registreringsinfo/Alternativer';
+import Modal from 'nav-frontend-modal';
+import NavFrontendSpinner from 'nav-frontend-spinner';
 const moment = require('moment');
 
 function Malhistorikk () {
     const [visSkjul, setvisSkjul] = useState(false);
+    const [laster, setLaster] = useState(true);
     const [historikk, setHistorikk] = useState<Array<HistorikkType>>([]);
 
     return(
@@ -32,6 +34,7 @@ function Malhistorikk () {
 
                                         const kombinertHistorikk = kombinerHistorikk(historikkList);
                                         setHistorikk(kombinertHistorikk);
+                                        setLaster(false);
                                     });
                             });
                     }
@@ -40,37 +43,65 @@ function Malhistorikk () {
             >
                 {!visSkjul ? 'Vis tidligere lagrede mål' : 'Skjul tidligere lagrede mål'}
             </button>
-            <Collapse isOpened={visSkjul}>
+            <Modal
+                isOpen={visSkjul}
+                onRequestClose={() => setvisSkjul(!visSkjul)}
+                closeButton={true}
+                contentLabel="Min modalrute"
+            >
                 <div className="mal-historikk__liste">
-                {
-                    historikk.length === 0
-                        ? <div>Ingen tidligere mål</div>
-                        :
-                        historikk.map((a, i) => {
-                        let malEllerFremtidig = (
-                                <div>
-                                    <Undertittel>Fremtidig situasjon</Undertittel>
-                                    <Normaltekst>{SituasjonAlternativ[a.fremtidigSituasjon || SituasjonAlternativ.IKKE_OPPGITT]} </Normaltekst>
-                                    <Undertittel>Forklaring og delmål</Undertittel>
-                                    <Normaltekst>{a.mal}</Normaltekst>
-                                </div>
-                            );
-
-                        return (
-                            <div key={i} className="mal-historikk__liste-element">
-                                <div className="info typo-element">
-                                    <span className="info__dato">{moment(a.dato).fromNow(true)} siden</span>
-                                    <span className="info__hvem">, skrevet av {a.endretAv}</span>
-                                </div>
-                                {malEllerFremtidig}
-                            </div>
-                        );
-                    })
-                }
+                    {
+                        laster
+                            ? <NavFrontendSpinner />
+                            : <VisHistorikk liste={historikk} />
+                    }
                 </div>
-            </Collapse>
+
+            </Modal>
         </section>
     );
 }
 
 export default Malhistorikk;
+
+/************
+* Hjelpe komponenter
+*************/
+interface VisHistorikkProps {
+    liste: HistorikkType[];
+}
+function VisHistorikk (props: VisHistorikkProps) {
+    const {liste} = props;
+    return (
+        <>
+            {
+                liste.length === 0
+                    ? <div>Ingen tidligere mål</div>
+                    :
+                    liste.map((element, i) => {
+                        return <HistorikkElement element={element} key={i} />;
+                    })
+
+            }
+        </>
+    );
+}
+
+interface HistorikkListeProps {
+    element: HistorikkType;
+}
+function HistorikkElement (props: HistorikkListeProps) {
+    const {element} = props;
+    return (
+        <>
+            <div className="info typo-element">
+                <span className="info__dato">{moment(element.dato).fromNow(true)} siden</span>
+                <span className="info__hvem">, skrevet av {element.endretAv}</span>
+            </div>
+            <Undertittel>Fremtidig situasjon</Undertittel>
+            <Normaltekst>{SituasjonAlternativ[element.fremtidigSituasjon || SituasjonAlternativ.IKKE_OPPGITT]} </Normaltekst>
+            <Undertittel>Forklaring og delmål</Undertittel>
+            <Normaltekst>{element.mal}</Normaltekst>
+        </>
+    );
+}

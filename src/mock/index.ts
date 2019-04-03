@@ -29,7 +29,7 @@ const loggingMiddleware: Middleware = (request, response) => {
 const mock = FetchMock.configure({
     enableFallback: true,
     middleware: MiddlewareUtils.combine(
-        MiddlewareUtils.delayMiddleware(0),
+        MiddlewareUtils.delayMiddleware(10),
         loggingMiddleware
     )
 });
@@ -45,7 +45,6 @@ mock.post(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ({ body }): any => {
 mock.get('/veilarboppfolging/api/oppfolging/malListe', () => malListe());
 mock.get('/veilarboppfolging/api/oppfolging', OppfolgingStatus );
 mock.get('/veilarboppfolging/api/oppfolging/mal', Mal);
-
 // tslint:disable-next-line
 mock.post('/veilarboppfolging/api/oppfolging/mal', ({ body }): any => {
     return opprettMal(body.mal);
