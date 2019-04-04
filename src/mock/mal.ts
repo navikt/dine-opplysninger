@@ -9,7 +9,7 @@ export const Mal: MalType & JSONObject = {
 };
 
 const flereMal = [
-    {'mal': 'Forklaring og delmål ble satt 2.april 2019', 'endretAv': 'BRUKER', 'dato': '2019-04-02T10:59:30.284'},
+    {'mal': 'Forklaring og delmål ble satt 2.april 2019', 'endretAv': 'VEILEDER', 'dato': '2019-04-02T10:59:30.284'},
     {'mal': 'Først forklaring og delmål ble satt 1.april 2019', 'endretAv': 'BRUKER', 'dato': '2019-04-01T06:19:30.284'},
 ];
 
