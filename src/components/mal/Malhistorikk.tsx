@@ -4,19 +4,19 @@ import { useState } from 'react';
 import { MalType } from './DelMal';
 import { hentFremtidigSituasjonList, hentMalList } from '../../api/api';
 import { FremtidigSituasjonType, HistorikkType } from '../../datatyper/fremtidigSituasjonType';
-import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
-import Undertittel from 'nav-frontend-typografi/lib/undertittel';
 import { kombinerHistorikk } from './utils';
 import { SituasjonAlternativ } from '../registreringsinfo/Alternativer';
 import Modal from 'nav-frontend-modal';
 import NavFrontendSpinner from 'nav-frontend-spinner';
+import Undertittel from 'nav-frontend-typografi/lib/undertittel';
+import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 const moment = require('moment');
 
 function Malhistorikk () {
     const [visSkjul, setvisSkjul] = useState(false);
     const [laster, setLaster] = useState(true);
+    const [fetchFeil, setFetchFeil] = useState(false);
     const [historikk, setHistorikk] = useState<Array<HistorikkType>>([]);
-
     return(
         <section className="mal-historikk">
             <button
@@ -26,7 +26,6 @@ function Malhistorikk () {
                     if (!visSkjul) {
                         hentMalList()
                             .then((malListe: Array<MalType&HistorikkType>) => {
-
                                 hentFremtidigSituasjonList()
                                     .then((fremtidigsituasjonListe: Array<FremtidigSituasjonType&HistorikkType>) => {
 
@@ -35,8 +34,15 @@ function Malhistorikk () {
                                         const kombinertHistorikk = kombinerHistorikk(historikkList);
                                         setHistorikk(kombinertHistorikk);
                                         setLaster(false);
+                                    })
+                                    .catch(() => {
+                                        setFetchFeil(true);
                                     });
+                            })
+                            .catch(() => {
+                                setFetchFeil(true);
                             });
+
                     }
                 }}
                 className="typo-element lenke-knapp vis-skjul-knapp"
@@ -53,7 +59,7 @@ function Malhistorikk () {
                     {
                         laster
                             ? <NavFrontendSpinner />
-                            : <VisHistorikk liste={historikk} />
+                            : <VisHistorikk liste={historikk} fetchFeil={fetchFeil}/>
                     }
                 </div>
 
@@ -69,9 +75,13 @@ export default Malhistorikk;
 *************/
 interface VisHistorikkProps {
     liste: HistorikkType[];
+    fetchFeil: boolean;
 }
 function VisHistorikk (props: VisHistorikkProps) {
-    const {liste} = props;
+    const {liste, fetchFeil} = props;
+    if (fetchFeil) {
+        return <>Feil ved henting av historikk...</>;
+    }
     return (
         <>
             {
