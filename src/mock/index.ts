@@ -1,4 +1,4 @@
-import FetchMock, { Middleware, MiddlewareUtils } from 'yet-another-fetch-mock';
+import FetchMock, { Middleware, MiddlewareUtils, ResponseUtils } from 'yet-another-fetch-mock';
 import OppfolgingStatus from './oppfolging';
 import Registrering from './registrering';
 import { Mal, malListe, opprettMal } from './mal';
@@ -29,7 +29,7 @@ const loggingMiddleware: Middleware = (request, response) => {
 const mock = FetchMock.configure({
     enableFallback: true,
     middleware: MiddlewareUtils.combine(
-        MiddlewareUtils.delayMiddleware(10),
+        MiddlewareUtils.delayMiddleware(0),
         loggingMiddleware
     )
 });
@@ -37,14 +37,14 @@ const mock = FetchMock.configure({
 mock.get('/veilarbregistrering/api/registrering', Registrering );
 
 mock.get(`${API_VEILARBREGISTRERING_SISTE_SITUASJON}/fremtidigsituasjonListe`, () => situasjonListe());
-mock.get(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, fremtidigSituasjon);
+mock.get(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ResponseUtils.delayed(10, fremtidigSituasjon))
 mock.post(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ({ body }): any => {
     return opprettSituasjon(body);
 });
 
 mock.get('/veilarboppfolging/api/oppfolging/malListe', () => malListe());
 mock.get('/veilarboppfolging/api/oppfolging', OppfolgingStatus );
-mock.get('/veilarboppfolging/api/oppfolging/mal', Mal);
+mock.get('/veilarboppfolging/api/oppfolging/mal',  ResponseUtils.delayed(10, Mal));
 // tslint:disable-next-line
 mock.post('/veilarboppfolging/api/oppfolging/mal', ({ body }): any => {
     return opprettMal(body.mal);

@@ -3,9 +3,9 @@ import { JSONObject } from 'yet-another-fetch-mock/dist/types/types';
 import { format } from 'date-fns';
 
 export const Mal: MalType & JSONObject = {
-    mal: null,
-    endretAv: '',
-    dato: null,
+    mal: 'hei på deg',
+    endretAv: 'BRUKER',
+    dato: '2019-04-01T06:19:30.284',
 };
 
 const flereMal = [
