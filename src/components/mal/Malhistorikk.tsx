@@ -11,7 +11,8 @@ import NavFrontendSpinner from 'nav-frontend-spinner';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import Systemtittel from 'nav-frontend-typografi/lib/systemtittel';
 import Element from 'nav-frontend-typografi/lib/element';
-const moment = require('moment');
+import { distanceInWordsToNow } from 'date-fns';
+import noLocale  from 'date-fns/locale/nb';
 
 function Malhistorikk () {
     const [visSkjul, setvisSkjul] = useState(false);
@@ -108,7 +109,10 @@ function HistorikkElement (props: HistorikkListeProps) {
     return (
         <div className="mal-historikk__liste-element">
             <div className="info typo-element">
-                <span className="info__dato">{moment(element.dato).fromNow(true)} siden</span>
+                <span className="info__dato">{distanceInWordsToNow(
+                    new Date(element.dato || new Date()),
+                    {includeSeconds: true, locale: noLocale},
+                )} siden</span>
                 <span className="info__hvem">, skrevet av {element.endretAv}</span>
             </div>
             <Element>Fremtidig situasjon</Element>

@@ -1,6 +1,6 @@
 import { MalType } from '../components/mal/DelMal';
 import { JSONObject } from 'yet-another-fetch-mock/dist/types/types';
-const moment = require('moment');
+import { format } from 'date-fns';
 
 export const Mal: MalType & JSONObject = {
     mal: null,
@@ -32,7 +32,7 @@ export function opprettMal(mal: string) {
     let nyMal = {
         mal,
         endretAv: 'BRUKER',
-        dato: moment().format('YYYY-MM-DD HH:mm:ss'),
+        dato: format(new Date(), 'YYYY-MM-DD HH:mm:ss'),
     };
     maler.push(nyMal);
     return nyMal;

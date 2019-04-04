@@ -7,7 +7,8 @@ import './Registreringsinfo.less';
 import { registreringsInfoConfig } from './config';
 import EndreRegistreringerMock from '../../mock/EndreRegistreringerMock';
 import { teksterTilLenker } from './tekster';
-const moment = require('moment');
+import { format } from 'date-fns';
+import noLocale  from 'date-fns/locale/nb';
 
 function Registreringsinfo(props: RegistreringDataType) {
     return (
@@ -19,7 +20,7 @@ function Registreringsinfo(props: RegistreringDataType) {
                         return null;
                     }
 
-                    const opprettet = moment(props.registrering.opprettetDato).format('DD. MMMM YYYY');
+                    const opprettet = format(props.registrering.opprettetDato, 'DD. MMMM YYYY', {locale: noLocale});
                     return (
                         <section key={gruppe.gruppeTittel} className="registrerings-info__gruppe">
                             <Innholdstittel tag="h2" className="gruppe-tittel">{gruppe.gruppeTittel}</Innholdstittel>

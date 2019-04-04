@@ -1,4 +1,4 @@
-const moment = require('moment');
+import { format } from 'date-fns';
 
 export const fremtidigSituasjon = {
     fremtidigSituasjon: 'NY_ARBEIDSGIVER',
@@ -23,7 +23,7 @@ export function opprettSituasjon(situasjon: string) {
     let nySituasjon = {
         fremtidigSituasjon: situasjon,
         endretAv: 'BRUKER',
-        dato: moment().format('YYYY-MM-DD HH:mm:ss'),
+        dato: format(new Date(), 'YYYY-MM-DD HH:mm:ss'),
     };
     situasjoner.push(nySituasjon);
     return nySituasjon;

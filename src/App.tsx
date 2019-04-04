@@ -3,7 +3,6 @@ import AppProviders from './AppProvider';
 import Banner from './components/banner/Banner';
 import VeilederBanner from './components/veilederpanel/Veilederpanel';
 import Registreringsinfo from './components/registreringsinfo/Registreringsinfo';
-import 'moment/locale/nb';
 import Mal from './components/mal/Mal';
 
 interface State {}

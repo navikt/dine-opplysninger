@@ -1,14 +1,13 @@
 /*tslint:disable*/
-import { expect } from 'chai';
 import { kombinerHistorikk } from './utils';
 import { HistorikkType } from '../../datatyper/fremtidigSituasjonType';
 
 describe('utils test', () => {
     it('kombiner rikig historikk', () => {
         const kombinertHistorikk = kombinerHistorikk(historikk);
-        expect(kombinertHistorikk).to.deep.equal(forventetKombinertHistorikk);
+        // expect(kombinertHistorikk).toBe.equals(forventetKombinertHistorikk);
+        expect(kombinertHistorikk).toEqual(forventetKombinertHistorikk)
     });
-
 });
 
 const historikk: HistorikkType[] = [{'mal': null, 'endretAv': '', 'dato': null}, {
