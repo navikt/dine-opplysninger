@@ -7,12 +7,21 @@
     .vis-skjul-knapp {
         align-self: flex-end;
     }
+    &__tittel {
+        margin: 1rem 1rem 0.5rem 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid @navGra40;
+        text-align: center;
+    }
     &__liste {
         background-color: white;
-        padding: 3rem 1rem;
+        padding: 2rem 2.5rem;
 
         &-element {
             margin-bottom: 1.5rem;
+            .tekst {
+                margin-bottom: 0.2rem;
+            }
         }
 
         .info {
@@ -22,7 +31,6 @@
             text-transform: uppercase;
         }
     }
-
 }
 
 
@@ -31,7 +39,7 @@
         margin: 0 auto;
         width: 771px;
         &__liste {
-
-      }
+            width: 40rem;
+        }
   }
 }

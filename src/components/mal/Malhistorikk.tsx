@@ -8,8 +8,9 @@ import { kombinerHistorikk } from './utils';
 import { SituasjonAlternativ } from '../registreringsinfo/Alternativer';
 import Modal from 'nav-frontend-modal';
 import NavFrontendSpinner from 'nav-frontend-spinner';
-import Undertittel from 'nav-frontend-typografi/lib/undertittel';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
+import Systemtittel from 'nav-frontend-typografi/lib/systemtittel';
+import Element from 'nav-frontend-typografi/lib/element';
 const moment = require('moment');
 
 function Malhistorikk () {
@@ -55,6 +56,9 @@ function Malhistorikk () {
                 closeButton={true}
                 contentLabel="Min modalrute"
             >
+                <div className="mal-historikk__tittel">
+                    <Systemtittel> Tidligere lagrede mål </Systemtittel>
+                </div>
                 <div className="mal-historikk__liste">
                     {
                         laster
@@ -62,7 +66,6 @@ function Malhistorikk () {
                             : <VisHistorikk liste={historikk} fetchFeil={fetchFeil}/>
                     }
                 </div>
-
             </Modal>
         </section>
     );
@@ -103,15 +106,15 @@ interface HistorikkListeProps {
 function HistorikkElement (props: HistorikkListeProps) {
     const {element} = props;
     return (
-        <>
+        <div className="mal-historikk__liste-element">
             <div className="info typo-element">
                 <span className="info__dato">{moment(element.dato).fromNow(true)} siden</span>
                 <span className="info__hvem">, skrevet av {element.endretAv}</span>
             </div>
-            <Undertittel>Fremtidig situasjon</Undertittel>
-            <Normaltekst>{SituasjonAlternativ[element.fremtidigSituasjon || SituasjonAlternativ.IKKE_OPPGITT]} </Normaltekst>
-            <Undertittel>Forklaring og delmål</Undertittel>
-            <Normaltekst>{element.mal}</Normaltekst>
-        </>
+            <Element>Fremtidig situasjon</Element>
+            <Normaltekst className="tekst">{SituasjonAlternativ[element.fremtidigSituasjon || SituasjonAlternativ.IKKE_OPPGITT]} </Normaltekst>
+            <Element>Forklaring og delmål</Element>
+            <Normaltekst className="tekst">{element.mal}</Normaltekst>
+        </div>
     );
 }
