@@ -28,7 +28,7 @@ export default function SvarIRegistrering(props: {registrering: RegistreringsTyp
                 {
                     teksterForBesvarelse
                         .filter(it => besvarelse[it.sporsmalId] !== 'INGEN_SVAR')
-                        .map(it => <li><Normaltekst><strong>{it.sporsmal}</strong> {it.svar}</Normaltekst></li>)
+                        .map((it) => <li key={it.sporsmalId}><Normaltekst><strong>{it.sporsmal}</strong> {it.svar}</Normaltekst></li>)
                 }
             </VisningsListe>
         </Visning>
