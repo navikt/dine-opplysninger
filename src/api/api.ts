@@ -1,11 +1,12 @@
 import { fetchData } from '../utils/fetchData';
 import { RegistreringDataType } from '../datatyper/registreringData';
 import { MalType } from '../components/mal/DelMal';
-import { FremtidigSituasjonType } from '../datatyper/fremtidigSituasjonType';
+import { FremtidigSituasjonType, HistorikkType } from '../datatyper/fremtidigSituasjonType';
 import { SituasjonAlternativ } from '../components/registreringsinfo/Alternativer';
 
 export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
-export const API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON = '/veilarbregistrering/api/sisteSituasjon/fremtidigSituasjon';
+export const API_VEILARBREGISTRERING_SISTE_SITUASJON = '/veilarbregistrering/api/sisteSituasjon';
+export const API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON = `${API_VEILARBREGISTRERING_SISTE_SITUASJON}/fremtidigSituasjon`;
 
 export const API_VEILARBOPPFOLGING = '/veilarboppfolging/api/oppfolging';
 
@@ -58,6 +59,14 @@ export function hentOppfolgingStatus(): Promise<OppfolgingStatusType> {
 
 export function hentMal(): Promise<MalType> {
     return fetchData<MalType>(`${API_VEILARBOPPFOLGING}/mal`, CONFIG);
+}
+
+export function hentMalList(): Promise<Array<MalType&HistorikkType>> {
+    return fetchData<Array<MalType&HistorikkType>>(`${API_VEILARBOPPFOLGING}/malListe`, CONFIG);
+}
+
+export function hentFremtidigSituasjonList(): Promise<Array<FremtidigSituasjonType&HistorikkType>> {
+    return fetchData<Array<FremtidigSituasjonType&HistorikkType>>(`${API_VEILARBREGISTRERING_SISTE_SITUASJON}/fremtidigsituasjonListe`, CONFIG);
 }
 
 export function oppdaterMal(mal: string): Promise<MalType> {
