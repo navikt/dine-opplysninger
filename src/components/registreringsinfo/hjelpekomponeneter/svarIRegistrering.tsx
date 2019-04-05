@@ -1,20 +1,18 @@
-import moment from "moment";
-import {Normaltekst} from "nav-frontend-typografi";
-import * as React from "react";
-import {FormattedMessage} from "react-intl"
+import moment from 'moment';
+import { Normaltekst } from 'nav-frontend-typografi';
+import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 
-import {Visning, VisningsListe, VisningsTitel} from "./hjelpere";
-import {teksterGruppeBeskrivelse, teksterGruppeTittel, teksterTilLenker} from "../tekster";
-import {RegistreringsType} from "../../../datatyper/registreringData";
+import { Visning, VisningsListe, VisningsTitel } from './hjelpere';
+import { teksterGruppeBeskrivelse, teksterGruppeTittel, teksterTilLenker } from '../tekster';
+import { RegistreringsType } from '../../../datatyper/registreringData';
 
 export default function SvarIRegistrering(props: {registrering: RegistreringsType}) {
     const {opprettetDato, besvarelse, teksterForBesvarelse} = props.registrering;
     const opprettet = moment(opprettetDato).format('DD. MMMM YYYY');
 
     return (
-        <Visning viseble={
-            true
-        }>
+        <Visning>
             <VisningsTitel> {teksterGruppeTittel.svarIRegistrering} </VisningsTitel>
             <Normaltekst>
                 <FormattedMessage
@@ -34,5 +32,5 @@ export default function SvarIRegistrering(props: {registrering: RegistreringsTyp
                 }
             </VisningsListe>
         </Visning>
-    )
+    );
 }

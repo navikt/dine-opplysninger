@@ -48,7 +48,7 @@ export function hentFremtidigSituasjon(): Promise<FremtidigSituasjonType> {
         }));
 }
 export function oppdaterFremtidigSituasjon(fremtidigSituasjon: string): Promise<FremtidigSituasjonType> {
-    return fetchData<FremtidigSituasjonType>(`${API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON}`, {method: 'post', body: JSON.stringify(fremtidigSituasjon), ...CONFIG})
+    return fetchData<FremtidigSituasjonType>(`${API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON}`, {method: 'post', body: JSON.stringify(fremtidigSituasjon), ...CONFIG});
 }
 
 export function hentOppfolgingStatus(): Promise<OppfolgingStatusType> {

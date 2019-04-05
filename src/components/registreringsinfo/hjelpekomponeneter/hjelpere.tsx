@@ -1,8 +1,7 @@
 
-import * as React from "react";
-import {teksterTilLenker} from "../tekster";
-import {Innholdstittel} from "nav-frontend-typografi";
-
+import * as React from 'react';
+import { teksterTilLenker } from '../tekster';
+import { Innholdstittel } from 'nav-frontend-typografi';
 
 export const ElementLiMedLenke = (props: {tekstId: string}) => (
         <li className="typo-normal lenke-element" key={props.tekstId}>
@@ -15,10 +14,8 @@ export const ElementLiMedLenke = (props: {tekstId: string}) => (
         </li>
     );
 
-
-
-export const Visning = (props: {children: React.ReactNode, viseble : boolean}) => {
-    if(!props.viseble) {
+export const Visning = (props: {children: React.ReactNode, hidden?: boolean}) => {
+    if (!!props.hidden) {
         return null;
     }
     return (
@@ -28,14 +25,12 @@ export const Visning = (props: {children: React.ReactNode, viseble : boolean}) =
     );
 };
 
-
 export const VisningsTitel = (props: {children: React.ReactNode}) => (
     <Innholdstittel tag="h2" className="gruppe-tittel"> {props.children} </Innholdstittel>
 );
-
 
 export const VisningsListe = (props: {children: React.ReactNode}) => (
     <ul className="gruppe-liste">
         {props.children}
     </ul>
-)
+);

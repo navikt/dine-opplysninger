@@ -3,11 +3,10 @@ import { registreringDataContextConsumerHoc } from '../../context/registreringDa
 import { RegistreringDataType } from '../../datatyper/registreringData';
 import './Registreringsinfo.less';
 import EndreRegistreringerMock from '../../mock/EndreRegistreringerMock';
-import JobbprofilCV from "./hjelpekomponeneter/jobbprofilCV";
-import MoteReferater from "./hjelpekomponeneter/moteReferater";
-import Sykefravaer from "./hjelpekomponeneter/sykefravaer";
-import SvarIRegistrering from "./hjelpekomponeneter/svarIRegistrering";
-
+import JobbprofilCV from './hjelpekomponeneter/jobbprofilCV';
+import MoteReferater from './hjelpekomponeneter/moteReferater';
+import Sykefravaer from './hjelpekomponeneter/sykefravaer';
+import SvarIRegistrering from './hjelpekomponeneter/svarIRegistrering';
 
 function Registreringsinfo(props: RegistreringDataType) {
     return (
