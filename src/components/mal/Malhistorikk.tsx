@@ -26,6 +26,8 @@ function Malhistorikk () {
                     setvisSkjul(!visSkjul);
 
                     if (!visSkjul) {
+                        setLaster(true);
+
                         hentMalList()
                             .then((malListe: Array<MalType&HistorikkType>) => {
                                 hentFremtidigSituasjonList()
@@ -84,13 +86,13 @@ interface VisHistorikkProps {
 function VisHistorikk (props: VisHistorikkProps) {
     const {liste, fetchFeil} = props;
     if (fetchFeil) {
-        return <>Feil ved henting av historikk...</>;
+        return <>Feil ved henting av tidligere lagrede mål. Prøv igjen på nytt.</>;
     }
     return (
         <>
             {
                 liste.length === 0
-                    ? <div>Ingen tidligere mål</div>
+                    ? <div>Ingen tidligere lagrede mål</div>
                     :
                     liste.map((element, i) => {
                         return <HistorikkElement element={element} key={i} />;

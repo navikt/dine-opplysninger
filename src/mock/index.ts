@@ -36,15 +36,16 @@ const mock = FetchMock.configure({
 
 mock.get('/veilarbregistrering/api/registrering', Registrering );
 
-mock.get(`${API_VEILARBREGISTRERING_SISTE_SITUASJON}/fremtidigsituasjonListe`, () => situasjonListe());
-mock.get(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ResponseUtils.delayed(10, fremtidigSituasjon))
+mock.get(`${API_VEILARBREGISTRERING_SISTE_SITUASJON}/fremtidigsituasjonListe`, ResponseUtils.delayed(500, situasjonListe()));
+mock.get(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ResponseUtils.delayed(10, fremtidigSituasjon));
 mock.post(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ({ body }): any => {
     return opprettSituasjon(body);
 });
 
-mock.get('/veilarboppfolging/api/oppfolging/malListe', () => malListe());
 mock.get('/veilarboppfolging/api/oppfolging', OppfolgingStatus );
-mock.get('/veilarboppfolging/api/oppfolging/mal',  ResponseUtils.delayed(10, Mal));
+
+mock.get('/veilarboppfolging/api/oppfolging/malListe', ResponseUtils.delayed(100, malListe()));
+mock.get('/veilarboppfolging/api/oppfolging/mal',  ResponseUtils.delayed(1000, Mal));
 // tslint:disable-next-line
 mock.post('/veilarboppfolging/api/oppfolging/mal', ({ body }): any => {
     return opprettMal(body.mal);

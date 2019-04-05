@@ -34,7 +34,12 @@ function DelMal () {
     }, []);
 
     if (feilState) {
-        return <div className="mal-container">Oops det skjedde en feil ...</div>;
+        return (
+            <div className="del-mal">
+                <Systemtittel className="del-mal-tittel">{teksterMaal.delMalTittel}</Systemtittel>
+                <Normaltekst>Feil ved henting av forklaring og delmål. Prøv igjen på nytt.</Normaltekst>
+            </div>
+        );
     }
 
     const visningAvDelMal = () => {
