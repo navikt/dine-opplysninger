@@ -1,5 +1,5 @@
-import { SituasjonAlternativ } from '../registreringsinfo/Alternativer';
-import { HistorikkType } from '../../datatyper/fremtidigSituasjonType';
+import { SituasjonAlternativ } from '../../registreringsinfo/Alternativer';
+import { HistorikkType } from '../../../datatyper/fremtidigSituasjonType';
 
 export function kombinerHistorikk(historikk: HistorikkType[]) {
 

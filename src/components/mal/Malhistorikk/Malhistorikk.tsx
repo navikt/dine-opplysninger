@@ -1,18 +1,14 @@
 import * as React from 'react';
 import './Malhistorikk.less';
 import { useState } from 'react';
-import { MalType } from './DelMal';
-import { hentFremtidigSituasjonList, hentMalList } from '../../api/api';
-import { FremtidigSituasjonType, HistorikkType } from '../../datatyper/fremtidigSituasjonType';
-import { kombinerHistorikk } from './utils';
-import { SituasjonAlternativ } from '../registreringsinfo/Alternativer';
+import { MalType } from '../DelMal/DelMal';
+import { hentFremtidigSituasjonList, hentMalList } from '../../../api/api';
+import { FremtidigSituasjonType, HistorikkType } from '../../../datatyper/fremtidigSituasjonType';
+import { kombinerHistorikk } from './hjelpefunksjoner';
 import Modal from 'nav-frontend-modal';
 import NavFrontendSpinner from 'nav-frontend-spinner';
-import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import Systemtittel from 'nav-frontend-typografi/lib/systemtittel';
-import Element from 'nav-frontend-typografi/lib/element';
-import { distanceInWordsToNow } from 'date-fns';
-import noLocale  from 'date-fns/locale/nb';
+import HistorikkVise from './HistorikkVise';
 
 function Malhistorikk () {
     const [visSkjul, setvisSkjul] = useState(false);
@@ -46,7 +42,6 @@ function Malhistorikk () {
                             .catch(() => {
                                 setFetchFeil(true);
                             });
-
                     }
                 }}
                 className="typo-element lenke-knapp vis-skjul-knapp"
@@ -57,7 +52,8 @@ function Malhistorikk () {
                 isOpen={visSkjul}
                 onRequestClose={() => setvisSkjul(!visSkjul)}
                 closeButton={true}
-                contentLabel="Min modalrute"
+                contentLabel="Tidligere lagrede mål"
+                className="mal-historikk__modal"
             >
                 <div className="mal-historikk__tittel">
                     <Systemtittel> Tidligere lagrede mål </Systemtittel>
@@ -66,7 +62,7 @@ function Malhistorikk () {
                     {
                         laster
                             ? <NavFrontendSpinner />
-                            : <VisHistorikk liste={historikk} fetchFeil={fetchFeil}/>
+                            : <HistorikkVise liste={historikk} fetchFeil={fetchFeil}/>
                     }
                 </div>
             </Modal>
@@ -75,52 +71,3 @@ function Malhistorikk () {
 }
 
 export default Malhistorikk;
-
-/************
-* Hjelpe komponenter
-*************/
-interface VisHistorikkProps {
-    liste: HistorikkType[];
-    fetchFeil: boolean;
-}
-function VisHistorikk (props: VisHistorikkProps) {
-    const {liste, fetchFeil} = props;
-    if (fetchFeil) {
-        return <>Feil ved henting av tidligere lagrede mål. Prøv igjen på nytt.</>;
-    }
-    return (
-        <>
-            {
-                liste.length === 0
-                    ? <div>Ingen tidligere lagrede mål</div>
-                    :
-                    liste.map((element, i) => {
-                        return <HistorikkElement element={element} key={i} />;
-                    })
-
-            }
-        </>
-    );
-}
-
-interface HistorikkListeProps {
-    element: HistorikkType;
-}
-function HistorikkElement (props: HistorikkListeProps) {
-    const {element} = props;
-    return (
-        <div className="mal-historikk__liste-element">
-            <div className="info typo-element">
-                <span className="info__dato">{distanceInWordsToNow(
-                    new Date(element.dato || new Date()),
-                    {includeSeconds: true, locale: noLocale},
-                )} siden</span>
-                <span className="info__hvem">, skrevet av {element.endretAv}</span>
-            </div>
-            <Element>Fremtidig situasjon</Element>
-            <Normaltekst className="tekst">{SituasjonAlternativ[element.fremtidigSituasjon || SituasjonAlternativ.IKKE_OPPGITT]} </Normaltekst>
-            <Element>Forklaring og delmål</Element>
-            <Normaltekst className="tekst">{element.mal}</Normaltekst>
-        </div>
-    );
-}
