@@ -33,22 +33,23 @@ const mock = FetchMock.configure({
         loggingMiddleware
     )
 });
-
+const DELAY = 500;
 mock.get('/veilarbregistrering/api/registrering', Registrering );
 
-mock.get(`${API_VEILARBREGISTRERING_SISTE_SITUASJON}/fremtidigsituasjonListe`, ResponseUtils.delayed(500, situasjonListe()));
-mock.get(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ResponseUtils.delayed(10, fremtidigSituasjon));
-mock.post(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ({ body }): any => {
-    return opprettSituasjon(body);
-});
+mock.get(`${API_VEILARBREGISTRERING_SISTE_SITUASJON}/fremtidigsituasjonListe`, ResponseUtils.delayed(DELAY, situasjonListe()));
+mock.get(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ResponseUtils.delayed(DELAY, fremtidigSituasjon));
+
+mock.post(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ResponseUtils.delayed(DELAY, ({ body }): any => {
+    return ResponseUtils.jsonPromise(opprettSituasjon(body));
+}));
 
 mock.get('/veilarboppfolging/api/oppfolging', OppfolgingStatus );
 
-mock.get('/veilarboppfolging/api/oppfolging/malListe', ResponseUtils.delayed(100, malListe()));
-mock.get('/veilarboppfolging/api/oppfolging/mal',  ResponseUtils.delayed(1000, Mal));
+mock.get('/veilarboppfolging/api/oppfolging/malListe', ResponseUtils.delayed(DELAY, malListe()));
+mock.get('/veilarboppfolging/api/oppfolging/mal',  ResponseUtils.delayed(DELAY, Mal));
 // tslint:disable-next-line
-mock.post('/veilarboppfolging/api/oppfolging/mal', ({ body }): any => {
-    return opprettMal(body.mal);
-});
+mock.post('/veilarboppfolging/api/oppfolging/mal', ResponseUtils.delayed(DELAY, ({ body }): any => {
+    return ResponseUtils.jsonPromise(opprettMal(body.mal));
+}));
 
 export default mock;

@@ -8,6 +8,7 @@ import Textarea from 'nav-frontend-skjema/lib/textarea';
 import { SetStateAction } from 'react';
 import { teksterMaal } from './tekster';
 import { KnappeGruppe } from './Knappegruppe';
+import NavFrontendSpinner from 'nav-frontend-spinner';
 
 export interface MalType {
     mal: string | null;
@@ -18,6 +19,7 @@ export interface MalType {
 function DelMal () {
 
     const [malState, setMalState] = useState('');
+    const [laster, setLaster] = useState(true);
     const [feilState, setFeilState] = useState(false);
     const [skalEndreState, setSkalEndreState] = useState(false);
 
@@ -26,6 +28,7 @@ function DelMal () {
             .then((res: MalType) => {
                 if (!!res.mal) {
                     setMalState(res.mal);
+                    setLaster(false);
                 }
             })
             .catch(() => {
@@ -45,7 +48,7 @@ function DelMal () {
     const visningAvDelMal = () => {
         return !skalEndreState
             ?
-            <VisDelMal malState={malState} setSkalEndreState={setSkalEndreState}/>
+            <VisDelMal malState={malState} setSkalEndreState={setSkalEndreState} laster={laster}/>
             :
             <RedigerDelMal malState={malState} setMalState={setMalState} setSkalEndreState={setSkalEndreState}/>;
     };
@@ -67,21 +70,28 @@ export default DelMal;
 
 interface VisDelMalProps {
     malState: string;
+    laster: boolean;
     setSkalEndreState: Dispatch<SetStateAction<boolean>>;
 }
 const VisDelMal = (props: VisDelMalProps) => {
-    const mal = props.malState.length === 0 ? teksterMaal.default : props.malState;
+    const { laster, malState } = props;
+    const mal = malState.length === 0 ? teksterMaal.default : malState;
     return (
         <>
             <Systemtittel className="del-mal-tittel">{teksterMaal.delMalTittel}</Systemtittel>
             <Normaltekst className="del-mal-beskrivelse">{mal}</Normaltekst>
             <div className="knappegruppe">
-                <button
-                    className="typo-element lenke-knapp"
-                    onClick={() => props.setSkalEndreState(true)}
-                >
-                    Endre
-                </button>
+                {
+                    laster
+                        ? <NavFrontendSpinner/>
+                        : <button
+                            className="typo-element lenke-knapp"
+                            onClick={() => props.setSkalEndreState(true)}
+                        >
+                            Endre
+                        </button>
+                }
+
             </div>
         </>
     );
@@ -97,6 +107,7 @@ const RedigerDelMal = (props: RedigerDelMalProps) => {
     const [erMaksLengde, setErMaksLengde] = useState(false);
     const [skalLagres, setSkalLagres] = useState(false);
     const [originalMal] = useState(props.malState);
+    const [laster, setLaster] = useState(false);
 
     let feilProp = null;
     if (erMaksLengde) {
@@ -111,6 +122,7 @@ const RedigerDelMal = (props: RedigerDelMalProps) => {
             <Textarea
                 textareaClass="typo-normal"
                 value={props.malState}
+                disabled={laster}
                 onChange={(e) => {
                     const mal = (e.target as HTMLInputElement).value;
                     oppdatererErMaksLengdeState(mal);
@@ -121,24 +133,30 @@ const RedigerDelMal = (props: RedigerDelMalProps) => {
                 maxLength={MALTEKST_MAKSLENGDE}
                 {...feilProp}
             />
-            <KnappeGruppe
-                onSave={() => {
-                    if (erMaksLengde) { return; }
+            {
+                laster
+                    ? <NavFrontendSpinner className="venstre"/>
+                    : <KnappeGruppe
+                        onSave={() => {
+                            if (erMaksLengde) { return; }
 
-                    if (skalLagres) {
-                        oppdaterMal(props.malState)
-                            .then(() => {
+                            if (skalLagres) {
+                                setLaster(true);
+                                oppdaterMal(props.malState)
+                                    .then(() => {
+                                        props.setSkalEndreState(false);
+                                        setLaster(false);
+                                    });
+                            } else {
                                 props.setSkalEndreState(false);
-                            });
-                    } else {
-                        props.setSkalEndreState(false);
-                    }
-                }}
-                onCancel={() => {
-                    props.setMalState(originalMal);
-                    props.setSkalEndreState(false);
-                }}
-            />
+                            }
+                        }}
+                        onCancel={() => {
+                            props.setMalState(originalMal);
+                            props.setSkalEndreState(false);
+                        }}
+                    />
+            }
         </>
     );
 };
