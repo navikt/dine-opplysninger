@@ -1,7 +1,7 @@
 export const ORDINAER = 'ORDINAER';
 export const SYKMELDT = 'SYKMELDT';
 
-interface RegistreringsType {
+export interface RegistreringsType {
     opprettetDato: string;
     manueltRegistrertAv: object  | null;
     id: number;
