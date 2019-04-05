@@ -108,14 +108,19 @@ const RedigerDelMal = (props: RedigerDelMalProps) => {
     const [skalLagres, setSkalLagres] = useState(false);
     const [originalMal] = useState(props.malState);
     const [laster, setLaster] = useState(false);
+    const [feilIFetchData, setFeilIFetchData] = useState(false);
+
+    const oppdatererErMaksLengdeState = (mal: string) => mal.length > MALTEKST_MAKSLENGDE ? setErMaksLengde(true) : setErMaksLengde(false);
+    const oppdatererSkalLagresState = (mal: string) => mal.trim() === props.malState.trim() ? setSkalLagres(false) : setSkalLagres(true);
 
     let feilProp = null;
     if (erMaksLengde) {
         feilProp = { feil: { feilmelding: teksterMaal.feilmelding} };
     }
 
-    const oppdatererErMaksLengdeState = (mal: string) => mal.length > MALTEKST_MAKSLENGDE ? setErMaksLengde(true) : setErMaksLengde(false);
-    const oppdatererSkalLagresState = (mal: string) => mal.trim() === props.malState.trim() ? setSkalLagres(false) : setSkalLagres(true);
+    if (feilIFetchData) {
+        return <Normaltekst>Det skjedde feil ved lagring. Last siden på nytt og prøv igjen.</Normaltekst>;
+    }
 
     return (
         <>
@@ -146,6 +151,9 @@ const RedigerDelMal = (props: RedigerDelMalProps) => {
                                     .then(() => {
                                         props.setSkalEndreState(false);
                                         setLaster(false);
+                                    })
+                                    .catch(() => {
+                                        setFeilIFetchData(true);
                                     });
                             } else {
                                 props.setSkalEndreState(false);
