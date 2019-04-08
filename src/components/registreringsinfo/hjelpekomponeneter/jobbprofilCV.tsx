@@ -3,7 +3,12 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import { ElementLiMedLenke, Visning, VisningsListe, VisningsTitel } from './hjelpere';
 import { SYKMELDT } from '../../../datatyper/registreringData';
 
-export default function JobbprofilCV(props: {type: string, fremtidigSituasjon: string | null}) {
+interface JobbprofilCVProps {
+    type: string,
+    fremtidigSituasjon: string | null
+}
+
+export default function JobbprofilCV(props: JobbprofilCVProps) {
     const visible  =  props.type !== SYKMELDT
         || props.fremtidigSituasjon === 'NY_ARBEIDSGIVER'
         || props.fremtidigSituasjon === 'USIKKER';
