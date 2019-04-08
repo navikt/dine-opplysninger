@@ -1,11 +1,17 @@
 import moment from 'moment';
 import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
-import { FormattedMessage } from 'react-intl';
 
 import { Visning, VisningsListe, VisningsTitel } from './hjelpere';
-import { teksterGruppeBeskrivelse, teksterGruppeTittel, teksterTilLenker } from '../tekster';
-import { RegistreringsType } from '../../../datatyper/registreringData';
+import { RegistreringsType, SvarTekster } from '../../../datatyper/registreringData';
+import Lesmerpanel from 'nav-frontend-lesmerpanel';
+
+const VinsingsLinje = (props: SvarTekster) => (
+    <li>
+        <Normaltekst>
+            <strong>{props.sporsmal}</strong> {props.svar}
+        </Normaltekst>
+    </li>);
 
 export default function SvarIRegistrering(props: {registrering: RegistreringsType}) {
     const {opprettetDato, besvarelse, teksterForBesvarelse} = props.registrering;
@@ -13,24 +19,23 @@ export default function SvarIRegistrering(props: {registrering: RegistreringsTyp
 
     return (
         <Visning>
-            <VisningsTitel> {teksterGruppeTittel.svarIRegistrering} </VisningsTitel>
+            <VisningsTitel> Svar i registrering </VisningsTitel>
             <Normaltekst>
-                <FormattedMessage
-                    id="gruppeBeskrivelse"
-                    defaultMessage={teksterGruppeBeskrivelse.svarIRegistrering}
-                    values={{
-                        registrertDato: opprettet,
-                        infoVeilLenke: <a href={teksterTilLenker.informereVeilederenHref} className="lenke">{teksterTilLenker.informereVeilederenLenke}</a>
-                    }}
-                />
+                Opplysningene du registrerte {opprettet}
             </Normaltekst>
-            <VisningsListe>
-                {
-                    teksterForBesvarelse
-                        .filter(it => besvarelse[it.sporsmalId] !== 'INGEN_SVAR')
-                        .map((it) => <li key={it.sporsmalId}><Normaltekst><strong>{it.sporsmal}</strong> {it.svar}</Normaltekst></li>)
-                }
-            </VisningsListe>
+            <Lesmerpanel lukkTekst="" apneTekst="Se besvarelsen din">
+                <VisningsListe>
+                    {
+                        teksterForBesvarelse
+                            .filter(it => besvarelse[it.sporsmalId] !== 'INGEN_SVAR')
+                            .map((it) => <VinsingsLinje key={it.sporsmalId} {...it}/>)
+                    }
+                </VisningsListe>
+                <Normaltekst className="kontaktVeileder">
+                    Du bør informere veilederen din dersom situasjonen din endrer seg. <br />
+                    Du kan endre her eller i <a href="/aktivitetsplan/dialog/ny" >dialogen med veileder.</a>
+                </Normaltekst>
+            </Lesmerpanel>
         </Visning>
     );
 }

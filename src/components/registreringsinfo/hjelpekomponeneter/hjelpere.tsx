@@ -1,27 +1,37 @@
 
 import * as React from 'react';
-import { teksterTilLenker } from '../tekster';
 import { Innholdstittel } from 'nav-frontend-typografi';
 
-export const ElementLiMedLenke = (props: {tekstId: string}) => (
+interface ElementLiMedLenkeProps {
+    tekstId: string;
+    beskrivelse: string;
+    lenketekst: string;
+    lenke: string;
+}
+
+export const ElementLiMedLenke = (props: ElementLiMedLenkeProps) => (
         <li className="typo-normal lenke-element" key={props.tekstId}>
             <section className="lenke-tittel">
-                <strong>{teksterTilLenker[props.tekstId]}</strong>
+                <strong>{props.beskrivelse}</strong>
                 <br/>
-                {teksterTilLenker[`${props.tekstId}Beskrivelse`]}
             </section>
-            <a href={teksterTilLenker[`${props.tekstId}Href`]} className="lenke">{teksterTilLenker[`${props.tekstId}Lenke`]}</a>
+            <a href={props.lenke} className="lenke">{props.lenketekst}</a>
         </li>
     );
 
-export const Visning = (props: {children: React.ReactNode, hidden?: boolean}) => {
+interface VisningProps {
+    children: React.ReactNode;
+    hidden?: boolean;
+}
+
+export const Visning = (props: VisningProps) => {
     if (!!props.hidden) {
         return null;
     }
     return (
-    <section className="registrerings-info__gruppe">
-        {props.children}
-    </section>
+        <section className="registrerings-info__gruppe">
+            {props.children}
+        </section>
     );
 };
 

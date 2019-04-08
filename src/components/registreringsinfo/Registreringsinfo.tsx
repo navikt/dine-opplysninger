@@ -9,13 +9,14 @@ import Sykefravaer from './hjelpekomponeneter/sykefravaer';
 import SvarIRegistrering from './hjelpekomponeneter/svarIRegistrering';
 
 function Registreringsinfo(props: RegistreringDataType) {
+    const {type, registrering} = props;
     return (
         <div className="registrerings-info">
             <EndreRegistreringerMock/>
-            <JobbprofilCV type={props.type} fremtidigSituasjon={props.registrering.besvarelse.fremtidigSituasjon} />
+            <JobbprofilCV type={type} fremtidigSituasjon={registrering.besvarelse.fremtidigSituasjon} />
             <MoteReferater />
-            <Sykefravaer type={props.type} />
-            <SvarIRegistrering registrering={props.registrering}/>
+            <Sykefravaer type={type} />
+            <SvarIRegistrering registrering={registrering}/>
         </div>
     );
 }
