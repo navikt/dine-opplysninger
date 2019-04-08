@@ -1,0 +1,45 @@
+@import '~nav-frontend-core/less/_variabler';
+.mal-historikk {
+
+    display: flex;
+    flex-direction: column;
+
+    .vis-skjul-knapp {
+        align-self: flex-end;
+    }
+    &__tittel {
+        margin: 1rem 1rem 0.5rem 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid @navGra40;
+        text-align: center;
+    }
+    &__liste {
+        background-color: white;
+        padding: 2rem 2.5rem;
+
+        &-element {
+            margin-bottom: 1.5rem;
+            .tekst {
+                margin-bottom: 0.2rem;
+            }
+        }
+
+        .info {
+            border-bottom: solid 1px @navGra40;
+            color: @navGra60;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+    }
+}
+
+
+@media (min-width: @screen-sm-min) {
+.mal-historikk {
+        margin: 0 auto;
+        width: 771px;
+        &__liste {
+            width: 40rem;
+        }
+  }
+}

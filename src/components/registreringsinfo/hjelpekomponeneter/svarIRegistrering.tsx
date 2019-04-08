@@ -1,4 +1,5 @@
-import moment from 'moment';
+import { format } from 'date-fns';
+import noLocale  from 'date-fns/locale/nb';
 import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
 
@@ -15,7 +16,7 @@ const VinsingsLinje = (props: SvarTekster) => (
 
 export default function SvarIRegistrering(props: {registrering: RegistreringsType}) {
     const {opprettetDato, besvarelse, teksterForBesvarelse} = props.registrering;
-    const opprettet = moment(opprettetDato).format('DD. MMMM YYYY');
+    const opprettet = format(opprettetDato, 'DD. MMMM YYYY', {locale: noLocale});
 
     return (
         <Visning>
