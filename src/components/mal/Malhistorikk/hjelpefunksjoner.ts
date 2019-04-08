@@ -1,7 +1,29 @@
 import { SituasjonAlternativ } from '../../registreringsinfo/Alternativer';
 import { HistorikkType } from '../../../datatyper/fremtidigSituasjonType';
+import { hentFremtidigSituasjonList, hentMalList } from '../../../api/api';
+import { Dispatch, SetStateAction } from 'react';
 
-export function kombinerHistorikk(historikk: HistorikkType[]) {
+interface FetchHistorikkenPropTypes {
+    setHistorikk: Dispatch<SetStateAction<Array<HistorikkType>>>;
+    setLaster: Dispatch<SetStateAction<boolean>>;
+    setFetchFeil: Dispatch<SetStateAction<boolean>>;
+}
+export const fetchHistorikken = (props: FetchHistorikkenPropTypes) => {
+    Promise.all([hentMalList(), hentFremtidigSituasjonList()]).then((v) => {
+
+        const malListe = v[0];
+        const fremtidigsituasjonListe = v[1];
+        const historikkList = (malListe as Array<HistorikkType>).concat(fremtidigsituasjonListe);
+        const kombinertHistorikk = kombinerHistorikk(historikkList);
+        props.setHistorikk(kombinertHistorikk);
+        props.setLaster(false);
+    })
+        .catch(() => {
+            props.setFetchFeil(true);
+        });
+};
+
+function kombinerHistorikk(historikk: HistorikkType[]) {
 
     return historikk
         .sort((a, b) => {

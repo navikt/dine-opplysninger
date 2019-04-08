@@ -1,10 +1,8 @@
 import * as React from 'react';
 import './Malhistorikk.less';
 import { useState } from 'react';
-import { MalType } from '../DelMal/DelMal';
-import { hentFremtidigSituasjonList, hentMalList } from '../../../api/api';
-import { FremtidigSituasjonType, HistorikkType } from '../../../datatyper/fremtidigSituasjonType';
-import { kombinerHistorikk } from './hjelpefunksjoner';
+import { HistorikkType } from '../../../datatyper/fremtidigSituasjonType';
+import { fetchHistorikken } from './hjelpefunksjoner';
 import Modal from 'nav-frontend-modal';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import Systemtittel from 'nav-frontend-typografi/lib/systemtittel';
@@ -15,6 +13,13 @@ function Malhistorikk () {
     const [laster, setLaster] = useState(true);
     const [fetchFeil, setFetchFeil] = useState(false);
     const [historikk, setHistorikk] = useState<Array<HistorikkType>>([]);
+
+    const fetchHistorikkProps = {
+        setFetchFeil,
+        setHistorikk,
+        setLaster
+    };
+
     return(
         <section className="mal-historikk">
             <button
@@ -23,25 +28,7 @@ function Malhistorikk () {
 
                     if (!visSkjul) {
                         setLaster(true);
-
-                        hentMalList()
-                            .then((malListe: Array<MalType&HistorikkType>) => {
-                                hentFremtidigSituasjonList()
-                                    .then((fremtidigsituasjonListe: Array<FremtidigSituasjonType&HistorikkType>) => {
-
-                                        const historikkList = (malListe as Array<HistorikkType>).concat(fremtidigsituasjonListe);
-
-                                        const kombinertHistorikk = kombinerHistorikk(historikkList);
-                                        setHistorikk(kombinertHistorikk);
-                                        setLaster(false);
-                                    })
-                                    .catch(() => {
-                                        setFetchFeil(true);
-                                    });
-                            })
-                            .catch(() => {
-                                setFetchFeil(true);
-                            });
+                        fetchHistorikken(fetchHistorikkProps);
                     }
                 }}
                 className="typo-element lenke-knapp vis-skjul-knapp"

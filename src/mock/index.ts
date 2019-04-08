@@ -45,7 +45,7 @@ mock.post(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ResponseUtils.delayed(DEL
 
 mock.get('/veilarboppfolging/api/oppfolging', OppfolgingStatus );
 
-mock.get('/veilarboppfolging/api/oppfolging/malListe', ResponseUtils.delayed(DELAY, malListe()));
+mock.get('/veilarboppfolging/api/oppfolging/malListe', ResponseUtils.delayed(DELAY + 1000, malListe()));
 mock.get('/veilarboppfolging/api/oppfolging/mal',  ResponseUtils.delayed(DELAY, Mal));
 // tslint:disable-next-line
 mock.post('/veilarboppfolging/api/oppfolging/mal', ResponseUtils.delayed(DELAY, ({ body }): any => {
