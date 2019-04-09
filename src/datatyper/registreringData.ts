@@ -1,7 +1,13 @@
 export const ORDINAER = 'ORDINAER';
 export const SYKMELDT = 'SYKMELDT';
 
-interface RegistreringsType {
+export interface SvarTekster {
+    sporsmalId: string;
+    sporsmal: string;
+    svar: string;
+}
+
+export interface RegistreringsType {
     opprettetDato: string;
     manueltRegistrertAv: object  | null;
     id: number;
@@ -15,12 +21,7 @@ interface RegistreringsType {
         alder: number,
         innsatsgruppe: string
     };
-    teksterForBesvarelse:
-        {
-            sporsmalId: string,
-            sporsmal: string,
-            svar: string
-        }[];
+    teksterForBesvarelse: SvarTekster[];
     'besvarelse': {
         dinSituasjon: string | null,
         fremtidigSituasjon: string | null,

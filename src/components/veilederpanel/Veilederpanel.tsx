@@ -2,7 +2,6 @@ import * as React from 'react';
 import './Veilederpanel.less';
 import Veilederpanel from 'nav-frontend-veilederpanel';
 import veilederSvg from './veileder-syfo.svg';
-import { teksterVeilederBanner } from '../registreringsinfo/tekster';
 
 function VeilederBanner () {
     let veilederpanelType: 'normal' | 'plakat' = 'plakat';
@@ -18,7 +17,7 @@ function VeilederBanner () {
                 kompakt={true}
                 svg={<img src={veilederSvg}/>}
             >
-                {teksterVeilederBanner.veilederBanner}
+                Veilederen din bruker følgende informasjon for å vurdere behovene dine for veiledning.
             </Veilederpanel>
         </div>
     );

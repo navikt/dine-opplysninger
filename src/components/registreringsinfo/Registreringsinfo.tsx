@@ -1,56 +1,22 @@
 import * as React from 'react';
-import { FormattedMessage } from 'react-intl';
 import { registreringDataContextConsumerHoc } from '../../context/registreringData/RegistreringDataProvider';
 import { RegistreringDataType } from '../../datatyper/registreringData';
-import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import './Registreringsinfo.less';
-import { registreringsInfoConfig } from './config';
 import EndreRegistreringerMock from '../../mock/EndreRegistreringerMock';
-import { teksterTilLenker } from './tekster';
-import { format } from 'date-fns';
-import noLocale  from 'date-fns/locale/nb';
+import JobbprofilCV from './hjelpekomponeneter/jobbprofilCV';
+import MoteReferater from './hjelpekomponeneter/moteReferater';
+import Sykefravaer from './hjelpekomponeneter/sykefravaer';
+import SvarIRegistrering from './hjelpekomponeneter/svarIRegistrering';
 
 function Registreringsinfo(props: RegistreringDataType) {
+    const {type, registrering} = props;
     return (
         <div className="registrerings-info">
             <EndreRegistreringerMock/>
-            {
-                registreringsInfoConfig(props).map((gruppe) => {
-                    if (gruppe === null) {
-                        return null;
-                    }
-
-                    const opprettet = format(props.registrering.opprettetDato, 'DD. MMMM YYYY', {locale: noLocale});
-                    return (
-                        <section key={gruppe.gruppeTittel} className="registrerings-info__gruppe">
-                            <Innholdstittel tag="h2" className="gruppe-tittel">{gruppe.gruppeTittel}</Innholdstittel>
-                            {
-                                gruppe.gruppeBeskrivelse
-                                    ?
-                                    <Normaltekst>
-                                        <FormattedMessage
-                                            id="gruppeBeskrivelse"
-                                            defaultMessage={gruppe.gruppeBeskrivelse}
-                                            values={{
-                                                registrertDato: opprettet,
-                                                infoVeilLenke: <a href={teksterTilLenker.informereVeilederenHref} className="lenke">{teksterTilLenker.informereVeilederenLenke}</a>
-                                            }}
-                                        />
-                                    </Normaltekst>
-                                    :
-                                    null
-                            }
-                            <ul className="gruppe-liste">
-                                {
-                                    gruppe.gruppeInnhold.map((innhold) => {
-                                        return innhold.element;
-                                    })
-                                }
-                            </ul>
-                        </section>
-                    );
-                })
-            }
+            <JobbprofilCV type={type} fremtidigSituasjon={registrering.besvarelse.fremtidigSituasjon} />
+            <MoteReferater />
+            <Sykefravaer type={type} />
+            <SvarIRegistrering registrering={registrering}/>
         </div>
     );
 }
