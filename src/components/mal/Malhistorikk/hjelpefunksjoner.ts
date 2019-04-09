@@ -23,7 +23,7 @@ export const fetchHistorikken = (props: FetchHistorikkenPropTypes) => {
         });
 };
 
-function kombinerHistorikk(historikk: HistorikkType[]) {
+export function kombinerHistorikk(historikk: HistorikkType[]) {
 
     return historikk
         .sort((a, b) => {
