@@ -1,6 +1,6 @@
 /*tslint:disable*/
-import { kombinerHistorikk } from './utils';
-import { HistorikkType } from '../../datatyper/fremtidigSituasjonType';
+import { kombinerHistorikk } from './hjelpefunksjoner';
+import { HistorikkType } from '../../../datatyper/fremtidigSituasjonType';
 
 describe('utils test', () => {
     it('kombiner rikig historikk', () => {

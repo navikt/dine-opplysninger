@@ -1,6 +1,6 @@
 import { fetchData } from '../utils/fetchData';
 import { RegistreringDataType } from '../datatyper/registreringData';
-import { MalType } from '../components/mal/DelMal';
+import { MalType } from '../components/mal/DelMal/DelMal';
 import { FremtidigSituasjonType, HistorikkType } from '../datatyper/fremtidigSituasjonType';
 import { SituasjonAlternativ } from '../components/registreringsinfo/Alternativer';
 
