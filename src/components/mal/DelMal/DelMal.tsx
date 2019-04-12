@@ -26,8 +26,8 @@ function DelMal () {
             .then((res: MalType) => {
                 if (!!res.mal) {
                     setMalState(res.mal);
-                    setLaster(false);
                 }
+                setLaster(false);
             })
             .catch(() => {
                 setFeilState(true);

@@ -2,15 +2,21 @@ import * as React from 'react';
 import { HistorikkType } from '../../../datatyper/fremtidigSituasjonType';
 import { distanceInWordsToNow } from 'date-fns';
 import Element from 'nav-frontend-typografi/lib/element';
-import { SituasjonAlternativ } from '../../registreringsinfo/Alternativer';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import noLocale  from 'date-fns/locale/nb';
+import { SituasjonAlternativ } from '../../registreringsinfo/Alternativer';
 
 interface HistorikkListeProps {
     element: HistorikkType;
 }
 function HistorikkElement (props: HistorikkListeProps) {
     const {element} = props;
+    const fremtidigSituasjon = !!element.fremtidigSituasjon
+        ? SituasjonAlternativ[element.fremtidigSituasjon || SituasjonAlternativ.IKKE_OPPGITT]
+        : '-';
+    const mal = !!element.mal
+        ? element.mal
+        : '-';
     return (
         <div className="mal-historikk__liste-element">
             <div className="info typo-element">
@@ -21,9 +27,9 @@ function HistorikkElement (props: HistorikkListeProps) {
                 <span className="info__hvem">, skrevet av {element.endretAv}</span>
             </div>
             <Element>Fremtidig situasjon</Element>
-            <Normaltekst className="tekst">{SituasjonAlternativ[element.fremtidigSituasjon || SituasjonAlternativ.IKKE_OPPGITT]} </Normaltekst>
+            <Normaltekst className="tekst">{fremtidigSituasjon} </Normaltekst>
             <Element>Forklaring og delmål</Element>
-            <Normaltekst className="tekst">{element.mal}</Normaltekst>
+            <Normaltekst className="tekst">{mal}</Normaltekst>
         </div>
     );
 }
