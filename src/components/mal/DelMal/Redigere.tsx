@@ -52,7 +52,7 @@ const Redigere = (props: RedigerDelMalProps) => {
             />
             {
                 laster
-                    ? <NavFrontendSpinner className="venstre"/>
+                    ? <NavFrontendSpinner className="hoyre"/>
                     : <KnappeGruppe
                         onSave={() => {
                             if (erMaksLengde) { return; }
@@ -62,7 +62,6 @@ const Redigere = (props: RedigerDelMalProps) => {
                                 oppdaterMal(props.malState)
                                     .then(() => {
                                         props.setSkalEndreState(false);
-                                        setLaster(false);
                                     })
                                     .catch(() => {
                                         setFeilIFetchData(true);
