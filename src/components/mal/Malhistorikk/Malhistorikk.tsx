@@ -41,6 +41,7 @@ function Malhistorikk () {
                 closeButton={true}
                 contentLabel="Tidligere lagrede mål"
                 className="mal-historikk__modal"
+                {...{ariaHideApp: false}}
             >
                 <div className="mal-historikk__tittel">
                     <Systemtittel> Tidligere lagrede mål </Systemtittel>

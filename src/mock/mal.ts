@@ -5,17 +5,20 @@ import { format } from 'date-fns';
 export const Mal: MalType & JSONObject = {
     mal: 'hei på deg',
     endretAv: 'BRUKER',
-    dato: '2019-04-01T06:19:30.284',
+    dato: '2019-04-10T06:19:30.284',
 };
 
-const flereMal = [
-    {'mal': 'Forklaring og delmål ble satt 2.april 2019', 'endretAv': 'VEILEDER', 'dato': '2019-04-02T10:59:30.284'},
-    {'mal': 'Først forklaring og delmål ble satt 1.april 2019', 'endretAv': 'BRUKER', 'dato': '2019-04-01T06:19:30.284'},
+const tomMal = [
+    {
+        mal: null,
+        endretAv: '',
+        dato: null,
+    }
 ];
 
 export const maler: Array<MalType&JSONObject> = [
     Mal
-].concat(flereMal);
+].concat(tomMal);
 
 export function malListe() {
     return maler;
@@ -32,7 +35,7 @@ export function opprettMal(mal: string) {
     let nyMal = {
         mal,
         endretAv: 'BRUKER',
-        dato: format(new Date(), 'YYYY-MM-DD HH:mm:ss'),
+        dato: format(new Date()),
     };
     maler.push(nyMal);
     return nyMal;
