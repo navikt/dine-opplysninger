@@ -5,8 +5,8 @@ import { FremtidigSituasjonType, HistorikkType } from '../datatyper/fremtidigSit
 import { SituasjonAlternativ } from '../components/registreringsinfo/Alternativer';
 
 export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
-export const API_VEILARBREGISTRERING_SISTE_SITUASJON = '/veilarbregistrering/api/sisteSituasjon';
-export const API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON = `${API_VEILARBREGISTRERING_SISTE_SITUASJON}/fremtidigSituasjon`;
+export const API_VEILARBVEDTAKINFO = '/veilarbvedtakinfo/api/';
+export const API_VEILARBVEDTAKINFO_FREMTIDIG_SITUASJON = `${API_VEILARBVEDTAKINFO}/fremtidigsituasjon`;
 
 export const API_VEILARBOPPFOLGING = '/veilarboppfolging/api/oppfolging';
 
@@ -41,7 +41,7 @@ export function hentRegistreringData(): Promise<RegistreringDataType> {
 }
 
 export function hentFremtidigSituasjon(): Promise<FremtidigSituasjonType> {
-    return fetchData<FremtidigSituasjonType>(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, CONFIG)
+    return fetchData<FremtidigSituasjonType>(API_VEILARBVEDTAKINFO_FREMTIDIG_SITUASJON, CONFIG)
         .then((situasjonData: FremtidigSituasjonType) => ({
             fremtidigSituasjon: situasjonData.fremtidigSituasjon ?
                 situasjonData.fremtidigSituasjon :
@@ -49,7 +49,7 @@ export function hentFremtidigSituasjon(): Promise<FremtidigSituasjonType> {
         }));
 }
 export function oppdaterFremtidigSituasjon(fremtidigSituasjon: string): Promise<FremtidigSituasjonType> {
-    return fetchData<FremtidigSituasjonType>(`${API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON}`, {method: 'post', body: JSON.stringify(fremtidigSituasjon), ...CONFIG});
+    return fetchData<FremtidigSituasjonType>(API_VEILARBVEDTAKINFO_FREMTIDIG_SITUASJON, {method: 'post', body: JSON.stringify(fremtidigSituasjon), ...CONFIG});
 }
 
 export function hentOppfolgingStatus(): Promise<OppfolgingStatusType> {
@@ -66,7 +66,7 @@ export function hentMalList(): Promise<Array<MalType&HistorikkType>> {
 }
 
 export function hentFremtidigSituasjonList(): Promise<Array<FremtidigSituasjonType&HistorikkType>> {
-    return fetchData<Array<FremtidigSituasjonType&HistorikkType>>(`${API_VEILARBREGISTRERING_SISTE_SITUASJON}/fremtidigsituasjonListe`, CONFIG);
+    return fetchData<Array<FremtidigSituasjonType&HistorikkType>>(`${API_VEILARBVEDTAKINFO}/situasjonliste`, CONFIG);
 }
 
 export function oppdaterMal(mal: string): Promise<MalType> {
