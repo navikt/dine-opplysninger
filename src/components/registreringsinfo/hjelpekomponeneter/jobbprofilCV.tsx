@@ -4,8 +4,8 @@ import { ElementLiMedLenke, Visning, VisningsListe, VisningsTitel } from './hjel
 import { SYKMELDT } from '../../../datatyper/registreringData';
 
 interface JobbprofilCVProps {
-    type: string,
-    fremtidigSituasjon: string | null
+    type: string;
+    fremtidigSituasjon: string | null;
 }
 
 export default function JobbprofilCV(props: JobbprofilCVProps) {

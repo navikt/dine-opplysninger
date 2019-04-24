@@ -15,6 +15,17 @@ const VinsingsLinje = (props: SvarTekster) => (
     </li>);
 
 export default function SvarIRegistrering(props: {registrering: RegistreringsType}) {
+    if (!props.registrering) {
+        return (
+            <Visning>
+                <VisningsTitel> Svar i registrering </VisningsTitel>
+                <Normaltekst>
+                    Registreringsinformasjon er ikke tilgjenglig.
+                </Normaltekst>
+            </Visning>
+        );
+    }
+
     const {opprettetDato, besvarelse, teksterForBesvarelse} = props.registrering;
     const opprettet = format(opprettetDato, 'DD. MMMM YYYY', {locale: noLocale});
 

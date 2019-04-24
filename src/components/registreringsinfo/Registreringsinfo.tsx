@@ -13,7 +13,14 @@ function Registreringsinfo(props: RegistreringDataType) {
     return (
         <div className="registrerings-info">
             <EndreRegistreringerMock/>
-            <JobbprofilCV type={type} fremtidigSituasjon={registrering.besvarelse.fremtidigSituasjon} />
+            <JobbprofilCV
+                type={type}
+                fremtidigSituasjon={
+                    registrering
+                        ? registrering.besvarelse.fremtidigSituasjon
+                        : null
+                }
+            />
             <MoteReferater />
             <Sykefravaer type={type} />
             <SvarIRegistrering registrering={registrering}/>
