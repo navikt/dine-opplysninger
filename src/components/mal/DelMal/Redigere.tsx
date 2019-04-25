@@ -3,10 +3,10 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import { teksterMaal } from '../tekster';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import Textarea from 'nav-frontend-skjema/lib/textarea';
-import Systemtittel from 'nav-frontend-typografi/lib/systemtittel';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { KnappeGruppe } from '../Knappegruppe';
 import { oppdaterMal } from '../../../api/api';
+import Element from 'nav-frontend-typografi/lib/element';
 
 interface RedigerDelMalProps {
     malState: string;
@@ -46,7 +46,7 @@ const Redigere = (props: RedigerDelMalProps) => {
                     oppdatererSkalLagresState(mal);
                     props.setMalState(mal);
                 }}
-                label={<Systemtittel className="del-mal-tittel">{teksterMaal.delMalTittel}</Systemtittel>}
+                label={<Element className="del-mal-tittel">{teksterMaal.delMalTittel}</Element>}
                 maxLength={MALTEKST_MAKSLENGDE}
                 {...feilProp}
             />

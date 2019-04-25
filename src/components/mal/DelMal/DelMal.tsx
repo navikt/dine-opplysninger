@@ -1,12 +1,12 @@
 import * as React from 'react';
 import './DelMal.less';
-import Systemtittel from 'nav-frontend-typografi/lib/systemtittel';
-import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import { useEffect, useState } from 'react';
 import { hentMal } from '../../../api/api';
 import { teksterMaal } from '../tekster';
 import Vise from './Vise';
 import Redigere from './Redigere';
+import { Normaltekst } from 'nav-frontend-typografi';
+import Element from 'nav-frontend-typografi/lib/element';
 
 export interface MalType {
     mal: string | null;
@@ -37,7 +37,7 @@ function DelMal () {
     if (feilState) {
         return (
             <div className="del-mal">
-                <Systemtittel className="del-mal-tittel">{teksterMaal.delMalTittel}</Systemtittel>
+                <Element className="del-mal-tittel">{teksterMaal.delMalTittel}</Element>
                 <Normaltekst>Feil ved henting av forklaring og delmål. Prøv igjen på nytt.</Normaltekst>
             </div>
         );

@@ -3,7 +3,7 @@
 .fremtidig-situasjon {
   text-align: initial;
   margin: 1rem;
-  background-color: @white;
+  border: 1px solid @navGra20;
   border-radius: 5px;
   padding: 0.7rem 2rem 0.7rem 2rem;
 
@@ -19,5 +19,11 @@
   .fremtidig-situasjon {
     margin: 1rem auto 0;
     width: 710px;
+
+    .inputPanelGruppe__inner {
+      display: grid;
+      grid-gap: 0 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+    }
   }
 }

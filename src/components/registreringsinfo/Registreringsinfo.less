@@ -1,62 +1,9 @@
 @import '../../../node_modules/nav-frontend-core/less/_variabler';
 
-.registrerings-info {
-  margin: 1rem;
-
-  &__tittel {
-    text-align: center;
-    margin: 0 auto 3rem auto;
-  }
-
-  &__gruppe {
-
-    margin-bottom: 3rem;
-
-    .gruppe-tittel {
-      font-size: 1.5rem;
-      text-align: center;
-    }
-
-    .gruppe-liste {
-      list-style: none;
-      padding-left: 0;
-
-      li {
-        padding: 0.7rem 0;
-        border-bottom: 1px solid @navLysGra;
-      }
-
-      li.lenke-element {
-        display: block;
-      }
-    }
-  }
-  .kontaktVeileder{
-    text-align: center;
-  }
-}
-
 @media (min-width: @screen-sm-min) {
   .registrerings-info {
     width: 770px;
     margin: 2rem auto;
-    &__tittel {
-      width: 20rem;
-    }
-
-    &__gruppe {
-      .gruppe-liste {
-        li.lenke-element {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          .lenke-tittel {
-            width: 48%;
-          }
-        }
-      }
-    }
   }
 }
 

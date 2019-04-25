@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { teksterMaal } from '../tekster';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
-import Systemtittel from 'nav-frontend-typografi/lib/systemtittel';
+import Element from 'nav-frontend-typografi/lib/element';
 
 interface ViseProps {
     malState: string;
@@ -16,7 +16,7 @@ const Vise = (props: ViseProps) => {
     const mal = malState.length === 0 ? teksterMaal.default : malState;
     return (
         <>
-            <Systemtittel className="del-mal-tittel">{teksterMaal.delMalTittel}</Systemtittel>
+            <Element className="del-mal-tittel">{teksterMaal.delMalTittel}</Element>
             <Normaltekst className="del-mal-beskrivelse">{mal}</Normaltekst>
             <div className="knappegruppe">
                 {
