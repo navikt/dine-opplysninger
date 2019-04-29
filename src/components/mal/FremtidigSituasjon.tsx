@@ -47,6 +47,17 @@ function FremtidigSituasjon () {
             });
     }
 
+    function visInnhold() {
+        return endreVisning
+            ?
+            (
+                <Collapse isOpened={true}>
+                    <AlternativGruppe lagretSvar={situasjonState} onSave={lagreValg} onCancel={() => onCancel()}/>
+                </Collapse>
+            )
+            : null;
+    }
+
     function onCancel() {
         setSkalEndreState(false);
     }
@@ -65,9 +76,9 @@ function FremtidigSituasjon () {
                 }
             </div>
             {fetchState === FetchStateTypes.OK ?
-                <Collapse isOpened={endreVisning}>
-                    <AlternativGruppe lagretSvar={situasjonState} onSave={lagreValg} onCancel={() => onCancel()}/>
-                </Collapse> : null}
+                visInnhold()
+                : null
+            }
         </div>
     );
 }
