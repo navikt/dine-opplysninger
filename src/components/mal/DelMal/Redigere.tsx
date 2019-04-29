@@ -38,8 +38,25 @@ const Redigere = (props: RedigerDelMalProps) => {
     return (
         <>
             <div className="hjelpetekst-info">
-                <Normaltekst>Se eksempler</Normaltekst>
-                <Hjelpetekst id="hjelpetekst-mal" type="midt">Innholdet vil vises når brukeren klikker på knappen.</Hjelpetekst>
+                <Normaltekst className="hjelpetekst-info-tittel">Se eksempler</Normaltekst>
+                <Hjelpetekst
+                    id="hjelpetekst-maal"
+                    type="midt"
+                    tittel="test"
+                >
+                    <span className="hjelpetekst-maal-tittel">Eksempler:</span>
+                    <span className="hjelpetekst-maal-list">
+                        <span className="hjelpetekst-maal-list-item">
+                            Jeg ønsker å ta fagbrev for å komme i fast jobb. For å klare dette må jeg først ta opp fag, så skaffe læringplass.
+                        </span>
+                        <span className="hjelpetekst-maal-list-item">
+                            Jeg ønsker å fortsette i jobben jeg har, men kan ikke jobbe mer enn 40%. For å klare dette må jeg snakke med arbeidsgiveren min og NAV om tilrettelegging.
+                        </span>
+                        <span className="hjelpetekst-maal-list-item">
+                            Jeg ønsker å jobbe med mennesker. Jeg trenger tilrettelegging på grunn av.... For å skaffe jobb kan jeg søke bredt og bruke nettverket mitt.
+                        </span>
+                    </span>
+                </Hjelpetekst>
             </div>
             <Textarea
                 textareaClass="typo-normal"

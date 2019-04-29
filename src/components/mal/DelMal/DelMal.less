@@ -10,9 +10,6 @@
     &-tittel {
         margin-bottom: 0.5rem;
     }
-    &-beskrivelse {
-        margin-bottom: 1rem;
-    }
 
     .hoyre {
         float: right;
@@ -22,6 +19,30 @@
         display: flex;
         color: @navBla;
         justify-content: flex-end;
+        z-index: 1;
+        position: relative;
+        top: 1.75rem;
+        margin-top: -1.75rem;
+
+        &-tittel {
+            position: relative;
+            right: -0.8rem;
+        }
+
+    }
+
+    .hjelpetekst-maal-tittel {
+        display: inline-block;
+    }
+    .hjelpetekst-maal-list {
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding: 0 2rem 1rem 0;
+    }
+    .hjelpetekst-maal-list-item {
+        display: list-item;
+        list-style-type: disc;
+        margin-left: 2rem;
     }
 
 }
