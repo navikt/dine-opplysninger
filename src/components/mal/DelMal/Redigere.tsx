@@ -7,6 +7,7 @@ import NavFrontendSpinner from 'nav-frontend-spinner';
 import { KnappeGruppe } from '../Knappegruppe';
 import { oppdaterMal } from '../../../api/api';
 import Element from 'nav-frontend-typografi/lib/element';
+import Hjelpetekst from 'nav-frontend-hjelpetekst/lib/hjelpetekst';
 
 interface RedigerDelMalProps {
     malState: string;
@@ -36,6 +37,10 @@ const Redigere = (props: RedigerDelMalProps) => {
 
     return (
         <>
+            <div className="hjelpetekst-info">
+                <Normaltekst>Se eksempler</Normaltekst>
+                <Hjelpetekst id="hjelpetekst-mal" type="midt">Innholdet vil vises når brukeren klikker på knappen.</Hjelpetekst>
+            </div>
             <Textarea
                 textareaClass="typo-normal"
                 value={props.malState}

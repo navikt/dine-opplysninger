@@ -8,9 +8,9 @@ function Mal () {
 
     return(
         <section className="mal-container">
-            <Malhistorikk/>
             <FremtidigSituasjon/>
             <DelMal/>
+            <Malhistorikk/>
         </section>
     );
 }
