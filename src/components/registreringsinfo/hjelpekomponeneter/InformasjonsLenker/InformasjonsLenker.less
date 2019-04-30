@@ -41,11 +41,17 @@
   .informasjons-lenker {
 
       width: 710px;
-      margin: 2rem auto;
+      margin: 0 auto;
 
       display: grid;
       grid-gap: 1rem;
       grid-template-columns: repeat(auto-fit, minmax(31.3333%, 1fr));
+
+      li:first-child:nth-last-child(2),
+      li:first-child:nth-last-child(2) ~ li {
+          justify-self: center;
+          max-width: 70%;
+      }
 
       .lenke-med-info {
           padding: 0;
