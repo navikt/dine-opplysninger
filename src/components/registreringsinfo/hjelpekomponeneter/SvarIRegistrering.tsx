@@ -1,11 +1,12 @@
 import { format } from 'date-fns';
 import noLocale  from 'date-fns/locale/nb';
-import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
+import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
 import './SvarIRegistrering.less';
 
 import { RegistreringsType, SvarTekster } from '../../../datatyper/registreringData';
 import Lesmerpanel from 'nav-frontend-lesmerpanel';
+import Element from 'nav-frontend-typografi/lib/element';
 
 const VinsingsLinje = (props: SvarTekster) => (
     <li>
@@ -20,7 +21,7 @@ export default function SvarIRegistrering(props: {registrering: RegistreringsTyp
 
     return (
         <section className="svar-i-registrering">
-            <Innholdstittel tag="h2" className="svar-i-registrering__tittel">  Svar i registrering  </Innholdstittel>
+            <Element tag="h2" className="svar-i-registrering__tittel">  Svar i registrering  </Element>
             <Normaltekst className="svar-i-registrering__beskrivelse">
                 Opplysningene du registrerte {opprettet}
             </Normaltekst>
@@ -34,7 +35,7 @@ export default function SvarIRegistrering(props: {registrering: RegistreringsTyp
                 </ul>
                 <Normaltekst className="kontaktVeileder">
                     Du bør informere veilederen din dersom situasjonen din endrer seg. <br />
-                    Du kan endre her eller i <a href="/aktivitetsplan/dialog/ny" >dialogen med veileder.</a>
+                    Du kan endre her eller i <a href="/aktivitetsplan/dialog/ny" className="lenke">dialogen med veileder.</a>
                 </Normaltekst>
             </Lesmerpanel>
         </section>
