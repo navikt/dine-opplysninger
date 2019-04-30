@@ -38,7 +38,6 @@ const Redigere = (props: RedigerDelMalProps) => {
     return (
         <>
             <div className="hjelpetekst-info">
-                <Normaltekst className="hjelpetekst-info-tittel">Se eksempler</Normaltekst>
                 <Hjelpetekst
                     id="hjelpetekst-maal"
                     type="midt"
