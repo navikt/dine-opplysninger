@@ -1,0 +1,44 @@
+@import '~nav-frontend-core/less/_variabler';
+
+.mal-banner {
+  margin: 1rem;
+  background-color: @navDypBlaLighten80;
+  padding: 1rem;
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-beskrivelse {
+    padding: 0 0 0 1rem;
+    width: 17rem;
+  }
+
+  &-lukkknapp {
+    align-self: start;
+  }
+
+  svg {
+    display: none;
+  }
+
+}
+
+
+@media (min-width: @screen-sm-min) {
+  .mal-banner {
+    margin: 0 auto 0;
+    width: 710px;
+
+    &-beskrivelse {
+      padding: 0 2rem 0 0;
+      width: 28rem;
+    }
+
+    svg {
+      display: block;
+      margin-left: -1rem;
+    }
+  }
+}

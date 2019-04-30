@@ -1,0 +1,49 @@
+@import '~nav-frontend-core/less/_variabler';
+
+.svar-i-registrering {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  background-color: @navLysGra;
+
+  .lesMerPanel {
+    background-color: transparent;
+  }
+
+  &__tittel,
+  &__beskrivelse {
+    text-align: center;
+  }
+
+  &__tittel {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  &__liste {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid @navLysGra;
+    }
+
+    li.lenke-element {
+      display: block;
+    }
+  }
+
+  .kontaktVeileder{
+    text-align: center;
+  }
+}
+
+@media (min-width: @screen-sm-min) {
+  .svar-i-registrering {
+    &__liste {
+      width: 570px;
+      margin: 0 auto 2rem auto;
+    }
+  }
+}
+

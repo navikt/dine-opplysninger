@@ -7,6 +7,7 @@ import Modal from 'nav-frontend-modal';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import Systemtittel from 'nav-frontend-typografi/lib/systemtittel';
 import HistorikkVise from './HistorikkVise';
+import ArkivIkon from './svg/arkiv';
 
 function Malhistorikk () {
     const [visSkjul, setvisSkjul] = useState(false);
@@ -33,7 +34,7 @@ function Malhistorikk () {
                 }}
                 className="typo-element lenke-knapp vis-skjul-knapp"
             >
-                {!visSkjul ? 'Vis tidligere lagrede mål' : 'Skjul tidligere lagrede mål'}
+                {!visSkjul ? 'Vis tidligere lagrede mål' : 'Skjul tidligere lagrede mål'} <ArkivIkon/>
             </button>
             <Modal
                 isOpen={visSkjul}

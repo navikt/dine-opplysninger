@@ -1,4 +1,4 @@
-@import '../../../node_modules/nav-frontend-core/less/_variabler';
+@import '~nav-frontend-core/less/_variabler';
 
 .veileder-banner {
   position: relative;
@@ -7,22 +7,17 @@
   flex: none;
   align-items: center;
   justify-content: center;
-  background-color: @navLysGra;
-  padding-top: 1rem;
-  padding-bottom: 1.5rem;
 
   .nav-veilederpanel {
     border-color: @navBlaLighten80;
-    margin-left: 1rem;
-    margin-right: 1rem;
+
+    img { height: 100%; }
+    .nav-veileder { display: none; }
 
     &--kompakt.nav-veilederpanel--plakat {
-      padding-top: 2rem;
-      padding-bottom: 0.5rem;
-    }
-    &--kompakt:not(.nav-veilederpanel--plakat){
-      padding-top: 0;
-      padding-bottom: 0;
+        margin: 1rem 1rem 2rem 1rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
   }
 }
@@ -30,10 +25,15 @@
 
 @media (min-width: @screen-sm-min) {
   .veileder-banner {
-    padding: 2rem 0;
+    padding-top: 4rem;
     .nav-veilederpanel {
       margin: 0;
-      width: 40rem;
+      width: 44rem;
+      .nav-veileder { display: block; }
+
+      &--kompakt.nav-veilederpanel--plakat {
+        padding-top: 4rem;
+      }
     }
   }
 }

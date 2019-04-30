@@ -1,11 +1,14 @@
-@import '../../../../node_modules/nav-frontend-core/less/_variabler';
+@import '~nav-frontend-core/less/_variabler';
+
 .mal-historikk {
 
+    margin: 0 1rem;
     display: flex;
     flex-direction: column;
 
     .vis-skjul-knapp {
         align-self: flex-end;
+        margin: 0;
     }
     &__modal {
         max-height: 75% !important;
@@ -34,13 +37,19 @@
             text-transform: uppercase;
         }
     }
+
+    svg {
+        position: relative;
+        top: 4px;
+        margin-left: 0.5rem;
+    }
 }
 
 
 @media (min-width: @screen-sm-min) {
 .mal-historikk {
         margin: 0 auto;
-        width: 771px;
+        width: 710px;
         &__liste {
             width: 40rem;
         }

@@ -4,6 +4,7 @@ import Banner from './components/banner/Banner';
 import VeilederBanner from './components/veilederpanel/Veilederpanel';
 import Registreringsinfo from './components/registreringsinfo/Registreringsinfo';
 import Mal from './components/mal/Mal';
+import EndreRegistreringerMock from './mock/EndreRegistreringerMock';
 
 interface State {}
 
@@ -18,6 +19,7 @@ class App extends React.Component<AppProps, State> {
     render() {
         return (
             <AppProviders>
+                <EndreRegistreringerMock/>
                 <Banner/>
                 <VeilederBanner/>
                 <Mal/>

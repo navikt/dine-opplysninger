@@ -47,15 +47,26 @@ function FremtidigSituasjon () {
             });
     }
 
+    function visInnhold() {
+        return endreVisning
+            ?
+            (
+                <Collapse isOpened={true}>
+                    <AlternativGruppe lagretSvar={situasjonState} onSave={lagreValg} onCancel={() => onCancel()}/>
+                </Collapse>
+            )
+            : null;
+    }
+
     function onCancel() {
         setSkalEndreState(false);
     }
 
     return (
         <div className="fremtidig-situasjon">
-            <li className="typo-normal lenke-element endre-knapp-boks">
+            <div className="typo-normal lenke-element endre-knapp-boks">
                 <div>
-                    <strong>Fremtidig situasjon: </strong>
+                    <strong>Mål: </strong>
 
                     <span>{hentTekst(SporsmalType.fremtidigSituasjon, situasjonState)}</span>
                 </div>
@@ -63,11 +74,11 @@ function FremtidigSituasjon () {
                     <NavFrontendSpinner /> :
                     <button className="typo-element lenke-knapp" id="btn-legg-til-situasjon" hidden={endreVisning} onClick={() => setSkalEndreState(!endreVisning)}>{knappeTekst}</button>
                 }
-            </li>
+            </div>
             {fetchState === FetchStateTypes.OK ?
-                <Collapse isOpened={endreVisning}>
-                    <AlternativGruppe lagretSvar={situasjonState} onSave={lagreValg} onCancel={() => onCancel()}/>
-                </Collapse> : null}
+                visInnhold()
+                : null
+            }
         </div>
     );
 }

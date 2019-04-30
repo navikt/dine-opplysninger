@@ -2,22 +2,16 @@ import * as React from 'react';
 import { registreringDataContextConsumerHoc } from '../../context/registreringData/RegistreringDataProvider';
 import { RegistreringDataType } from '../../datatyper/registreringData';
 import './Registreringsinfo.less';
-import EndreRegistreringerMock from '../../mock/EndreRegistreringerMock';
-import JobbprofilCV from './hjelpekomponeneter/jobbprofilCV';
-import MoteReferater from './hjelpekomponeneter/moteReferater';
-import Sykefravaer from './hjelpekomponeneter/sykefravaer';
-import SvarIRegistrering from './hjelpekomponeneter/svarIRegistrering';
+import SvarIRegistrering from './hjelpekomponeneter/SvarIRegistrering';
+import InformasjonsLenker from './hjelpekomponeneter/InformasjonsLenker/InformasjonsLenker';
 
 function Registreringsinfo(props: RegistreringDataType) {
     const {type, registrering} = props;
     return (
-        <div className="registrerings-info">
-            <EndreRegistreringerMock/>
-            <JobbprofilCV type={type} fremtidigSituasjon={registrering.besvarelse.fremtidigSituasjon} />
-            <MoteReferater />
-            <Sykefravaer type={type} />
+        <>
+            <InformasjonsLenker type={type} fremtidigSituasjon={registrering.besvarelse.fremtidigSituasjon} />
             <SvarIRegistrering registrering={registrering}/>
-        </div>
+        </>
     );
 }
 

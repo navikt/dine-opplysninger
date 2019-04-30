@@ -21,7 +21,7 @@ describe(FremtidigSituasjon, () => {
     it('Skal ikke vise alternativer', () => {
         const wrapper = Enzyme.shallow(<FremtidigSituasjon/>);
         const collapse = wrapper.find('Collapse');
-        expect(collapse.prop('isOpened')).toEqual(false);
+        expect(collapse).toHaveLength(0);
     });
 
     it('Skal vise alternativer når man trykker på legg til knapp', () => {
