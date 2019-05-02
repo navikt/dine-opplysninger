@@ -1,6 +1,6 @@
 import FetchMock, { Middleware, MiddlewareUtils, ResponseUtils } from 'yet-another-fetch-mock';
 import OppfolgingStatus from './oppfolging';
-// import Registrering from './registrering';
+import Registrering from './registrering';
 import { Mal, malListe, opprettMal } from './mal';
 import { fremtidigSituasjon, opprettSituasjon, situasjonListe } from './sisteSituasjon';
 import { API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, API_VEILARBREGISTRERING_SISTE_SITUASJON } from '../api/api';
@@ -34,9 +34,9 @@ const mock = FetchMock.configure({
     )
 });
 const DELAY = 500;
-// mock.get('/veilarbregistrering/api/registrering', Registrering );
+mock.get('/veilarbregistrering/api/registrering', Registrering );
 // Mock med 204 respons
-mock.get('/veilarbregistrering/api/registrering', ResponseUtils.statusCode(204));
+// mock.get('/veilarbregistrering/api/registrering', ResponseUtils.statusCode(204));
 
 mock.get(`${API_VEILARBREGISTRERING_SISTE_SITUASJON}/fremtidigsituasjonListe`, ResponseUtils.delayed(DELAY, situasjonListe()));
 mock.get(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ResponseUtils.delayed(DELAY, fremtidigSituasjon));
