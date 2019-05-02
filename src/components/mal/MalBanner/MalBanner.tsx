@@ -5,9 +5,11 @@ import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import Lukknapp from 'nav-frontend-lukknapp';
 import { useState } from 'react';
 function MalBanner () {
-    const [vis, setVis] = useState(true);
+    const localStorage = window.localStorage;
+    const visMalBanner = localStorage.getItem('visMalBanner');
+    const [vis, setVis] = useState(visMalBanner);
 
-    if (!vis) {
+    if (vis !== null) {
         return null;
     }
     return(
@@ -19,7 +21,9 @@ function MalBanner () {
             <Lukknapp
                 className="mal-banner-lukkknapp"
                 onClick={() => {
-                    setVis(!vis);
+                    const skalVise = 'true';
+                    localStorage.setItem('visMalBanner', skalVise);
+                    setVis(skalVise);
                 }}
             />
         </div>
