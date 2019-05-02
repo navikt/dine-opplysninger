@@ -33,7 +33,7 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 tittel="Møtereferater"
                 beskrivelse="Møtene mellom deg og veilederen din."
                 lenketekst="Se referatene"
-                lenke="/sykefravaer"
+                lenke="/aktivitetsplan?filter=mote&filter=samtalereferat"
             />
             <LenkeMedInfo
                 visible={props.type === SYKMELDT}
