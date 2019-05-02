@@ -7,6 +7,9 @@ export function fetchData<T>(url: string, config = {}, errorHandler?: (response?
                 }
                 throw new Error(response.statusText);
             }
+            if (response.status === 204) {
+                return Error(undefined);
+            }
             return response.json();
         })
         .catch(error => {

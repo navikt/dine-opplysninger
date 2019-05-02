@@ -35,6 +35,8 @@ const mock = FetchMock.configure({
 });
 const DELAY = 500;
 mock.get('/veilarbregistrering/api/registrering', Registrering );
+// Mock med 204 respons
+// mock.get('/veilarbregistrering/api/registrering', ResponseUtils.statusCode(204));
 
 mock.get(`${API_VEILARBVEDTAKINFO}/situasjonliste`, ResponseUtils.delayed(DELAY, situasjonListe()));
 mock.get(API_VEILARBVEDTAKINFO_FREMTIDIG_SITUASJON, ResponseUtils.delayed(DELAY, fremtidigSituasjon));
