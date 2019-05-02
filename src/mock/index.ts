@@ -3,7 +3,7 @@ import OppfolgingStatus from './oppfolging';
 import Registrering from './registrering';
 import { Mal, malListe, opprettMal } from './mal';
 import { fremtidigSituasjon, opprettSituasjon, situasjonListe } from './sisteSituasjon';
-import { API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, API_VEILARBREGISTRERING_SISTE_SITUASJON } from '../api/api';
+import { API_VEILARBVEDTAKINFO_FREMTIDIG_SITUASJON, API_VEILARBVEDTAKINFO } from '../api/api';
 
 const loggingMiddleware: Middleware = (request, response) => {
     // tslint:disable
@@ -36,10 +36,10 @@ const mock = FetchMock.configure({
 const DELAY = 500;
 mock.get('/veilarbregistrering/api/registrering', Registrering );
 
-mock.get(`${API_VEILARBREGISTRERING_SISTE_SITUASJON}/fremtidigsituasjonListe`, ResponseUtils.delayed(DELAY, situasjonListe()));
-mock.get(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ResponseUtils.delayed(DELAY, fremtidigSituasjon));
+mock.get(`${API_VEILARBVEDTAKINFO}/situasjonliste`, ResponseUtils.delayed(DELAY, situasjonListe()));
+mock.get(API_VEILARBVEDTAKINFO_FREMTIDIG_SITUASJON, ResponseUtils.delayed(DELAY, fremtidigSituasjon));
 
-mock.post(API_VEILARBREGISTRERING_FREMTIDIG_SITUASJON, ResponseUtils.delayed(DELAY, ({ body }): any => {
+mock.post(API_VEILARBVEDTAKINFO_FREMTIDIG_SITUASJON, ResponseUtils.delayed(DELAY, ({ body }): any => {
     return ResponseUtils.jsonPromise(opprettSituasjon(body));
 }));
 
