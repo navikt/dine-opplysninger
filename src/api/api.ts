@@ -5,7 +5,7 @@ import { FremtidigSituasjonType, HistorikkType } from '../datatyper/fremtidigSit
 import { SituasjonAlternativ } from '../components/registreringsinfo/Alternativer';
 
 export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
-export const API_VEILARBVEDTAKINFO = '/veilarbvedtakinfo/api/';
+export const API_VEILARBVEDTAKINFO = '/veilarbvedtakinfo/api';
 export const API_VEILARBVEDTAKINFO_FREMTIDIG_SITUASJON = `${API_VEILARBVEDTAKINFO}/fremtidigsituasjon`;
 
 export const API_VEILARBOPPFOLGING = '/veilarboppfolging/api/oppfolging';
