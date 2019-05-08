@@ -9,19 +9,19 @@ const VEIENTILARBEID_PATH = '/veientilarbeid';
 const Brodsmuler = () => {
     return (
         <div className="brodsmuler">
-            <img src={personSvg} alt="person-illustrasjon" className="brodsmuler__illustrasjon"/>
-            <ol className="brodsmuler__list">
-                <li className="brodsmuler__item typo-normal">
+            <img src={personSvg} className="brodsmuler__illustrasjon"/>
+            <ol className="brodsmuler__list typo-normal">
+                <li className="brodsmuler__item">
                     <Lenke href={DITTNAV_PATH}>
                         Ditt NAV
                     </Lenke>
                 </li>
-                <li className="brodsmuler__item typo-normal">
+                <li className="brodsmuler__item">
                     <Lenke href={VEIENTILARBEID_PATH}>
                         Veiledning
                     </Lenke>
                 </li>
-                <li className="brodsmuler__item typo-normal">
+                <li className="brodsmuler__item">
                     Veiledningsinformasjon
                 </li>
             </ol>
