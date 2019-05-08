@@ -5,28 +5,21 @@
     align-items: center;
     padding: 0 1rem;
 
-    & > .brodsmuler__list {
+    &__list {
         list-style: none;
-        margin: initial;
+        margin: 0;
         padding: 0.5rem;
+    }
 
-        > .brodsmuler__item {
-            float: left;
-
-            .lenke {
-                color: @navDypBla;
-                &:hover {
-                    border-bottom-color: @navDypBla;
-                }
-            }
-
-            &:not(:last-child)::after {
-                content: "/";
-                margin: 0 0.5rem;
-            }
+    &__item {
+        float: left;
+        &:not(:last-child)::after {
+            content: "/";
+            margin: 0 0.5rem;
         }
     }
-    & > .brodsmuler__illustrasjon {
+
+    &__illustrasjon {
         max-width: 30px;
         max-height: 30px;
     }

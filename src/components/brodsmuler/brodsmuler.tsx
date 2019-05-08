@@ -6,7 +6,7 @@ import './brodsmuler.less';
 const DITTNAV_PATH = '/dittnav';
 const VEIENTILARBEID_PATH = '/veientilarbeid';
 
-const Brodsmuler: React.FunctionComponent = () => {
+const Brodsmuler = () => {
     return (
         <div className="brodsmuler">
             <img src={personSvg} alt="person-illustrasjon" className="brodsmuler__illustrasjon"/>
