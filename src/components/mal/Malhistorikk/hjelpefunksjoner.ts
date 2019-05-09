@@ -1,5 +1,5 @@
-import { SituasjonAlternativ } from '../../registreringsinfo/Alternativer';
-import { HistorikkType } from '../../../datatyper/fremtidigSituasjonType';
+import { HovedmalAlternativ } from '../../registreringsinfo/Alternativer';
+import { HistorikkType } from '../../../datatyper/hovedmalType';
 import { hentFremtidigSituasjonList, hentMalList } from '../../../api/api';
 import { Dispatch, SetStateAction } from 'react';
 
@@ -36,7 +36,7 @@ export function kombinerHistorikk(historikk: HistorikkType[]) {
 
     return filtrertSortertHistorikk.map((a, i) => {
             let forrigeMal = filtrertSortertHistorikk.slice(i + 1).find(o => !!o.mal) || {mal: ''};
-            let forrigeSituasjon = filtrertSortertHistorikk.slice(i + 1).find(o => !!o.fremtidigSituasjon) || {fremtidigSituasjon: SituasjonAlternativ.IKKE_OPPGITT};
+            let forrigeSituasjon = filtrertSortertHistorikk.slice(i + 1).find(o => !!o.fremtidigSituasjon) || {fremtidigSituasjon: HovedmalAlternativ.IKKE_OPPGITT};
 
             const fremtidigSituasjon = a.fremtidigSituasjon ? a.fremtidigSituasjon : forrigeSituasjon.fremtidigSituasjon;
             const mal = a.mal ? a.mal : forrigeMal.mal;

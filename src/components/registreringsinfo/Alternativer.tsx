@@ -1,10 +1,10 @@
 
 export enum SporsmalType {
-    fremtidigSituasjon,
+    hovedmal,
     helseHinder
 }
 
-export enum SituasjonAlternativ {
+export enum HovedmalAlternativ {
     SAMME_ARBEIDSGIVER = 'Jeg skal tilbake til jobben jeg har',
     SAMME_ARBEIDSGIVER_NY_STILLING = 'Jeg skal tilbake til arbeidsgiveren min, men i ny stilling',
     NY_ARBEIDSGIVER = 'Jeg trenger ny jobb',
@@ -14,9 +14,9 @@ export enum SituasjonAlternativ {
 
 }
 
-export function hentTekst(spmId: SporsmalType, alternativ: SituasjonAlternativ) {
-    if (spmId === SporsmalType.fremtidigSituasjon) {
-        return SituasjonAlternativ[alternativ];
+export function hentTekst(spmId: SporsmalType, alternativ: HovedmalAlternativ) {
+    if (spmId === SporsmalType.hovedmal) {
+        return HovedmalAlternativ[alternativ];
     }
     return '';
 }

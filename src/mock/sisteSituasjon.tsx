@@ -1,14 +1,14 @@
 import { format } from 'date-fns';
 
 export const fremtidigSituasjon = {
-    fremtidigSituasjon: 'NY_ARBEIDSGIVER',
+    alternativId: 'NY_ARBEIDSGIVER',
     endretAv: 'BRUKER',
     dato: '2019-04-02T16:17:14.017+01:00',
 };
 
 const tomSituasjon = [
     {
-        fremtidigSituasjon: '',
+        alternativId: '',
         endretAv: '',
         dato: '',
     }
@@ -24,7 +24,7 @@ export function situasjonListe() {
 
 export function opprettSituasjon(situasjon: string) {
     let nySituasjon = {
-        fremtidigSituasjon: situasjon,
+        alternativId: situasjon,
         endretAv: 'BRUKER',
         dato: format(new Date()),
     };

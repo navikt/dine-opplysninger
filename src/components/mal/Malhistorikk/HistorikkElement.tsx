@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { HistorikkType } from '../../../datatyper/fremtidigSituasjonType';
+import { HistorikkType } from '../../../datatyper/hovedmalType';
 import { distanceInWordsToNow } from 'date-fns';
 import Element from 'nav-frontend-typografi/lib/element';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import noLocale  from 'date-fns/locale/nb';
-import { SituasjonAlternativ } from '../../registreringsinfo/Alternativer';
+import { HovedmalAlternativ } from '../../registreringsinfo/Alternativer';
 
 interface HistorikkListeProps {
     element: HistorikkType;
@@ -12,7 +12,7 @@ interface HistorikkListeProps {
 function HistorikkElement (props: HistorikkListeProps) {
     const {element} = props;
     const fremtidigSituasjon = !!element.fremtidigSituasjon
-        ? SituasjonAlternativ[element.fremtidigSituasjon || SituasjonAlternativ.IKKE_OPPGITT]
+        ? HovedmalAlternativ[element.fremtidigSituasjon || HovedmalAlternativ.IKKE_OPPGITT]
         : '-';
     const mal = !!element.mal
         ? element.mal
