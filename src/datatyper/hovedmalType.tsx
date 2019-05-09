@@ -1,7 +1,7 @@
 import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer';
 
 export interface HovedmalType {
-    fremtidigSituasjon: HovedmalAlternativ;
+    alternativId: HovedmalAlternativ;
     endretAv?: string;
     dato?: string | null;
 }

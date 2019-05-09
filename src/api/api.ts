@@ -43,9 +43,10 @@ export function hentRegistreringData(): Promise<RegistreringDataType> {
 export function hentHovedmal(): Promise<HovedmalType> {
     return fetchData<HovedmalType>(API_VEILARBVEDTAKINFO_HOVEDMAL, CONFIG)
         .then((situasjonData: HovedmalType) => ({
-            fremtidigSituasjon: situasjonData.fremtidigSituasjon ?
-                situasjonData.fremtidigSituasjon :
+            alternativId: situasjonData.alternativId ?
+                situasjonData.alternativId :
                 HovedmalAlternativ.IKKE_OPPGITT,
+            dato: situasjonData.dato
         }));
 }
 export function oppdaterHovedmal(fremtidigSituasjon: string): Promise<HovedmalType> {

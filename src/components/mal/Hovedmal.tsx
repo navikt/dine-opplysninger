@@ -24,7 +24,7 @@ function Hovedmal () {
         setFetchState(FetchStateTypes.LOADING);
         hentHovedmal()
             .then((res: HovedmalType) => {
-                setSituasjonState(res.fremtidigSituasjon);
+                setSituasjonState(res.alternativId);
                 setFetchState(FetchStateTypes.OK);
             })
             .catch(() => {
@@ -42,7 +42,7 @@ function Hovedmal () {
         oppdaterHovedmal(valgtAlternativ)
             .then((situasjon: HovedmalType) => {
                 setSkalEndreState(false);
-                setSituasjonState(situasjon.fremtidigSituasjon);
+                setSituasjonState(situasjon.alternativId);
                 setFetchState(FetchStateTypes.OK);
             });
     }
