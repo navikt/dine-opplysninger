@@ -1,10 +1,10 @@
 import * as React from 'react';
 import AppProviders from './AppProvider';
-import Banner from './components/banner/Banner';
 import VeilederBanner from './components/veilederpanel/Veilederpanel';
 import Registreringsinfo from './components/registreringsinfo/Registreringsinfo';
 import Mal from './components/mal/Mal';
 import EndreRegistreringerMock from './mock/EndreRegistreringerMock';
+import Brodsmuler from './components/brodsmuler/brodsmuler';
 
 interface State {}
 
@@ -20,7 +20,7 @@ class App extends React.Component<AppProps, State> {
         return (
             <AppProviders>
                 <EndreRegistreringerMock/>
-                <Banner/>
+                <Brodsmuler/>
                 <VeilederBanner/>
                 <Mal/>
                 <Registreringsinfo/>

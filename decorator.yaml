@@ -15,5 +15,9 @@ proxy:
 redirect:
   - from: /sykefravaer
     to: {{ SYKEFRAVAER_URL }}
+  - from: /dittnav
+    to: {{ DITTNAV_LINK_URL }}
+  - from: /veientilarbeid
+    to: {{ VEIENTILARBEID_URL }}
   - from: /aktivitetsplan
     to: {{ AKTIVITETSPLAN_URL }}
