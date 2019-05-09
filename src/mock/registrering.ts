@@ -238,7 +238,7 @@ const SykmeldtSammeArbeidsgiverFullStilling = {
         },
         'teksterForBesvarelse': [
             {
-                'sporsmalId': 'fremtidigSituasjon',
+                'sporsmalId': 'hovedmal',
                 'sporsmal': 'Hva tenker du om din fremtidige situasjon?',
                 'svar': 'Jeg skal tilbake til jobben jeg har'
             },
@@ -270,7 +270,7 @@ const SykmeldtNyArbeidsgiverIngenUtdanning = {
         },
         'teksterForBesvarelse': [
             {
-                'sporsmalId': 'fremtidigSituasjon',
+                'sporsmalId': 'hovedmal',
                 'sporsmal': 'Hva tenker du om din fremtidige situasjon?',
                 'svar': 'Jeg trenger ny jobb'
             },
@@ -317,7 +317,7 @@ const SykmeldtUsikker = {
         },
         'teksterForBesvarelse': [
             {
-                'sporsmalId': 'fremtidigSituasjon',
+                'sporsmalId': 'hovedmal',
                 'sporsmal': 'Hva tenker du om din fremtidige situasjon?',
                 'svar': 'Jeg er usikker'
             },
@@ -364,7 +364,7 @@ const SykmeldtIngenPasser = {
         },
         'teksterForBesvarelse': [
             {
-                'sporsmalId': 'fremtidigSituasjon',
+                'sporsmalId': 'hovedmal',
                 'sporsmal': 'Hva tenker du om din fremtidige situasjon?',
                 'svar': 'Ingen av disse alternativene passer'
             }

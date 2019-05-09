@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './Malhistorikk.less';
 import { useState } from 'react';
-import { HistorikkType } from '../../../datatyper/fremtidigSituasjonType';
+import { HistorikkType } from '../../../datatyper/hovedmalType';
 import { fetchHistorikken } from './hjelpefunksjoner';
 import Modal from 'nav-frontend-modal';
 import NavFrontendSpinner from 'nav-frontend-spinner';

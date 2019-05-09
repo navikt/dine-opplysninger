@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SituasjonAlternativ } from '../registreringsinfo/Alternativer';
+import { HovedmalAlternativ } from '../registreringsinfo/Alternativer';
 import { RadioPanelGruppe } from 'nav-frontend-skjema';
 import * as React from 'react';
 import { KnappeGruppe } from './Knappegruppe';
@@ -12,12 +12,12 @@ interface AlternativContainerProps {
 
 export function AlternativGruppe (props: AlternativContainerProps) {
     const [svar, setSvar] = useState(props.lagretSvar);
-    const alternativer = Object.keys(SituasjonAlternativ)
-        .filter(x => SituasjonAlternativ[x] !== SituasjonAlternativ.IKKE_OPPGITT)
+    const alternativer = Object.keys(HovedmalAlternativ)
+        .filter(x => HovedmalAlternativ[x] !== HovedmalAlternativ.IKKE_OPPGITT)
         .map(alternativ => {
                 return {
                     value: alternativ,
-                    label: SituasjonAlternativ[alternativ]
+                    label: HovedmalAlternativ[alternativ]
                 };
             }
         );

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './FremtidigSituasjon.less';
-import { hentTekst, SituasjonAlternativ, SporsmalType } from '../registreringsinfo/Alternativer';
-import { FremtidigSituasjonType } from '../../datatyper/fremtidigSituasjonType';
+import './Hovedmal.less';
+import { hentTekst, HovedmalAlternativ, SporsmalType } from '../registreringsinfo/Alternativer';
+import { HovedmalType } from '../../datatyper/hovedmalType';
 import { Collapse } from 'react-collapse';
 import { AlternativGruppe } from './AlternativGruppe';
-import { hentFremtidigSituasjon, oppdaterFremtidigSituasjon } from '../../api/api';
+import { hentHovedmal, oppdaterHovedmal } from '../../api/api';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 
 enum FetchStateTypes {
@@ -13,17 +13,17 @@ enum FetchStateTypes {
     OK
 }
 
-function FremtidigSituasjon () {
+function Hovedmal () {
     const [endreVisning, setSkalEndreState] = useState(false);
-    const [situasjonState, setSituasjonState] = useState(SituasjonAlternativ.IKKE_OPPGITT);
+    const [alternativState, setSituasjonState] = useState(HovedmalAlternativ.IKKE_OPPGITT);
     const [fetchState, setFetchState] = useState(FetchStateTypes.OK);
 
-    const knappeTekst = situasjonState === SituasjonAlternativ.IKKE_OPPGITT ? 'Legg til' : 'Endre';
+    const knappeTekst = alternativState === HovedmalAlternativ.IKKE_OPPGITT ? 'Legg til' : 'Endre';
 
     useEffect(() => {
         setFetchState(FetchStateTypes.LOADING);
-        hentFremtidigSituasjon()
-            .then((res: FremtidigSituasjonType) => {
+        hentHovedmal()
+            .then((res: HovedmalType) => {
                 setSituasjonState(res.fremtidigSituasjon);
                 setFetchState(FetchStateTypes.OK);
             })
@@ -33,14 +33,14 @@ function FremtidigSituasjon () {
     }, []);
 
     function lagreValg(valgtAlternativ: string) {
-        if (SituasjonAlternativ[valgtAlternativ] === situasjonState || situasjonState === undefined) {
+        if (HovedmalAlternativ[valgtAlternativ] === alternativState || alternativState === undefined) {
            setSkalEndreState(false);
            return;
         }
 
         setFetchState(FetchStateTypes.LOADING);
-        oppdaterFremtidigSituasjon(valgtAlternativ)
-            .then((situasjon: FremtidigSituasjonType) => {
+        oppdaterHovedmal(valgtAlternativ)
+            .then((situasjon: HovedmalType) => {
                 setSkalEndreState(false);
                 setSituasjonState(situasjon.fremtidigSituasjon);
                 setFetchState(FetchStateTypes.OK);
@@ -52,7 +52,7 @@ function FremtidigSituasjon () {
             ?
             (
                 <Collapse isOpened={true}>
-                    <AlternativGruppe lagretSvar={situasjonState} onSave={lagreValg} onCancel={() => onCancel()}/>
+                    <AlternativGruppe lagretSvar={alternativState} onSave={lagreValg} onCancel={() => onCancel()}/>
                 </Collapse>
             )
             : null;
@@ -63,12 +63,12 @@ function FremtidigSituasjon () {
     }
 
     return (
-        <div className="fremtidig-situasjon">
+        <div className="hovedmal">
             <div className="typo-normal lenke-element endre-knapp-boks">
                 <div>
                     <strong>Mål: </strong>
 
-                    <span>{hentTekst(SporsmalType.fremtidigSituasjon, situasjonState)}</span>
+                    <span>{hentTekst(SporsmalType.hovedmal, alternativState)}</span>
                 </div>
                 {fetchState !== FetchStateTypes.OK ?
                     <NavFrontendSpinner /> :
@@ -83,4 +83,4 @@ function FremtidigSituasjon () {
     );
 }
 
-export default FremtidigSituasjon;
+export default Hovedmal;

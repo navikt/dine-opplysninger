@@ -1,12 +1,12 @@
 import { fetchData } from '../utils/fetchData';
 import { RegistreringDataType } from '../datatyper/registreringData';
 import { MalType } from '../components/mal/DelMal/DelMal';
-import { FremtidigSituasjonType, HistorikkType } from '../datatyper/fremtidigSituasjonType';
-import { SituasjonAlternativ } from '../components/registreringsinfo/Alternativer';
+import { HovedmalType, HistorikkType } from '../datatyper/hovedmalType';
+import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer';
 
 export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
 export const API_VEILARBVEDTAKINFO = '/veilarbvedtakinfo/api';
-export const API_VEILARBVEDTAKINFO_FREMTIDIG_SITUASJON = `${API_VEILARBVEDTAKINFO}/fremtidigsituasjon`;
+export const API_VEILARBVEDTAKINFO_HOVEDMAL = `${API_VEILARBVEDTAKINFO}/fremtidigsituasjon`;
 
 export const API_VEILARBOPPFOLGING = '/veilarboppfolging/api/oppfolging';
 
@@ -40,16 +40,16 @@ export function hentRegistreringData(): Promise<RegistreringDataType> {
         }));
 }
 
-export function hentFremtidigSituasjon(): Promise<FremtidigSituasjonType> {
-    return fetchData<FremtidigSituasjonType>(API_VEILARBVEDTAKINFO_FREMTIDIG_SITUASJON, CONFIG)
-        .then((situasjonData: FremtidigSituasjonType) => ({
+export function hentHovedmal(): Promise<HovedmalType> {
+    return fetchData<HovedmalType>(API_VEILARBVEDTAKINFO_HOVEDMAL, CONFIG)
+        .then((situasjonData: HovedmalType) => ({
             fremtidigSituasjon: situasjonData.fremtidigSituasjon ?
                 situasjonData.fremtidigSituasjon :
-                SituasjonAlternativ.IKKE_OPPGITT,
+                HovedmalAlternativ.IKKE_OPPGITT,
         }));
 }
-export function oppdaterFremtidigSituasjon(fremtidigSituasjon: string): Promise<FremtidigSituasjonType> {
-    return fetchData<FremtidigSituasjonType>(API_VEILARBVEDTAKINFO_FREMTIDIG_SITUASJON, {method: 'post', body: JSON.stringify(fremtidigSituasjon), ...CONFIG});
+export function oppdaterHovedmal(fremtidigSituasjon: string): Promise<HovedmalType> {
+    return fetchData<HovedmalType>(API_VEILARBVEDTAKINFO_HOVEDMAL, {method: 'post', body: JSON.stringify(fremtidigSituasjon), ...CONFIG});
 }
 
 export function hentOppfolgingStatus(): Promise<OppfolgingStatusType> {
@@ -65,8 +65,8 @@ export function hentMalList(): Promise<Array<MalType&HistorikkType>> {
     return fetchData<Array<MalType&HistorikkType>>(`${API_VEILARBOPPFOLGING}/malListe`, CONFIG);
 }
 
-export function hentFremtidigSituasjonList(): Promise<Array<FremtidigSituasjonType&HistorikkType>> {
-    return fetchData<Array<FremtidigSituasjonType&HistorikkType>>(`${API_VEILARBVEDTAKINFO}/situasjonliste`, CONFIG);
+export function hentFremtidigSituasjonList(): Promise<Array<HovedmalType&HistorikkType>> {
+    return fetchData<Array<HovedmalType&HistorikkType>>(`${API_VEILARBVEDTAKINFO}/situasjonliste`, CONFIG);
 }
 
 export function oppdaterMal(mal: string): Promise<MalType> {
