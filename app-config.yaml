@@ -51,5 +51,9 @@ fasitResources:
       resourceType: baseUrl
     - alias: aktivitetsplan
       resourceType: baseUrl
+    - alias: dittnav.link
+      resourceType: baseUrl
+    - alias: veientilarbeid
+      resourceType: baseurl
 
 webproxy: true
