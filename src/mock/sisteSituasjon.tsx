@@ -22,9 +22,9 @@ export function situasjonListe() {
     return situasjoner;
 }
 
-export function opprettSituasjon(situasjon: string) {
+export function opprettSituasjon(alternativId: any) {
     let nySituasjon = {
-        alternativId: situasjon,
+        alternativId: alternativId.alternativId,
         endretAv: 'BRUKER',
         dato: format(new Date()),
     };

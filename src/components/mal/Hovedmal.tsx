@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Hovedmal.less';
-import { hentTekst, HovedmalAlternativ, SporsmalType } from '../registreringsinfo/Alternativer';
+import { HovedmalAlternativ } from '../registreringsinfo/Alternativer';
 import { HovedmalType } from '../../datatyper/hovedmalType';
 import { Collapse } from 'react-collapse';
 import { AlternativGruppe } from './AlternativGruppe';
@@ -39,7 +39,7 @@ function Hovedmal () {
         }
 
         setFetchState(FetchStateTypes.LOADING);
-        oppdaterHovedmal(valgtAlternativ)
+        oppdaterHovedmal(valgtAlternativ, HovedmalAlternativ[valgtAlternativ])
             .then((situasjon: HovedmalType) => {
                 setSkalEndreState(false);
                 setSituasjonState(situasjon.alternativId);
@@ -68,7 +68,7 @@ function Hovedmal () {
                 <div>
                     <strong>Mål: </strong>
 
-                    <span>{hentTekst(SporsmalType.hovedmal, alternativState)}</span>
+                    <span>{HovedmalAlternativ[alternativState]}</span>
                 </div>
                 {fetchState !== FetchStateTypes.OK ?
                     <NavFrontendSpinner /> :

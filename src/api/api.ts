@@ -49,8 +49,8 @@ export function hentHovedmal(): Promise<HovedmalType> {
             dato: situasjonData.dato
         }));
 }
-export function oppdaterHovedmal(fremtidigSituasjon: string): Promise<HovedmalType> {
-    return fetchData<HovedmalType>(API_VEILARBVEDTAKINFO_HOVEDMAL, {method: 'post', body: JSON.stringify(fremtidigSituasjon), ...CONFIG});
+export function oppdaterHovedmal(alternativId: string, tekst: string): Promise<HovedmalType> {
+    return fetchData<HovedmalType>(API_VEILARBVEDTAKINFO_HOVEDMAL, {method: 'post', body: JSON.stringify({alternativId, tekst}), ...CONFIG});
 }
 
 export function hentOppfolgingStatus(): Promise<OppfolgingStatusType> {
