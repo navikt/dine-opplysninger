@@ -19,7 +19,7 @@ export default function SvarIRegistrering(props: {registrering: RegistreringsTyp
     if (!props.registrering) {
         return (
             <section className="svar-i-registrering">
-                <Element className="svar-i-registrering__tittel"> Svar i registrering </Element>
+                <Element className="svar-i-registrering__tittel"> Svar fra registrering </Element>
                 <Normaltekst className="svar-i-registrering__beskrivelse">
                     Registreringsinformasjon er ikke tilgjenglig.
                 </Normaltekst>
@@ -32,7 +32,7 @@ export default function SvarIRegistrering(props: {registrering: RegistreringsTyp
 
     return (
         <section className="svar-i-registrering">
-            <Element tag="h2" className="svar-i-registrering__tittel">  Svar i registrering  </Element>
+            <Element tag="h2" className="svar-i-registrering__tittel">  Svar fra registrering  </Element>
             <Normaltekst className="svar-i-registrering__beskrivelse">
                 Opplysningene du registrerte {opprettet}
             </Normaltekst>
