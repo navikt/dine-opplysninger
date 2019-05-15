@@ -6,6 +6,8 @@ import { Collapse } from 'react-collapse';
 import { AlternativGruppe } from './AlternativGruppe';
 import { hentHovedmal, oppdaterHovedmal } from '../../api/api';
 import NavFrontendSpinner from 'nav-frontend-spinner';
+import { RegistreringDataType, RegistreringsType } from '../../datatyper/registreringData';
+import { registreringDataContextConsumerHoc } from '../../context/registreringData/RegistreringDataProvider';
 
 enum FetchStateTypes {
     LOADING,
@@ -13,7 +15,25 @@ enum FetchStateTypes {
     OK
 }
 
-function Hovedmal () {
+export function getNyesteHovedmal(vedtakinfo: HovedmalType, registrering: RegistreringsType): HovedmalAlternativ {
+    const registreringsDato = registrering.opprettetDato;
+    const registreringsBesvarelse = registrering.besvarelse;
+    const registreringHovedmal = registreringsBesvarelse.fremtidigSituasjon ? registreringsBesvarelse.fremtidigSituasjon : 'IKKE_OPPGITT';
+
+    if (!registreringsDato) {
+        return vedtakinfo.alternativId;
+    } else if (!vedtakinfo.dato) {
+        return HovedmalAlternativ[registreringHovedmal];
+    } else if (registreringsDato < vedtakinfo.dato) {
+        return vedtakinfo.alternativId;
+    } else if (vedtakinfo.dato < registreringsDato) {
+        return HovedmalAlternativ[registreringHovedmal];
+    }
+    return HovedmalAlternativ.IKKE_OPPGITT;
+
+}
+
+export function Hovedmal (props: RegistreringDataType) {
     const [endreVisning, setSkalEndreState] = useState(false);
     const [alternativState, setSituasjonState] = useState(HovedmalAlternativ.IKKE_OPPGITT);
     const [fetchState, setFetchState] = useState(FetchStateTypes.OK);
@@ -24,7 +44,8 @@ function Hovedmal () {
         setFetchState(FetchStateTypes.LOADING);
         hentHovedmal()
             .then((res: HovedmalType) => {
-                setSituasjonState(res.alternativId);
+                const hovedmal = getNyesteHovedmal(res, props.registrering);
+                setSituasjonState(hovedmal);
                 setFetchState(FetchStateTypes.OK);
             })
             .catch(() => {
@@ -83,4 +104,4 @@ function Hovedmal () {
     );
 }
 
-export default Hovedmal;
+export default registreringDataContextConsumerHoc<{}>(Hovedmal);

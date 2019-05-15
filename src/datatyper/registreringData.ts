@@ -22,7 +22,7 @@ export interface RegistreringsType {
         innsatsgruppe: string
     };
     teksterForBesvarelse: SvarTekster[];
-    'besvarelse': {
+    besvarelse: {
         dinSituasjon: string | null,
         fremtidigSituasjon: string | null,
         sisteStilling: string | null,
