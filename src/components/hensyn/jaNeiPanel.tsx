@@ -68,7 +68,7 @@ function JaNeiPanel(props: { titel: string, hidden: boolean, start: boolean, onS
             </GrunnPanel>
             <div hidden={!error} role="alert" className="grunnpanel feiltekst">
                 <Normaltekst>
-                    Denne ble ikke oppdatert. <br />
+                    Denne ble ikke oppdatert.
                     Du kan prøve på nytt senere eller kontakte <Lenke href={brukerstoteURL}>teknisk brukerstøtte</Lenke>
                 </Normaltekst>
             </div>
