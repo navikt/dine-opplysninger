@@ -22,17 +22,19 @@ export interface RegistreringsType {
         innsatsgruppe: string
     };
     teksterForBesvarelse: SvarTekster[];
-    'besvarelse': {
-        dinSituasjon: string | null,
-        fremtidigSituasjon: string | null,
-        sisteStilling: string | null,
-        tilbakeIArbeid: string | null,
-        andreForhold: string | null,
-        helseHinder: string | null,
-        utdanning: string | null,
-        utdanningBestatt: string | null,
-        utdanningGodkjent: string | null
-    };
+    besvarelse: Besvarelse;
+}
+
+export interface Besvarelse {
+    dinSituasjon: string | null,
+    fremtidigSituasjon: string | null,
+    sisteStilling: string | null,
+    tilbakeIArbeid: string | null,
+    andreForhold: string | null,
+    helseHinder: string | null,
+    utdanning: string | null,
+    utdanningBestatt: string | null,
+    utdanningGodkjent: string | null
 }
 
 export interface RegistreringDataType {

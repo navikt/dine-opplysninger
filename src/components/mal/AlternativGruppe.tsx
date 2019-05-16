@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { HovedmalAlternativ } from '../registreringsinfo/Alternativer';
-import { RadioPanelGruppe } from 'nav-frontend-skjema';
 import * as React from 'react';
 import { KnappeGruppe } from './Knappegruppe';
+import ResponsiveRadioGruppe from "../felleskomponenter/responsiveRadio";
 
 interface AlternativContainerProps {
     lagretSvar: string;
@@ -29,7 +29,7 @@ export function AlternativGruppe (props: AlternativContainerProps) {
 
     return (
         <>
-            <RadioPanelGruppe
+            <ResponsiveRadioGruppe
                 name="alternativ-gruppe"
                 legend=""
                 radios={alternativer}
@@ -37,7 +37,6 @@ export function AlternativGruppe (props: AlternativContainerProps) {
                 onChange={(event, value) => setSvar(value)}
             />
             <KnappeGruppe onSave={() => props.onSave(svar)} onCancel={() => onCancel()}/>
-
         </>
     );
 }

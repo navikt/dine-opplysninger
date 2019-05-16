@@ -4,6 +4,7 @@ import Registrering from './registrering';
 import { Mal, malListe, opprettMal } from './mal';
 import { fremtidigSituasjon, opprettSituasjon, situasjonListe } from './sisteSituasjon';
 import { API_VEILARBVEDTAKINFO_HOVEDMAL, API_VEILARBVEDTAKINFO } from '../api/api';
+import {oppdaterHensyn} from "./hensyn";
 
 const loggingMiddleware: Middleware = (request, response) => {
     // tslint:disable
@@ -45,6 +46,9 @@ mock.post(API_VEILARBVEDTAKINFO_HOVEDMAL, ResponseUtils.delayed(DELAY, ({ body }
     return ResponseUtils.jsonPromise(opprettSituasjon(body));
 }));
 
+
+mock.get('/veilarbvedtakinfo/api/sistesituasjon', {});
+
 mock.get('/veilarboppfolging/api/oppfolging', OppfolgingStatus );
 
 mock.get('/veilarboppfolging/api/oppfolging/malListe', ResponseUtils.delayed(DELAY + 1000, malListe()));
@@ -53,5 +57,14 @@ mock.get('/veilarboppfolging/api/oppfolging/mal',  ResponseUtils.delayed(DELAY, 
 mock.post('/veilarboppfolging/api/oppfolging/mal', ResponseUtils.delayed(DELAY, ({ body }): any => {
     return ResponseUtils.jsonPromise(opprettMal(body.mal));
 }));
+
+mock.post('/veilarbvedtakinfo/api/andrehinder', ResponseUtils.delayed(DELAY, ({ body }): any => {
+    return ResponseUtils.jsonPromise(oppdaterHensyn(body.verdi))
+}));
+
+mock.post('/veilarbvedtakinfo/api/helsehinder', ResponseUtils.delayed(DELAY, ({ body }): any => {
+    return ResponseUtils.jsonPromise(oppdaterHensyn(body.verdi))
+}));
+
 
 export default mock;
