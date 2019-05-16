@@ -55,5 +55,7 @@ fasitResources:
       resourceType: baseUrl
     - alias: veientilarbeid
       resourceType: baseurl
+    - alias: arbeidssokerregistrering
+      resourceType: baseurl
 
 webproxy: true
