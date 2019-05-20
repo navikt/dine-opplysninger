@@ -40,7 +40,7 @@ const mock = FetchMock.configure({
     )
 });
 const DELAY = 500;
-mock.get('/veilarbregistrering/api/registrering', Registrering );
+mock.get('/veilarbregistrering/api/registrering', ResponseUtils.delayed(DELAY, Registrering));
 // Mock med 204 respons
 // mock.get('/veilarbregistrering/api/registrering', ResponseUtils.statusCode(204));
 
