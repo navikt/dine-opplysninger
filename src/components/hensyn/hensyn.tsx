@@ -14,7 +14,14 @@ export interface HensynType {
     dato: string;
 }
 
-function helsehinderSvar(registrering: RegistreringDataType, situasjon: SisteSituasjon) {
+function helsehinderSvar(registrering: RegistreringDataType | null, situasjon: SisteSituasjon) {
+    if(!registrering || !registrering.registrering) {
+        if(!situasjon.helseHinder) {
+            return false;
+        }
+        return situasjon.helseHinder.verdi;
+    }
+
     if (!situasjon.helseHinder || registrering.registrering.opprettetDato > situasjon.helseHinder.dato) {
         return registrering.registrering.besvarelse.helseHinder === 'JA';
     } 
@@ -22,6 +29,13 @@ function helsehinderSvar(registrering: RegistreringDataType, situasjon: SisteSit
 }
 
 function andreSvar(registrering: RegistreringDataType, situasjon: SisteSituasjon) {
+    if(!registrering || !registrering.registrering) {
+        if(!situasjon.andreHinder) {
+            return false;
+        }
+        return situasjon.andreHinder.verdi;
+    }
+
     if (!situasjon.andreHinder || registrering.registrering.opprettetDato > situasjon.andreHinder.dato) {
         return registrering.registrering.besvarelse.andreForhold === 'JA';
     }
@@ -34,7 +48,7 @@ function Hensyn() {
 
     const sykemeldt = registrering.type === SYKMELDT;
     const andreTekst = sykemeldt ? 'Andre hensyn NAV bør ta' : 'Andre problemer';
-    const andreForholdSvar = registrering.registrering.besvarelse.andreForhold;
+    const skuleAndreForhold = sykemeldt && !registrering.registrering.besvarelse.andreForhold;
 
     return (
         <section className="hensyn">
@@ -46,7 +60,7 @@ function Hensyn() {
             />
             <JaNeiPanel
                 titel={andreTekst}
-                hidden={sykemeldt && !andreForholdSvar}
+                hidden={skuleAndreForhold}
                 start={andreSvar(registrering, sisteSituasjon)}
                 onSave={(svar) => oppdaterAndreHinder(svar)}
             />
