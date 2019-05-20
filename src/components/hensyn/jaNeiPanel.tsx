@@ -1,10 +1,11 @@
-import { default as React, useState } from 'react';
+import {default as React, useState} from 'react';
 import GrunnPanel from '../felleskomponenter/grunnPanel';
-import { Element, Normaltekst } from 'nav-frontend-typografi';
-import { Collapse } from 'react-collapse';
+import {Element, Normaltekst} from 'nav-frontend-typografi';
+import {Collapse} from 'react-collapse';
 import Lenke from 'nav-frontend-lenker';
 import EndreLagreKnapp from './endreLagreKnapp';
 import JaNeiRadio from './JaNeiRadio';
+import {JaNeiIkke} from "../../datatyper/situasjon";
 
 const brukerstoteURL = 'https://www.nav.no/398761/kontakt-teknisk-brukerst%C3%B8tte-nav.no';
 
@@ -19,20 +20,30 @@ function Feilmelding(props: { vises: boolean }) {
     );
 }
 
-function JaNeiPanel(props: { titel: string, hidden: boolean, start: boolean, onSave: (status: boolean) => Promise<Object> }) {
+function JaNeiUndefined(props: { svar: JaNeiIkke }) {
+    if(props.svar === JaNeiIkke.NEI) {
+        return <span>Nei</span>;
+    }
+    if(props.svar === JaNeiIkke.JA) {
+        return  <span>Ja</span>
+    }
+    return <span/>
+}
+
+function JaNeiPanel(props: { titel: string, hidden: boolean, start: JaNeiIkke, onSave: (status: JaNeiIkke) => Promise<Object> }) {
     const [status, setStatus] = useState(props.start);
     const [eddit, setEddit] = useState(false);
     const [error, setError] = useState(false);
-    const [valgt, setValgt] = useState(props.start);
+    const [valgt, setValgt] = useState(props.start === JaNeiIkke.JA);
     const [oppdaterer, setOppdaterer] = useState(false);
 
     function click() {
         if (oppdaterer) {
             return;
         }
-        const newState = valgt;
+        const newState = valgt ? JaNeiIkke.JA : JaNeiIkke.NEI;
 
-        if (eddit && status !== valgt) {
+        if (eddit && status !== newState) {
             setOppdaterer(true);
             setError(false);
             props.onSave(newState)
@@ -53,7 +64,7 @@ function JaNeiPanel(props: { titel: string, hidden: boolean, start: boolean, onS
         <>
             <GrunnPanel feil={error} hidden={props.hidden} border={true}>
                 <div className="spacebetween">
-                    <Normaltekst> <Element tag="span"> {props.titel}: </Element> {status ? 'Ja' : 'Nei'} </Normaltekst>
+                    <Normaltekst> <Element tag="span"> {props.titel}: </Element> <JaNeiUndefined svar={status} /> </Normaltekst>
                     <EndreLagreKnapp endre={eddit} onClick={click} oppdaterer={oppdaterer}/>
                 </div>
                 <Collapse isOpened={eddit}>
