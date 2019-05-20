@@ -5,22 +5,23 @@ import {
     RegistreringDataContext, SisteSituasjonContext,
 } from '../../context/registreringData/RegistreringDataProvider';
 import { RegistreringDataType, SYKMELDT } from '../../datatyper/registreringData';
-import { oppdaterAndreHinder, oppdaterHelseHinder, SisteSitvasjon } from '../../api/api';
+import { oppdaterAndreHinder, oppdaterHelseHinder } from '../../api/api';
 import JaNeiPanel from './jaNeiPanel';
+import { SisteSituasjon } from '../../datatyper/situasjon';
 
 export interface HensynType {
     verdi: boolean;
     dato: string;
 }
 
-function helsehinderSvar(registrering: RegistreringDataType, situasjon: SisteSitvasjon) {
+function helsehinderSvar(registrering: RegistreringDataType, situasjon: SisteSituasjon) {
     if (!situasjon.helseHinder || registrering.registrering.opprettetDato > situasjon.helseHinder.dato) {
         return registrering.registrering.besvarelse.helseHinder === 'JA';
     } 
     return situasjon.helseHinder.verdi;
 }
 
-function andreSvar(registrering: RegistreringDataType, situasjon: SisteSitvasjon) {
+function andreSvar(registrering: RegistreringDataType, situasjon: SisteSituasjon) {
     if (!situasjon.andreHinder || registrering.registrering.opprettetDato > situasjon.andreHinder.dato) {
         return registrering.registrering.besvarelse.andreForhold === 'JA';
     }

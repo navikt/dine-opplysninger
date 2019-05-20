@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { hentOppfolgingStatus, hentRegistreringData, hentSituasjon, SisteSitvasjon } from '../../api/api';
+import { hentOppfolgingStatus, hentRegistreringData, hentSituasjon } from '../../api/api';
 import { RegistreringDataType } from '../../datatyper/registreringData';
 import { useEffect, useState } from 'react';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import AlertStripe from 'nav-frontend-alertstriper';
+import { SisteSituasjon } from '../../datatyper/situasjon';
 
 export const initalStateRegistreringData: RegistreringDataType = {
     type: '',
@@ -41,7 +42,7 @@ export const initalStateRegistreringData: RegistreringDataType = {
 };
 
 export const RegistreringDataContext = React.createContext<RegistreringDataType>(initalStateRegistreringData);
-export const SisteSituasjonContext = React.createContext<SisteSitvasjon>({});
+export const SisteSituasjonContext = React.createContext<SisteSituasjon>({});
 
 interface RegistreringDataContextProviderProps {
     children: React.ReactNode;

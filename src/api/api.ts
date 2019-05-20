@@ -1,9 +1,10 @@
 import { fetchData } from '../utils/fetchData';
 import { RegistreringDataType } from '../datatyper/registreringData';
 import { MalType } from '../components/mal/DelMal/DelMal';
-import { HovedmalType, HistorikkType } from '../datatyper/hovedmalType';
+import { HistorikkType, HovedmalType } from '../datatyper/hovedmalType';
 import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer';
 import { HensynType } from '../components/hensyn/hensyn';
+import { SisteSituasjon } from '../datatyper/situasjon';
 
 export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
 export const API_VEILARBVEDTAKINFO = '/veilarbvedtakinfo/api';
@@ -84,11 +85,5 @@ export function oppdaterAndreHinder(hinder: boolean): Promise<HensynType> {
 }
 
 export function hentSituasjon() {
-    return fetchData<SisteSitvasjon>(`${API_VEILARBVEDTAKINFO}/sistesituasjon`, CONFIG);
-}
-
-export interface SisteSitvasjon {
-    helseHinder?: HensynType;
-    andreHinder?: HensynType;
-    fremtidigSituasjonData?: HovedmalType;
+    return fetchData<SisteSituasjon>(`${API_VEILARBVEDTAKINFO}/sistesituasjon`, CONFIG);
 }
