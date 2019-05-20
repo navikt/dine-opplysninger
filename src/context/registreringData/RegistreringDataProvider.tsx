@@ -79,7 +79,7 @@ function RegistreringDataProvider(props: RegistreringDataContextProviderProps) {
     }
 
     if ( registrering.isError || oppfolgingStatus.isError || situasjon.isError || registrering.data === null || situasjon.data === null) {
-        return <div> ERROR </div>;
+        return <div> Det har skjedd en feil. </div>;
     }
 
     if (!oppfolgingStatus.data || !oppfolgingStatus.data.underOppfolging) {
