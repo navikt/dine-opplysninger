@@ -6,8 +6,8 @@ import { Collapse } from 'react-collapse';
 import { AlternativGruppe } from './AlternativGruppe';
 import { hentHovedmal, oppdaterHovedmal } from '../../api/api';
 import NavFrontendSpinner from 'nav-frontend-spinner';
-import GrunnPanel from "../felleskomponenter/grunnPanel";
-import LenkeKnapp from "../felleskomponenter/lenkeknap";
+import GrunnPanel from '../felleskomponenter/grunnPanel';
+import LenkeKnapp from '../felleskomponenter/lenkeknap';
 
 enum FetchStateTypes {
     LOADING,
@@ -65,7 +65,7 @@ function Hovedmal () {
     }
 
     return (
-        <GrunnPanel className="hovedmal" border>
+        <GrunnPanel className="hovedmal" border={true}>
             <div className="typo-normal lenke-element endre-knapp-boks">
                 <div>
                     <strong>Mål: </strong>

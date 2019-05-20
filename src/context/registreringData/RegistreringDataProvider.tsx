@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {hentOppfolgingStatus, hentRegistreringData, hentSituasjon, SisteSitvasjon} from '../../api/api';
+import { hentOppfolgingStatus, hentRegistreringData, hentSituasjon, SisteSitvasjon } from '../../api/api';
 import { RegistreringDataType } from '../../datatyper/registreringData';
-import {useEffect, useState} from "react";
-import NavFrontendSpinner from "nav-frontend-spinner";
-import AlertStripe from "nav-frontend-alertstriper";
+import { useEffect, useState } from 'react';
+import NavFrontendSpinner from 'nav-frontend-spinner';
+import AlertStripe from 'nav-frontend-alertstriper';
 
 export const initalStateRegistreringData: RegistreringDataType = {
     type: '',
@@ -54,19 +54,18 @@ function useFetch<T>(func: () => Promise<T>) {
 
     useEffect(() => {
         setIsLoading(true);
-       func()
-           .then(data => {
-               setData(data);
+        func()
+           .then(response => {
+               setData(response);
                setIsLoading(false);
            })
            .catch(() => {
                setIsError(true);
                setIsLoading(false);
-           })
+           });
     }, [func]);
 
-
-    return {isLoading, isError, data}
+    return {isLoading, isError, data};
 }
 
 function RegistreringDataProvider(props: RegistreringDataContextProviderProps) {
@@ -74,16 +73,15 @@ function RegistreringDataProvider(props: RegistreringDataContextProviderProps) {
     const registrering = useFetch(hentRegistreringData);
     const oppfolgingStatus = useFetch(hentOppfolgingStatus);
 
-    if(situasjon.isLoading || registrering.isLoading || oppfolgingStatus.isLoading) {
+    if (situasjon.isLoading || registrering.isLoading || oppfolgingStatus.isLoading) {
         return <div className="spinner-wrapper centered"><NavFrontendSpinner type="XXL"/></div>;
     }
-    console.log(situasjon);
 
-    if( registrering.isError || oppfolgingStatus.isError || situasjon.isError || registrering.data === null || situasjon.data === null) {
-        return <div> ERROR </div>
+    if ( registrering.isError || oppfolgingStatus.isError || situasjon.isError || registrering.data === null || situasjon.data === null) {
+        return <div> ERROR </div>;
     }
 
-    if(!oppfolgingStatus.data || !oppfolgingStatus.data.underOppfolging) {
+    if (!oppfolgingStatus.data || !oppfolgingStatus.data.underOppfolging) {
         return (
             <div id="ikke-under-oppfolgning-container">
                 <AlertStripe type="info" className="ikke-under-oppfolgning-boks">

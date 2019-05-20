@@ -3,7 +3,7 @@ import { RegistreringDataType } from '../datatyper/registreringData';
 import { MalType } from '../components/mal/DelMal/DelMal';
 import { HovedmalType, HistorikkType } from '../datatyper/hovedmalType';
 import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer';
-import {HensynType} from "../components/hensyn/hensyn";
+import { HensynType } from '../components/hensyn/hensyn';
 
 export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
 export const API_VEILARBVEDTAKINFO = '/veilarbvedtakinfo/api';
@@ -83,9 +83,8 @@ export function oppdaterAndreHinder(hinder: boolean): Promise<HensynType> {
     return fetchData<HensynType>(`${API_VEILARBVEDTAKINFO}/andrehinder`, {method: 'post', body: JSON.stringify({verdi: hinder}), ...CONFIG});
 }
 
-
 export function hentSituasjon() {
-    return fetchData<SisteSitvasjon>(`${API_VEILARBVEDTAKINFO}/sistesituasjon`, CONFIG)
+    return fetchData<SisteSitvasjon>(`${API_VEILARBVEDTAKINFO}/sistesituasjon`, CONFIG);
 }
 
 export interface SisteSitvasjon {

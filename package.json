@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "echo not implemented, part of the build script",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'  --fix --format verbose",
     "tslint:fix": "tslint -c tslint.json 'src/**/*.ts*' --fix",
     "test:coverage": "npm test -- --coverage",
     "start": "cross-env REACT_APP_MOCK=true craco start",
