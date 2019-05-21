@@ -23,13 +23,13 @@ function Hensyn() {
             <JaNeiPanel
                 titel="Helseproblemer"
                 hidden={sykemeldt}
-                start={sisteSituasjon.helseHinder ? sisteSituasjon.helseHinder.verdi : JaNeiIkke.IKKE_OPPGITT}
+                start={sisteSituasjon.helseHinder ? sisteSituasjon.helseHinder.verdi : JaNeiIkke.INGEN_SVAR}
                 onSave={(svar) => oppdaterHelseHinder(svar)}
             />
             <JaNeiPanel
                 titel={andreTekst}
                 hidden={skuleAndreForhold}
-                start={sisteSituasjon.andreHinder ? sisteSituasjon.andreHinder.verdi : JaNeiIkke.IKKE_OPPGITT}
+                start={sisteSituasjon.andreHinder ? sisteSituasjon.andreHinder.verdi : JaNeiIkke.INGEN_SVAR}
                 onSave={(svar) => oppdaterAndreHinder(svar)}
             />
         </section>

@@ -3,7 +3,7 @@ import {HovedmalType} from './hovedmalType';
 export enum JaNeiIkke {
     JA = "JA",
     NEI = "NEI",
-    IKKE_OPPGITT = "IKKE_OPPGITT",
+    INGEN_SVAR = "INGEN_SVAR",
 }
 export interface HensynType {
     verdi: JaNeiIkke;
