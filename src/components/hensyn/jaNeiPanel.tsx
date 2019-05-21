@@ -1,11 +1,11 @@
-import {default as React, useState} from 'react';
+import { default as React, useState } from 'react';
 import GrunnPanel from '../felleskomponenter/grunnPanel';
-import {Element, Normaltekst} from 'nav-frontend-typografi';
-import {Collapse} from 'react-collapse';
+import { Element, Normaltekst } from 'nav-frontend-typografi';
+import { Collapse } from 'react-collapse';
 import Lenke from 'nav-frontend-lenker';
 import EndreLagreKnapp from './endreLagreKnapp';
 import JaNeiRadio from './JaNeiRadio';
-import {JaNeiIkke} from "../../datatyper/situasjon";
+import { JaNeiIkke } from '../../datatyper/situasjon';
 
 const brukerstoteURL = 'https://www.nav.no/398761/kontakt-teknisk-brukerst%C3%B8tte-nav.no';
 
@@ -21,13 +21,13 @@ function Feilmelding(props: { vises: boolean }) {
 }
 
 function JaNeiUndefined(props: { svar: JaNeiIkke }) {
-    if(props.svar === JaNeiIkke.NEI) {
+    if (props.svar === JaNeiIkke.NEI) {
         return <span>Nei</span>;
     }
-    if(props.svar === JaNeiIkke.JA) {
-        return  <span>Ja</span>
+    if (props.svar === JaNeiIkke.JA) {
+        return  <span>Ja</span>;
     }
-    return <span/>
+    return <span/>;
 }
 
 function JaNeiPanel(props: { titel: string, hidden: boolean, start: JaNeiIkke, onSave: (status: JaNeiIkke) => Promise<Object> }) {

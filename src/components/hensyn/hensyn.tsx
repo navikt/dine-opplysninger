@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {useContext} from 'react';
+import { useContext } from 'react';
 import './hensyn.less';
-import {RegistreringDataContext, SisteSituasjonContext,} from '../../context/registreringData/RegistreringDataProvider';
-import {SYKMELDT} from '../../datatyper/registreringData';
-import {oppdaterAndreHinder, oppdaterHelseHinder} from '../../api/api';
+import { RegistreringDataContext, SisteSituasjonContext, } from '../../context/registreringData/RegistreringDataProvider';
+import { SYKMELDT } from '../../datatyper/registreringData';
+import { oppdaterAndreHinder, oppdaterHelseHinder } from '../../api/api';
 import JaNeiPanel from './jaNeiPanel';
-import {JaNeiIkke} from "../../datatyper/situasjon";
+import { JaNeiIkke } from '../../datatyper/situasjon';
 
 function Hensyn() {
     const registrering = useContext(RegistreringDataContext);

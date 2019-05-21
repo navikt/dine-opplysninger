@@ -1,9 +1,9 @@
-import {HovedmalType} from './hovedmalType';
+import { HovedmalType } from './hovedmalType';
 
 export enum JaNeiIkke {
-    JA = "JA",
-    NEI = "NEI",
-    INGEN_SVAR = "INGEN_SVAR",
+    JA = 'JA',
+    NEI = 'NEI',
+    INGEN_SVAR = 'INGEN_SVAR',
 }
 export interface HensynType {
     verdi: JaNeiIkke;

@@ -3,7 +3,7 @@ import { RegistreringDataType } from '../datatyper/registreringData';
 import { MalType } from '../components/mal/DelMal/DelMal';
 import { HistorikkType, HovedmalType } from '../datatyper/hovedmalType';
 import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer';
-import {HensynType, JaNeiIkke, SisteSituasjon} from '../datatyper/situasjon';
+import { HensynType, JaNeiIkke, SisteSituasjon } from '../datatyper/situasjon';
 
 export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
 export const API_VEILARBVEDTAKINFO = '/veilarbvedtakinfo/api';
