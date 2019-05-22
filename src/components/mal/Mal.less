@@ -1,7 +1,7 @@
 @import '~nav-frontend-core/less/_variabler';
 
 .mal-container {
-    padding: 1rem;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     background-color: @navGronnLighten80;
@@ -10,4 +10,12 @@
     display: flex;
     justify-content: flex-end;
   }
+}
+
+@media (min-width: @screen-sm-min) {
+    .mal-container {
+        width: 742px;
+        margin: 0 auto;
+        border-radius: 5px;
+    }
 }
