@@ -9,8 +9,6 @@ import { JaNeiIkke } from '../../datatyper/situasjon';
 function Hensyn() {
     const sisteSituasjon = useContext(SisteSituasjonContext);
 
-    const andreTekst = 'Andre problemer';
-
     return (
         <section className="hensyn">
             <JaNeiPanel
@@ -19,7 +17,7 @@ function Hensyn() {
                 onSave={(svar) => oppdaterHelseHinder(svar)}
             />
             <JaNeiPanel
-                titel={andreTekst}
+                titel="Andre problemer"
                 start={sisteSituasjon.andreHinder ? sisteSituasjon.andreHinder.verdi : JaNeiIkke.INGEN_SVAR}
                 onSave={(svar) => oppdaterAndreHinder(svar)}
             />
