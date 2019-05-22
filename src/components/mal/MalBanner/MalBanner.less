@@ -1,16 +1,14 @@
 @import '~nav-frontend-core/less/_variabler';
 
 .mal-banner {
-  margin: 1rem;
-  background-color: @navDypBlaLighten80;
   padding: 1rem;
   border-radius: 5px;
+  text-align: center;
 
   display: flex;
   align-items: center;
 
   &-beskrivelse {
-    padding: 0 0 0 1rem;
     width: 17rem;
   }
 
@@ -28,17 +26,10 @@
 
 @media (min-width: @screen-sm-min) {
   .mal-banner {
-    margin: 0 auto 0;
-    width: 710px;
-
+    margin: 0.5rem auto;
     &-beskrivelse {
-      padding: 0 2rem 0 0;
-      width: 28rem;
+      width: 24rem;
     }
 
-    svg {
-      display: block;
-      margin-left: -1rem;
-    }
   }
 }
