@@ -3,8 +3,13 @@ import { hentOppfolgingStatus, hentRegistreringData, hentSituasjon } from '../..
 import { RegistreringDataType } from '../../datatyper/registreringData';
 import { useEffect, useState } from 'react';
 import NavFrontendSpinner from 'nav-frontend-spinner';
-import AlertStripe from 'nav-frontend-alertstriper';
+import AlertStripeAdvarsel from 'nav-frontend-alertstriper/lib/advarsel-alertstripe';
 import { SisteSituasjon } from '../../datatyper/situasjon';
+import Lenke from 'nav-frontend-lenker';
+import HoyreChevron from 'nav-frontend-chevron/lib/hoyre-chevron';
+import Feilmelding from '../../components/feilmelding/feilmelding';
+
+const ARBEIDSSOKERREGISTRERING_URL = '/arbeidssokerregistrering';
 
 export const initalStateRegistreringData: RegistreringDataType = {
     type: '',
@@ -79,15 +84,16 @@ function RegistreringDataProvider(props: RegistreringDataContextProviderProps) {
     }
 
     if ( registrering.isError || oppfolgingStatus.isError || situasjon.isError || registrering.data === null || situasjon.data === null) {
-        return <div> Det har skjedd en feil. </div>;
+        return <Feilmelding/>;
     }
 
     if (!oppfolgingStatus.data || !oppfolgingStatus.data.underOppfolging) {
         return (
             <div id="ikke-under-oppfolgning-container">
-                <AlertStripe type="info" className="ikke-under-oppfolgning-boks">
-                    Du er ikke under arbeidsrettet oppfølgning.
-                </AlertStripe>
+                <AlertStripeAdvarsel className="ikke-under-oppfolgning-boks">
+                    Du må være registrert hos NAV for å se informasjon om deg.
+                    <br/> <Lenke href={ARBEIDSSOKERREGISTRERING_URL}>Registrer deg hos NAV <HoyreChevron/></Lenke>
+                </AlertStripeAdvarsel>
             </div>
         );
     }

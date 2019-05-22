@@ -21,3 +21,5 @@ redirect:
     to: {{ VEIENTILARBEID_URL }}
   - from: /aktivitetsplan
     to: {{ AKTIVITETSPLAN_URL }}
+  - from: /arbeidssokerregistrering
+    to: {{ ARBEIDSSOKERREGISTRERING_URL }}
