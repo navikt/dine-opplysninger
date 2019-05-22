@@ -1,23 +1,21 @@
 import ResponsiveRadioGruppe from '../felleskomponenter/responsiveRadio';
 import { default as React } from 'react';
+import { JaNeiIkke } from '../../datatyper/situasjon';
 
-const ja = 'Ja';
-const nei = 'Nei';
-
-function JaNeiRadio(props: {titel: string, valg: boolean, onChange: (selected: boolean) => void
+function JaNeiRadio(props: {titel: string, valg: JaNeiIkke, onChange: (selected: JaNeiIkke) => void
 }) {
     return(
         <ResponsiveRadioGruppe
             radios={
                 [
-                    {label: 'Ja', value: ja},
-                    {label: 'Nei', value: nei},
+                    {label: 'Ja', value: JaNeiIkke.JA},
+                    {label: 'Nei', value: JaNeiIkke.NEI},
                 ]
             }
             name={props.titel}
             legend=""
-            checked={props.valg ? ja : nei}
-            onChange={(event, value) => props.onChange(value === ja)}
+            checked={props.valg}
+            onChange={(event, value) => props.onChange(JaNeiIkke[value] ? JaNeiIkke[value] : JaNeiIkke.INGEN_SVAR)}
         />
     );
 }

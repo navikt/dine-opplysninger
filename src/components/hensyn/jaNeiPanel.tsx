@@ -34,22 +34,21 @@ function JaNeiPanel(props: { titel: string, hidden: boolean, start: JaNeiIkke, o
     const [status, setStatus] = useState(props.start);
     const [eddit, setEddit] = useState(false);
     const [error, setError] = useState(false);
-    const [valgt, setValgt] = useState(props.start === JaNeiIkke.JA);
+    const [valgt, setValgt] = useState(props.start);
     const [oppdaterer, setOppdaterer] = useState(false);
 
     function click() {
         if (oppdaterer) {
             return;
         }
-        const newState = valgt ? JaNeiIkke.JA : JaNeiIkke.NEI;
 
-        if (eddit && status !== newState) {
+        if (eddit && status !== valgt) {
             setOppdaterer(true);
             setError(false);
-            props.onSave(newState)
+            props.onSave(valgt)
                 .then(() => {
                     setOppdaterer(false);
-                    setStatus(newState);
+                    setStatus(valgt);
                 })
                 .catch(() => {
                     setError(true);
