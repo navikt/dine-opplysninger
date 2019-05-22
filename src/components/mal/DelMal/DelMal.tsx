@@ -16,11 +16,12 @@ export interface MalType {
 }
 
 function DelMal () {
+    const modus = new URL(window.location.href).searchParams.get('modus');
 
     const [malState, setMalState] = useState('');
     const [laster, setLaster] = useState(true);
     const [feilState, setFeilState] = useState(false);
-    const [skalEndreState, setSkalEndreState] = useState(false);
+    const [skalEndreState, setSkalEndreState] = useState(modus === 'rediger');
 
     useEffect(() => {
         hentMal()

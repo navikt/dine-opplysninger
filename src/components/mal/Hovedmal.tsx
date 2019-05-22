@@ -16,7 +16,8 @@ enum FetchStateTypes {
 }
 
 function Hovedmal () {
-    const [endreVisning, setSkalEndreState] = useState(false);
+    const modus = new URL(window.location.href).searchParams.get('modus');
+    const [endreVisning, setSkalEndreState] = useState(modus === 'rediger');
     const [alternativState, setSituasjonState] = useState(HovedmalAlternativ.IKKE_OPPGITT);
     const [fetchState, setFetchState] = useState(FetchStateTypes.OK);
 
