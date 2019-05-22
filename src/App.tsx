@@ -5,6 +5,7 @@ import Registreringsinfo from './components/registreringsinfo/Registreringsinfo'
 import Mal from './components/mal/Mal';
 import EndreRegistreringerMock from './mock/EndreRegistreringerMock';
 import Brodsmuler from './components/brodsmuler/brodsmuler';
+import Hensyn from './components/hensyn/hensyn';
 
 interface State {}
 
@@ -23,6 +24,7 @@ class App extends React.Component<AppProps, State> {
                 <Brodsmuler/>
                 <VeilederBanner/>
                 <Mal/>
+                <Hensyn/>
                 <Registreringsinfo/>
             </AppProviders>
         );

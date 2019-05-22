@@ -45,6 +45,6 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
             />
         </ul>
     );
-}
+};
 
 export default InformasjonsLenker;

@@ -7,6 +7,7 @@ import Vise from './Vise';
 import Redigere from './Redigere';
 import { Normaltekst } from 'nav-frontend-typografi';
 import Element from 'nav-frontend-typografi/lib/element';
+import GrunnPanel from '../../felleskomponenter/grunnPanel';
 
 export interface MalType {
     mal: string | null;
@@ -45,7 +46,7 @@ function DelMal () {
     }
 
     return(
-        <div className="del-mal">
+        <GrunnPanel className="del-mal" border={true}>
             {
                 !skalEndreState
                     ?
@@ -53,7 +54,7 @@ function DelMal () {
                     :
                     <Redigere malState={malState} setMalState={setMalState} setSkalEndreState={setSkalEndreState}/>
             }
-        </div>
+        </GrunnPanel>
     );
 }
 

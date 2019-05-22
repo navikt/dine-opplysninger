@@ -1,8 +1,9 @@
 import { fetchData } from '../utils/fetchData';
 import { RegistreringDataType } from '../datatyper/registreringData';
 import { MalType } from '../components/mal/DelMal/DelMal';
-import { HovedmalType, HistorikkType } from '../datatyper/hovedmalType';
+import { HistorikkType, HovedmalType } from '../datatyper/hovedmalType';
 import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer';
+import { HensynType, JaNeiIkke, SisteSituasjon } from '../datatyper/situasjon';
 
 export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
 export const API_VEILARBVEDTAKINFO = '/veilarbvedtakinfo/api';
@@ -72,4 +73,16 @@ export function hentFremtidigSituasjonList(): Promise<Array<HovedmalType&Histori
 
 export function oppdaterMal(mal: string): Promise<MalType> {
     return fetchData<MalType>(`${API_VEILARBOPPFOLGING}/mal`, {method: 'post', body: JSON.stringify({mal}), ...CONFIG});
+}
+
+export function oppdaterHelseHinder(hinder: JaNeiIkke): Promise<HensynType> {
+    return fetchData<HensynType>(`${API_VEILARBVEDTAKINFO}/helsehinder`, {method: 'post', body: JSON.stringify({verdi: hinder}), ...CONFIG});
+}
+
+export function oppdaterAndreHinder(hinder: JaNeiIkke): Promise<HensynType> {
+    return fetchData<HensynType>(`${API_VEILARBVEDTAKINFO}/andrehinder`, {method: 'post', body: JSON.stringify({verdi: hinder}), ...CONFIG});
+}
+
+export function hentSituasjon() {
+    return fetchData<SisteSituasjon>(`${API_VEILARBVEDTAKINFO}/sistesituasjon`, CONFIG);
 }
