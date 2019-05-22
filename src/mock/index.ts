@@ -42,7 +42,7 @@ const mock = FetchMock.configure({
 const DELAY = 500;
 mock.get('/veilarbregistrering/api/registrering', ResponseUtils.delayed(DELAY, Registrering));
 // Mock med 204 respons
-// mock.get('/veilarbregistrering/api/registrering', ResponseUtils.statusCode(204));
+// mock.get('/veilarbregistrering/api/registrering', ResponseUtils.statusCode(500));
 
 mock.get(`${API_VEILARBVEDTAKINFO}/situasjonliste`, ResponseUtils.delayed(DELAY, situasjonListe()));
 mock.get(API_VEILARBVEDTAKINFO_HOVEDMAL, ResponseUtils.delayed(DELAY, fremtidigSituasjon));
@@ -54,6 +54,7 @@ mock.post(API_VEILARBVEDTAKINFO_HOVEDMAL, ResponseUtils.delayed(DELAY, ({ body }
 mock.get('/veilarbvedtakinfo/api/sistesituasjon', ResponseUtils.delayed(DELAY, sisteSituasjon()));
 
 mock.get('/veilarboppfolging/api/oppfolging', OppfolgingStatus );
+// mock.get('/veilarboppfolging/api/oppfolging', ResponseUtils.statusCode(500) );
 
 mock.get('/veilarboppfolging/api/oppfolging/malListe', ResponseUtils.delayed(DELAY + 1000, malListe()));
 mock.get('/veilarboppfolging/api/oppfolging/mal',  ResponseUtils.delayed(DELAY, Mal));
