@@ -30,7 +30,7 @@ function JaNeiUndefined(props: { svar: JaNeiIkke }) {
     return <span/>;
 }
 
-function JaNeiPanel(props: { titel: string, hidden: boolean, start: JaNeiIkke, onSave: (status: JaNeiIkke) => Promise<Object> }) {
+function JaNeiPanel(props: { titel: string, hidden?: boolean, start: JaNeiIkke, onSave: (status: JaNeiIkke) => Promise<Object> }) {
     const [status, setStatus] = useState(props.start);
     const [eddit, setEddit] = useState(false);
     const [error, setError] = useState(false);
