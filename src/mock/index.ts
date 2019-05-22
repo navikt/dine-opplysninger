@@ -7,7 +7,7 @@ import FetchMock, {
 import OppfolgingStatus from './oppfolging';
 import Registrering from './registrering';
 import { Mal, malListe, opprettMal } from './mal';
-import { fremtidigSituasjon, opprettSituasjon, situasjonListe } from './sisteSituasjon';
+import { fremtidigSituasjon, opprettSituasjon, sisteSituasjon, situasjonListe } from './sisteSituasjon';
 import { API_VEILARBVEDTAKINFO_HOVEDMAL, API_VEILARBVEDTAKINFO } from '../api/api';
 import { oppdaterHensyn } from './hensyn';
 
@@ -51,7 +51,7 @@ mock.post(API_VEILARBVEDTAKINFO_HOVEDMAL, ResponseUtils.delayed(DELAY, ({ body }
     return ResponseUtils.jsonPromise(opprettSituasjon(body));
 }));
 
-mock.get('/veilarbvedtakinfo/api/sistesituasjon', {});
+mock.get('/veilarbvedtakinfo/api/sistesituasjon', ResponseUtils.delayed(DELAY, sisteSituasjon()));
 
 mock.get('/veilarboppfolging/api/oppfolging', OppfolgingStatus );
 

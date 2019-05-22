@@ -22,7 +22,7 @@ export function situasjonListe() {
     return situasjoner;
 }
 
-export function opprettSituasjon(body: {alternativId: string}) {
+export function opprettSituasjon(body: { alternativId: string }) {
     let nySituasjon = {
         alternativId: body.alternativId,
         endretAv: 'BRUKER',
@@ -30,4 +30,17 @@ export function opprettSituasjon(body: {alternativId: string}) {
     };
     situasjoner.push(nySituasjon);
     return nySituasjon;
+}
+
+export function sisteSituasjon() {
+    return {
+        helseHinder: {'dato': '2019-05-21T14:19:25.435+02:00', 'verdi': 'JA'},
+        andreHinder: {'dato': '2019-05-21T14:19:25.435+02:00', 'verdi': 'INGEN_SVAR'},
+        fremtidigSituasjonData: {
+            'dato': '2019-05-21T14:19:25.435+02:00',
+            'alternativId': 'NY_ARBEIDSGIVER',
+            'tekst': null,
+            'endretAv': 'BRUKER'
+        }
+    };
 }
