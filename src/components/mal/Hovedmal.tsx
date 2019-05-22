@@ -6,6 +6,8 @@ import { Collapse } from 'react-collapse';
 import { AlternativGruppe } from './AlternativGruppe';
 import { hentHovedmal, oppdaterHovedmal } from '../../api/api';
 import NavFrontendSpinner from 'nav-frontend-spinner';
+import GrunnPanel from '../felleskomponenter/grunnPanel';
+import LenkeKnapp from '../felleskomponenter/lenkeknap';
 
 enum FetchStateTypes {
     LOADING,
@@ -63,7 +65,7 @@ function Hovedmal () {
     }
 
     return (
-        <div className="hovedmal">
+        <GrunnPanel className="hovedmal" border={true}>
             <div className="typo-normal lenke-element endre-knapp-boks">
                 <div>
                     <strong>Mål: </strong>
@@ -72,14 +74,14 @@ function Hovedmal () {
                 </div>
                 {fetchState !== FetchStateTypes.OK ?
                     <NavFrontendSpinner /> :
-                    <button className="typo-element lenke-knapp" id="btn-legg-til-situasjon" hidden={endreVisning} onClick={() => setSkalEndreState(!endreVisning)}>{knappeTekst}</button>
+                    <LenkeKnapp id="btn-legg-til-situasjon" hidden={endreVisning} onClick={() => setSkalEndreState(!endreVisning)}>{knappeTekst}</LenkeKnapp>
                 }
             </div>
             {fetchState === FetchStateTypes.OK ?
                 visInnhold()
                 : null
             }
-        </div>
+        </GrunnPanel>
     );
 }
 

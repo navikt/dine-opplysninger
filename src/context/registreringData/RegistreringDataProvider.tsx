@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { hentRegistreringData } from '../../api/api';
+import { hentOppfolgingStatus, hentRegistreringData, hentSituasjon } from '../../api/api';
 import { RegistreringDataType } from '../../datatyper/registreringData';
-import DataFetcher from '../../utils/dataFetcher';
+import { useEffect, useState } from 'react';
+import NavFrontendSpinner from 'nav-frontend-spinner';
+import AlertStripe from 'nav-frontend-alertstriper';
+import { SisteSituasjon } from '../../datatyper/situasjon';
 
 export const initalStateRegistreringData: RegistreringDataType = {
     type: '',
@@ -38,22 +41,63 @@ export const initalStateRegistreringData: RegistreringDataType = {
     }
 };
 
-const RegistreringDataContext = React.createContext<RegistreringDataType>(initalStateRegistreringData);
+export const RegistreringDataContext = React.createContext<RegistreringDataType>(initalStateRegistreringData);
+export const SisteSituasjonContext = React.createContext<SisteSituasjon>({});
 
 interface RegistreringDataContextProviderProps {
     children: React.ReactNode;
 }
 
+function useFetch<T>(func: () => Promise<T>) {
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
+    const [data, setData] = useState<T | null>(null);
+
+    useEffect(() => {
+        setIsLoading(true);
+        func()
+           .then(response => {
+               setData(response);
+               setIsLoading(false);
+           })
+           .catch(() => {
+               setIsError(true);
+               setIsLoading(false);
+           });
+    }, [func]);
+
+    return {isLoading, isError, data};
+}
+
 function RegistreringDataProvider(props: RegistreringDataContextProviderProps) {
+    const situasjon = useFetch(hentSituasjon);
+    const registrering = useFetch(hentRegistreringData);
+    const oppfolgingStatus = useFetch(hentOppfolgingStatus);
+
+    if (situasjon.isLoading || registrering.isLoading || oppfolgingStatus.isLoading) {
+        return <div className="spinner-wrapper centered"><NavFrontendSpinner type="XXL"/></div>;
+    }
+
+    if ( registrering.isError || oppfolgingStatus.isError || situasjon.isError || registrering.data === null || situasjon.data === null) {
+        return <div> Det har skjedd en feil. </div>;
+    }
+
+    if (!oppfolgingStatus.data || !oppfolgingStatus.data.underOppfolging) {
+        return (
+            <div id="ikke-under-oppfolgning-container">
+                <AlertStripe type="info" className="ikke-under-oppfolgning-boks">
+                    Du er ikke under arbeidsrettet oppfølgning.
+                </AlertStripe>
+            </div>
+        );
+    }
 
     return (
-        <DataFetcher<RegistreringDataType> fetchFunc={() => hentRegistreringData()} >
-            {(data: RegistreringDataType) =>
-                <RegistreringDataContext.Provider value={data}>
-                    {props.children}
-                </RegistreringDataContext.Provider>
-            }
-        </DataFetcher>
+        <RegistreringDataContext.Provider value={registrering.data}>
+            <SisteSituasjonContext.Provider value={situasjon.data}>
+                {props.children}
+            </SisteSituasjonContext.Provider>
+        </RegistreringDataContext.Provider>
     );
 }
 

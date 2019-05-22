@@ -15,6 +15,15 @@ const VinsingsLinje = (props: SvarTekster) => (
         </Normaltekst>
     </li>);
 
+const SisteStilingLinje = (props: {sisteStilling: RegistreringsType['sisteStilling']}) => {
+    if (!props.sisteStilling) {
+        return null;
+    }
+    return (
+        <VinsingsLinje key="sistestilling" sporsmal="Din siste stilling: " svar={props.sisteStilling.label} sporsmalId="sistestilling" />
+    );
+};
+
 export default function SvarIRegistrering(props: {registrering: RegistreringsType}) {
     if (!props.registrering) {
         return (
@@ -43,6 +52,7 @@ export default function SvarIRegistrering(props: {registrering: RegistreringsTyp
                             .filter(it => besvarelse[it.sporsmalId] !== 'INGEN_SVAR')
                             .map((it) => <VinsingsLinje key={it.sporsmalId} {...it}/>)
                     }
+                    <SisteStilingLinje sisteStilling={props.registrering.sisteStilling}/>
                 </ul>
                 <Normaltekst className="kontaktVeileder">
                     Du bør informere veilederen din dersom situasjonen din endrer seg. <br />

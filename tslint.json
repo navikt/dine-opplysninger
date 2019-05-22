@@ -2,7 +2,8 @@
   "extends": ["tslint-react"],
   "linterOptions": {
     "exclude": [
-      "node_modules/**/*.tsx"
+      "node_modules/**/*.tsx",
+      "src/**/svg/*"
     ]
   },
   "rules": {

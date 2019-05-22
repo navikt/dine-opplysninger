@@ -23,3 +23,4 @@ function Registreringsinfo(props: RegistreringDataType) {
 }
 
 export default registreringDataContextConsumerHoc<{}>(Registreringsinfo);
+ 
