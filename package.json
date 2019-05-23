@@ -17,6 +17,17 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && craco test --env=jsdom --watchAll=false"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "git add"
+    ]
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -97,6 +108,8 @@
     "ts-jest": "^23.10.5",
     "tslint": "^5.12.1",
     "tslint-react": "^3.6.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
     "yet-another-fetch-mock": "^2.4.0"
   }
 }
