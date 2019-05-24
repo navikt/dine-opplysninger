@@ -27,7 +27,7 @@ export function kombinerHistorikk(historikk: HistorikkType[]) {
 
     const filtrertSortertHistorikk = historikk
         .filter(o => o.mal !== null)
-        .filter(o => o.fremtidigSituasjon !== '')
+        .filter(o => o.tekst !== '')
         .sort((a, b) => {
             const aDato = a.dato || new Date();
             const bDato = b.dato || new Date();
@@ -36,14 +36,14 @@ export function kombinerHistorikk(historikk: HistorikkType[]) {
 
     return filtrertSortertHistorikk.map((a, i) => {
             let forrigeMal = filtrertSortertHistorikk.slice(i + 1).find(o => !!o.mal) || {mal: ''};
-            let forrigeSituasjon = filtrertSortertHistorikk.slice(i + 1).find(o => !!o.fremtidigSituasjon) || {fremtidigSituasjon: HovedmalAlternativ.IKKE_OPPGITT};
+            let forrigeSituasjon = filtrertSortertHistorikk.slice(i + 1).find(o => !!o.tekst) || {tekst: HovedmalAlternativ.IKKE_OPPGITT};
 
-            const fremtidigSituasjon = a.fremtidigSituasjon ? a.fremtidigSituasjon : forrigeSituasjon.fremtidigSituasjon;
+            const tekst = a.tekst ? a.tekst : forrigeSituasjon.tekst;
             const mal = a.mal ? a.mal : forrigeMal.mal;
 
             return {
                 mal,
-                fremtidigSituasjon,
+                tekst,
                 endretAv: a.endretAv,
                 dato: a.dato
 

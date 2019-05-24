@@ -4,19 +4,19 @@ import { distanceInWordsToNow } from 'date-fns';
 import Element from 'nav-frontend-typografi/lib/element';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import noLocale  from 'date-fns/locale/nb';
-import { HovedmalAlternativ } from '../../registreringsinfo/Alternativer';
 
 interface HistorikkListeProps {
     element: HistorikkType;
 }
 function HistorikkElement (props: HistorikkListeProps) {
     const {element} = props;
-    const fremtidigSituasjon = !!element.fremtidigSituasjon
-        ? HovedmalAlternativ[element.fremtidigSituasjon || HovedmalAlternativ.IKKE_OPPGITT]
+    const tekst = !!element.tekst
+        ? element.tekst
         : '-';
     const mal = !!element.mal
         ? element.mal
         : '-';
+
     return (
         <div className="mal-historikk__liste-element">
             <div className="info typo-element">
@@ -26,8 +26,8 @@ function HistorikkElement (props: HistorikkListeProps) {
                 )} siden</span>
                 <span className="info__hvem">, skrevet av {element.endretAv}</span>
             </div>
-            <Element>Fremtidig situasjon</Element>
-            <Normaltekst className="tekst">{fremtidigSituasjon} </Normaltekst>
+            <Element>Mål</Element>
+            <Normaltekst className="tekst">{tekst} </Normaltekst>
             <Element>Forklaring og delmål</Element>
             <Normaltekst className="tekst">{mal}</Normaltekst>
         </div>

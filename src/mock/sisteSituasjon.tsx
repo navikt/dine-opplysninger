@@ -4,6 +4,7 @@ export const fremtidigSituasjon = {
     alternativId: 'NY_ARBEIDSGIVER',
     endretAv: 'BRUKER',
     dato: '2019-04-02T16:17:14.017+01:00',
+    tekst: 'Jeg skal tilbake til ny jobb'
 };
 
 const tomSituasjon = [
@@ -11,6 +12,7 @@ const tomSituasjon = [
         alternativId: '',
         endretAv: '',
         dato: '',
+        tekst: ''
     }
 ];
 
@@ -22,9 +24,10 @@ export function situasjonListe() {
     return situasjoner;
 }
 
-export function opprettSituasjon(body: { alternativId: string }) {
+export function opprettSituasjon(body: { alternativId: string, tekst: string }) {
     let nySituasjon = {
         alternativId: body.alternativId,
+        tekst: body.tekst,
         endretAv: 'BRUKER',
         dato: format(new Date()),
     };
