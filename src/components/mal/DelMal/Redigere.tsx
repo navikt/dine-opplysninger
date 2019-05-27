@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { teksterMaal } from '../tekster';
-import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import Textarea from 'nav-frontend-skjema/lib/textarea';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { KnappeGruppe } from '../Knappegruppe';
 import { oppdaterMal } from '../../../api/api';
 import Element from 'nav-frontend-typografi/lib/element';
 import Hjelpetekst from 'nav-frontend-hjelpetekst/lib/hjelpetekst';
+import GrunnPanel from '../../felleskomponenter/grunnPanel';
+import { Feilmelding } from '../../hensyn/jaNeiPanel';
 
 interface RedigerDelMalProps {
     malState: string;
@@ -31,12 +32,8 @@ const Redigere = (props: RedigerDelMalProps) => {
         feilProp = { feil: { feilmelding: teksterMaal.feilmelding} };
     }
 
-    if (feilIFetchData) {
-        return <Normaltekst>Det skjedde feil ved lagring. Last siden på nytt og prøv igjen.</Normaltekst>;
-    }
-
     return (
-        <>
+        <GrunnPanel className="del-mal redigere" border feil={feilIFetchData}>
             <div className="hjelpetekst-info">
                 <Hjelpetekst
                     id="hjelpetekst-maal"
@@ -60,7 +57,7 @@ const Redigere = (props: RedigerDelMalProps) => {
             <Textarea
                 textareaClass="typo-normal"
                 value={props.malState}
-                disabled={laster}
+                disabled={laster || feilIFetchData }
                 onChange={(e) => {
                     const mal = (e.target as HTMLInputElement).value;
                     oppdatererErMaksLengdeState(mal);
@@ -71,33 +68,36 @@ const Redigere = (props: RedigerDelMalProps) => {
                 maxLength={MALTEKST_MAKSLENGDE}
                 {...feilProp}
             />
-            {
-                laster
-                    ? <NavFrontendSpinner className="hoyre"/>
-                    : <KnappeGruppe
-                        onSave={() => {
-                            if (erMaksLengde) { return; }
 
-                            if (skalLagres) {
-                                setLaster(true);
-                                oppdaterMal(props.malState)
-                                    .then(() => {
-                                        props.setSkalEndreState(false);
-                                    })
-                                    .catch(() => {
-                                        setFeilIFetchData(true);
-                                    });
-                            } else {
+            { laster ? <NavFrontendSpinner className="hoyre"/> : null }
+            <Feilmelding vises={feilIFetchData}/>
+            <KnappeGruppe
+                onSave={() => {
+                    if (erMaksLengde) { return; }
+
+                    if (skalLagres) {
+                        setLaster(true);
+                        oppdaterMal(props.malState)
+                            .then(() => {
                                 props.setSkalEndreState(false);
-                            }
-                        }}
-                        onCancel={() => {
-                            props.setMalState(originalMal);
+                                setLaster(false);
+
+                            })
+                            .catch(() => {
+                                setFeilIFetchData(true);
+                                setLaster(false);
+
+                            });
+                        } else {
                             props.setSkalEndreState(false);
-                        }}
-                    />
-            }
-        </>
+                        }
+                    }}
+                    onCancel={() => {
+                        props.setMalState(originalMal);
+                        props.setSkalEndreState(false);
+                    }}
+                />
+        </GrunnPanel>
     );
 };
 
