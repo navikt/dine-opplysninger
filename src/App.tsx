@@ -6,6 +6,7 @@ import Mal from './components/mal/Mal';
 import EndreRegistreringerMock from './mock/EndreRegistreringerMock';
 import Brodsmuler from './components/brodsmuler/brodsmuler';
 import Hensyn from './components/hensyn/hensyn';
+import { TimeoutModal } from '@navikt/fo-session-timeout-modal'
 
 interface State {}
 
@@ -20,6 +21,7 @@ class App extends React.Component<AppProps, State> {
     render() {
         return (
             <AppProviders>
+                <TimeoutModal/>
                 <EndreRegistreringerMock/>
                 <Brodsmuler/>
                 <VeilederBanner/>
