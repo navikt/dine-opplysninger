@@ -1,14 +1,9 @@
 export function fetchData<T>(url: string, config = {}, errorHandler?: (response?: Response) => any): Promise<T> { // tslint:disable-line
     return fetch(url, config)
+        .then(sjekkStatuskode)
         .then(response => {
-            if (!response.ok) {
-                if (errorHandler) {
-                    return errorHandler(response);
-                }
-                throw new Error(response.statusText);
-            }
             if (response.status === 204) {
-                return Error(undefined);
+                return {};
             }
             return response.json();
         })
@@ -18,4 +13,17 @@ export function fetchData<T>(url: string, config = {}, errorHandler?: (response?
             }
             throw new Error(error);
         });
+}
+
+export function sjekkStatuskode(response: any) {
+
+    if (
+        response.status >= 200 &&
+        response.status < 300 &&
+        response.ok &&
+        !response.redirected
+    ) {
+        return response;
+    }
+    throw new Error(response.statusText || response.type);
 }
