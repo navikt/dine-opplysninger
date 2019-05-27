@@ -7,7 +7,7 @@ import NavFrontendSpinner from 'nav-frontend-spinner';
 import { KnappeGruppe } from '../Knappegruppe';
 import { oppdaterMal } from '../../../api/api';
 import Element from 'nav-frontend-typografi/lib/element';
-import Hjelpetekst from 'nav-frontend-hjelpetekst/lib/hjelpetekst';
+import { MalHjelpetekst } from './MalHjelpetekst';
 
 interface RedigerDelMalProps {
     malState: string;
@@ -37,26 +37,7 @@ const Redigere = (props: RedigerDelMalProps) => {
 
     return (
         <>
-            <div className="hjelpetekst-info">
-                <Hjelpetekst
-                    id="hjelpetekst-maal"
-                    type="midt"
-                    tittel="test"
-                >
-                    <span className="hjelpetekst-maal-tittel">Eksempler:</span>
-                    <span className="hjelpetekst-maal-list">
-                        <span className="hjelpetekst-maal-list-item">
-                            Jeg ønsker å ta fagbrev for å komme i fast jobb. For å klare dette må jeg først ta opp fag, så skaffe læringplass.
-                        </span>
-                        <span className="hjelpetekst-maal-list-item">
-                            Jeg ønsker å fortsette i jobben jeg har, men kan ikke jobbe mer enn 40%. For å klare dette må jeg snakke med arbeidsgiveren min og NAV om tilrettelegging.
-                        </span>
-                        <span className="hjelpetekst-maal-list-item">
-                            Jeg ønsker å jobbe med mennesker. Jeg trenger tilrettelegging på grunn av.... For å skaffe jobb kan jeg søke bredt og bruke nettverket mitt.
-                        </span>
-                    </span>
-                </Hjelpetekst>
-            </div>
+            <MalHjelpetekst/>
             <Textarea
                 textareaClass="typo-normal"
                 value={props.malState}
