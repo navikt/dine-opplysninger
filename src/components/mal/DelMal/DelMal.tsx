@@ -36,7 +36,7 @@ function DelMal () {
     return(
         <>
 
-            {skalEndreState ? <Redigere malState={malState} setMalState={setMalState} setSkalEndreState={setSkalEndreState}/> : null }
+            {skalEndreState ? <Redigere malState={malState} setMalState={setMalState} setSkalEndreState={setSkalEndreState}/> : null}
             {!skalEndreState ? <Vise malState={malState} setSkalEndreState={setSkalEndreState} fetchStatus={fetchState}/> : null}
 
         </>

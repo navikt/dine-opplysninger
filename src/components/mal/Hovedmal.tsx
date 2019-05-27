@@ -70,14 +70,14 @@ function Hovedmal () {
     }
 
     return (
-        <GrunnPanel className="hovedmal" border feil={fetchState === FetchStateTypes.FAILURE}>
+        <GrunnPanel className="hovedmal" border={true} feil={fetchState === FetchStateTypes.FAILURE}>
             <div className="typo-normal lenke-element endre-knapp-boks">
                 <div>
                     <strong>Mål: </strong>
 
                     <span>{HovedmalAlternativ[alternativState]}</span>
                 </div>
-                {fetchState === FetchStateTypes.LOADING ? <NavFrontendSpinner /> : null }
+                {fetchState === FetchStateTypes.LOADING ? <NavFrontendSpinner /> : null}
                 {fetchState === FetchStateTypes.OK ?
                     <LenkeKnapp id="btn-legg-til-situasjon" hidden={endreVisning} onClick={() => setSkalEndreState(!endreVisning)}>{knappeTekst}</LenkeKnapp> : null
                 }

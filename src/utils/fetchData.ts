@@ -15,6 +15,7 @@ export function fetchData<T>(url: string, config = {}, errorHandler?: (response?
         });
 }
 
+// tslint:disable-next-line
 export function sjekkStatuskode(response: any) {
 
     if (

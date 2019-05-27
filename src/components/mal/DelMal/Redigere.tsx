@@ -33,7 +33,7 @@ const Redigere = (props: RedigerDelMalProps) => {
     }
 
     return (
-        <GrunnPanel className="del-mal redigere" border feil={feilIFetchData}>
+        <GrunnPanel className="del-mal redigere" border={true} feil={feilIFetchData}>
             <div className="hjelpetekst-info">
                 <Hjelpetekst
                     id="hjelpetekst-maal"
@@ -57,7 +57,7 @@ const Redigere = (props: RedigerDelMalProps) => {
             <Textarea
                 textareaClass="typo-normal"
                 value={props.malState}
-                disabled={laster || feilIFetchData }
+                disabled={laster || feilIFetchData}
                 onChange={(e) => {
                     const mal = (e.target as HTMLInputElement).value;
                     oppdatererErMaksLengdeState(mal);
@@ -69,7 +69,7 @@ const Redigere = (props: RedigerDelMalProps) => {
                 {...feilProp}
             />
 
-            { laster ? <NavFrontendSpinner className="hoyre"/> : null }
+            {laster ? <NavFrontendSpinner className="hoyre"/> : null}
             <Feilmelding vises={feilIFetchData}/>
             <KnappeGruppe
                 onSave={() => {
@@ -92,11 +92,11 @@ const Redigere = (props: RedigerDelMalProps) => {
                             props.setSkalEndreState(false);
                         }
                     }}
-                    onCancel={() => {
-                        props.setMalState(originalMal);
-                        props.setSkalEndreState(false);
-                    }}
-                />
+                onCancel={() => {
+                    props.setMalState(originalMal);
+                    props.setSkalEndreState(false);
+                }}
+            />
         </GrunnPanel>
     );
 };

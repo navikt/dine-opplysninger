@@ -17,7 +17,7 @@ const Vise = (props: ViseProps) => {
     const { fetchStatus, malState } = props;
     const mal = malState.length === 0 ? teksterMaal.default : malState;
     return (
-        <GrunnPanel className="del-mal" border feil={fetchStatus === FetchStateTypes.FAILURE}>
+        <GrunnPanel className="del-mal" border={true} feil={fetchStatus === FetchStateTypes.FAILURE}>
             <Element className="del-mal-tittel">{teksterMaal.delMalTittel}</Element>
 
             {fetchStatus === FetchStateTypes.FAILURE ?
@@ -34,7 +34,8 @@ const Vise = (props: ViseProps) => {
                     <div className="knappegruppe">
                         <button
                             className="typo-element lenke-knapp"
-                            onClick={() => props.setSkalEndreState(true)}>
+                            onClick={() => props.setSkalEndreState(true)}
+                        >
                             Endre
                         </button>
                     </div>
