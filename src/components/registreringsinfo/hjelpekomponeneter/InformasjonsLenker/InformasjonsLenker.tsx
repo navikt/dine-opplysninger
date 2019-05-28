@@ -3,6 +3,7 @@ import CvIkon from './svg/cv';
 import JobbprofilIkon from './svg/jobbprofil';
 import MotereferatIkon from './svg/motereferat';
 import SykfravarIkon from './svg/sykfravar';
+import DialogIkon from './svg/dialog';
 import './InformasjonsLenker.less';
 import LenkeMedInfo from './LenkeMedInfo';
 import { SYKMELDT } from '../../../../datatyper/registreringData';
@@ -42,6 +43,14 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 beskrivelse="Sykemeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt."
                 lenketekst="Gå til ditt sykefravær"
                 lenke="/sykefravaer"
+            />
+            <LenkeMedInfo
+                visible={true}
+                ikon={<DialogIkon/>}
+                tittel="Dialog"
+                beskrivelse="Meldingene mellom deg og veilederen din."
+                lenketekst="Gå til dialog"
+                lenke="/aktivitetsplan/dialog"
             />
         </ul>
     );
