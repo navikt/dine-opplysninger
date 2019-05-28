@@ -28,7 +28,6 @@ const loggingMiddleware: Middleware = (request, response) => {
     }
 
     console.groupEnd();
-    // tslint:enable
     return response;
 };
 
@@ -39,6 +38,18 @@ const mock = FetchMock.configure({
         loggingMiddleware
     )
 });
+/*
+const noContent = ResponseUtils.statusCode(204);
+const internalServerError = ResponseUtils.combine(ResponseUtils.statusCode(500), ResponseUtils.json({
+    "id": "9170c6534ed5eca272d527cd30c6a458",
+    "type": "UKJENT",
+    "detaljer": {
+        "detaljertType": "javax.ws.rs.InternalServerErrorException",
+        "feilMelding": "HTTP 500 Internal Server Error",
+        "stackTrace": "javax.ws.rs.InternalServerErrorException: HTTP 500 Internal Server Error\r\n\t"
+    }
+}));
+*/
 const DELAY = 500;
 mock.get('/veilarbregistrering/api/registrering', ResponseUtils.delayed(DELAY, Registrering));
 // Mock med 204 respons

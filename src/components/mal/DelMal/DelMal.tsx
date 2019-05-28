@@ -1,13 +1,10 @@
 import * as React from 'react';
-import './DelMal.less';
 import { useEffect, useState } from 'react';
+import './DelMal.less';
 import { hentMal } from '../../../api/api';
-import { teksterMaal } from '../tekster';
 import Vise from './Vise';
 import Redigere from './Redigere';
-import { Normaltekst } from 'nav-frontend-typografi';
-import Element from 'nav-frontend-typografi/lib/element';
-import GrunnPanel from '../../felleskomponenter/grunnPanel';
+import { FetchStateTypes } from '../Hovedmal';
 
 export interface MalType {
     mal: string | null;
@@ -19,42 +16,30 @@ function DelMal () {
     const modus = new URL(window.location.href).searchParams.get('modus');
 
     const [malState, setMalState] = useState('');
-    const [laster, setLaster] = useState(true);
-    const [feilState, setFeilState] = useState(false);
     const [skalEndreState, setSkalEndreState] = useState(modus === 'rediger');
+    const [fetchState, setFetchState] = useState(FetchStateTypes.OK);
 
     useEffect(() => {
+        setFetchState(FetchStateTypes.LOADING);
         hentMal()
             .then((res: MalType) => {
                 if (!!res.mal) {
                     setMalState(res.mal);
                 }
-                setLaster(false);
+                setFetchState(FetchStateTypes.OK);
             })
             .catch(() => {
-                setFeilState(true);
+                setFetchState(FetchStateTypes.FAILURE);
             });
     }, []);
 
-    if (feilState) {
-        return (
-            <div className="del-mal">
-                <Element className="del-mal-tittel">{teksterMaal.delMalTittel}</Element>
-                <Normaltekst>Feil ved henting av forklaring og delmål. Prøv igjen på nytt.</Normaltekst>
-            </div>
-        );
-    }
-
     return(
-        <GrunnPanel className="del-mal" border={true}>
-            {
-                !skalEndreState
-                    ?
-                    <Vise malState={malState} setSkalEndreState={setSkalEndreState} laster={laster}/>
-                    :
-                    <Redigere malState={malState} setMalState={setMalState} setSkalEndreState={setSkalEndreState}/>
-            }
-        </GrunnPanel>
+        <>
+
+            {skalEndreState ? <Redigere malState={malState} setMalState={setMalState} setSkalEndreState={setSkalEndreState}/> : null}
+            {!skalEndreState ? <Vise malState={malState} setSkalEndreState={setSkalEndreState} fetchStatus={fetchState}/> : null}
+
+        </>
     );
 }
 
