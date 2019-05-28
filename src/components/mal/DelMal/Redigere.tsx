@@ -6,15 +6,16 @@ import NavFrontendSpinner from 'nav-frontend-spinner';
 import { KnappeGruppe } from '../Knappegruppe';
 import { oppdaterMal } from '../../../api/api';
 import Element from 'nav-frontend-typografi/lib/element';
-import Hjelpetekst from 'nav-frontend-hjelpetekst/lib/hjelpetekst';
-import GrunnPanel from '../../felleskomponenter/grunnPanel';
+import { MalHjelpetekst } from './MalHjelpetekst';
 import { Feilmelding } from '../../hensyn/jaNeiPanel';
+import GrunnPanel from '../../felleskomponenter/grunnPanel';
 
 interface RedigerDelMalProps {
     malState: string;
     setMalState: Dispatch<SetStateAction<string>>;
     setSkalEndreState: Dispatch<SetStateAction<boolean>>;
 }
+
 const MALTEKST_MAKSLENGDE = 500;
 
 const Redigere = (props: RedigerDelMalProps) => {
@@ -34,26 +35,7 @@ const Redigere = (props: RedigerDelMalProps) => {
 
     return (
         <GrunnPanel className="del-mal redigere" border={true} feil={feilIFetchData}>
-            <div className="hjelpetekst-info">
-                <Hjelpetekst
-                    id="hjelpetekst-maal"
-                    type="midt"
-                    tittel="test"
-                >
-                    <span className="hjelpetekst-maal-tittel">Eksempler:</span>
-                    <span className="hjelpetekst-maal-list">
-                        <span className="hjelpetekst-maal-list-item">
-                            Jeg ønsker å ta fagbrev for å komme i fast jobb. For å klare dette må jeg først ta opp fag, så skaffe læringplass.
-                        </span>
-                        <span className="hjelpetekst-maal-list-item">
-                            Jeg ønsker å fortsette i jobben jeg har, men kan ikke jobbe mer enn 40%. For å klare dette må jeg snakke med arbeidsgiveren min og NAV om tilrettelegging.
-                        </span>
-                        <span className="hjelpetekst-maal-list-item">
-                            Jeg ønsker å jobbe med mennesker. Jeg trenger tilrettelegging på grunn av.... For å skaffe jobb kan jeg søke bredt og bruke nettverket mitt.
-                        </span>
-                    </span>
-                </Hjelpetekst>
-            </div>
+            <MalHjelpetekst/>
             <Textarea
                 textareaClass="typo-normal"
                 value={props.malState}

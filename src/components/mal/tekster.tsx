@@ -1,5 +1,5 @@
 export const teksterMaal = {
-    default: 'Du har ikke skrevet hva målet ditt er. Beskriv målet ditt, gjerne både kortsiktige og langsiktige mål og hva slags arbeidsoppgaver du ønsker deg.',
+    default: 'Her kan du beskrive målet ditt. Si litt om hva som skal til for å nå målet.',
     feilmelding: 'Du må korte ned teksten til 500 tegn',
-    delMalTittel: 'Forklaring og delmål',
+    delMalTittel: 'Beskriv målet ditt',
 };
