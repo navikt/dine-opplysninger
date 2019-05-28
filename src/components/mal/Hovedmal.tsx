@@ -8,8 +8,9 @@ import { hentHovedmal, oppdaterHovedmal } from '../../api/api';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import GrunnPanel from '../felleskomponenter/grunnPanel';
 import LenkeKnapp from '../felleskomponenter/lenkeknap';
+import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 
-enum FetchStateTypes {
+export enum FetchStateTypes {
     LOADING,
     FAILURE,
     OK
@@ -47,6 +48,9 @@ function Hovedmal () {
                 setSkalEndreState(false);
                 setSituasjonState(situasjon.alternativId);
                 setFetchState(FetchStateTypes.OK);
+            })
+            .catch(() => {
+                setFetchState(FetchStateTypes.FAILURE);
             });
     }
 
@@ -66,17 +70,18 @@ function Hovedmal () {
     }
 
     return (
-        <GrunnPanel className="hovedmal" border={true}>
+        <GrunnPanel className="hovedmal" border={true} feil={fetchState === FetchStateTypes.FAILURE}>
             <div className="typo-normal lenke-element endre-knapp-boks">
                 <div>
                     <strong>Mål: </strong>
 
                     <span>{HovedmalAlternativ[alternativState]}</span>
                 </div>
-                {fetchState !== FetchStateTypes.OK ?
-                    <NavFrontendSpinner /> :
-                    <LenkeKnapp id="btn-legg-til-situasjon" hidden={endreVisning} onClick={() => setSkalEndreState(!endreVisning)}>{knappeTekst}</LenkeKnapp>
+                {fetchState === FetchStateTypes.LOADING ? <NavFrontendSpinner /> : null}
+                {fetchState === FetchStateTypes.OK ?
+                    <LenkeKnapp id="btn-legg-til-situasjon" hidden={endreVisning} onClick={() => setSkalEndreState(!endreVisning)}>{knappeTekst}</LenkeKnapp> : null
                 }
+                {fetchState === FetchStateTypes.FAILURE ? <Normaltekst className="feil">Systemet er nede, prøv igjen senere</Normaltekst> : null}
             </div>
             {fetchState === FetchStateTypes.OK ?
                 visInnhold()

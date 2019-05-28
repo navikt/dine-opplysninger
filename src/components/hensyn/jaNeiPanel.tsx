@@ -9,7 +9,7 @@ import { JaNeiIkke } from '../../datatyper/situasjon';
 
 const brukerstoteURL = 'https://www.nav.no/398761/kontakt-teknisk-brukerst%C3%B8tte-nav.no';
 
-function Feilmelding(props: { vises: boolean }) {
+export function Feilmelding(props: { vises: boolean }) {
     return (
         <div hidden={!props.vises} role="alert" className="grunnpanel feiltekst">
             <Normaltekst>
