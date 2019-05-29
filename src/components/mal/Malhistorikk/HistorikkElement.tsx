@@ -25,7 +25,6 @@ function HistorikkElement (props: HistorikkListeProps) {
                     new Date(element.dato || new Date()),
                     {includeSeconds: true, locale: noLocale},
                 )} siden</span>
-                <span className="info__hvem">, skrevet av {element.endretAv}</span>
             </div>
             <Element>Mål</Element>
             <Normaltekst className="tekst">{tekst} </Normaltekst>
