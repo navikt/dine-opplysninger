@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { teksterMaal } from '../tekster';
 import Textarea from 'nav-frontend-skjema/lib/textarea';
 import NavFrontendSpinner from 'nav-frontend-spinner';
@@ -9,6 +9,8 @@ import Element from 'nav-frontend-typografi/lib/element';
 import Hjelpetekst from 'nav-frontend-hjelpetekst/lib/hjelpetekst';
 import GrunnPanel from '../../felleskomponenter/grunnPanel';
 import { Feilmelding } from '../../hensyn/jaNeiPanel';
+import { loggEndretDelmal, loggFeilTilBruker } from '../../../metrikker/frontendlogger';
+import { RegistreringDataContext } from '../../../context/registreringData/RegistreringDataProvider';
 
 interface RedigerDelMalProps {
     malState: string;
@@ -23,6 +25,7 @@ const Redigere = (props: RedigerDelMalProps) => {
     const [originalMal] = useState(props.malState);
     const [laster, setLaster] = useState(false);
     const [feilIFetchData, setFeilIFetchData] = useState(false);
+    const registreringsData = useContext(RegistreringDataContext);
 
     const oppdatererErMaksLengdeState = (mal: string) => mal.length > MALTEKST_MAKSLENGDE ? setErMaksLengde(true) : setErMaksLengde(false);
     const oppdatererSkalLagresState = (mal: string) => mal.trim() === props.malState.trim() ? setSkalLagres(false) : setSkalLagres(true);
@@ -81,11 +84,13 @@ const Redigere = (props: RedigerDelMalProps) => {
                             .then(() => {
                                 props.setSkalEndreState(false);
                                 setLaster(false);
+                                loggEndretDelmal(registreringsData.type);
 
                             })
                             .catch(() => {
                                 setFeilIFetchData(true);
                                 setLaster(false);
+                                loggFeilTilBruker('oppdaterMal');
 
                             });
                         } else {
