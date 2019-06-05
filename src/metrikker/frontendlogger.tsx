@@ -1,5 +1,6 @@
 import { RegistreringDataType } from '../datatyper/registreringData';
 import { HensynType } from '../datatyper/situasjon';
+import { loggTidBruktFraRegistreringTilForsteEndring } from './utils';
 
 export interface Frontendlogger {
     event: (name: string, fields: object, tags: object) => void;
@@ -28,18 +29,22 @@ export function loggLenkeKlikk(value: string) {
 }
 
 export function loggEndretHovedMal(registrering: RegistreringDataType, fra: string, til: string) {
+    loggTidBruktFraRegistreringTilForsteEndring(registrering);
     frontendLogger('infoommeg.endreHovedmal', undefined, constructLoggerItem(registrering, fra, til));
 }
 
 export function loggEndretDelmal(registrering: string) {
+    loggTidBruktFraRegistreringTilForsteEndring(registrering);
     frontendLogger('infoommeg.endreDelmal', undefined, {'registreringstype': registrering});
 }
 
 export function loggEndretHelsehinder(registrering: RegistreringDataType, fra: HensynType | undefined, til: string) {
+    loggTidBruktFraRegistreringTilForsteEndring(registrering);
     frontendLogger('infoommeg.endreHelsehinder', undefined, constructLoggerItem(registrering, fra!.verdi, til));
 }
 
 export function loggEndretAndrehinder(registrering: RegistreringDataType, fra: HensynType | undefined, til: string) {
+    loggTidBruktFraRegistreringTilForsteEndring(registrering);
     frontendLogger('infoommeg.endreAndrehinder', undefined, constructLoggerItem(registrering, fra!.verdi, til));
 }
 
