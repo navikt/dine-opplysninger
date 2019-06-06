@@ -8,15 +8,19 @@ export const loggTidBruktFraRegistreringTilForsteEndring = (function () {
             if (!called) {
                 called = true;
                 if (erAlleredeEndret(registrering, sisteSituasjon)) {
-                    const tidBruktIDager = Math.ceil(
-                        Math.abs(new Date(registrering.registrering.opprettetDato).getTime() - new Date().getTime()) / (1000 * 3600 * 24)
-                    );
+                    const tidBruktIDager = diffIDagerFraDatoTilNaa(registrering.registrering.opprettetDato);
                     frontendLogger('infoommeg.tidBruktFraRegistreringTilEndring', undefined, {tidBruktIDager});
                 }
             }
         };
     }
 )();
+
+export function diffIDagerFraDatoTilNaa(fraDato: string) {
+    return Math.ceil(
+        Math.abs(new Date(fraDato).getTime() - new Date().getTime()) / (1000 * 3600 * 24)
+    );
+}
 
 function erAlleredeEndret(registrering: RegistreringDataType, sisteSituasjon: SisteSituasjon) {
     let erEndret = false;
