@@ -10,7 +10,7 @@ import GrunnPanel from '../felleskomponenter/grunnPanel';
 import LenkeKnapp from '../felleskomponenter/lenkeknap';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import { loggEndretHovedMal, loggFeilTilBruker } from '../../metrikker/frontendlogger';
-import { RegistreringDataContext } from '../../context/registreringData/RegistreringDataProvider';
+import { RegistreringDataContext, SisteSituasjonContext } from '../../context/registreringData/RegistreringDataProvider';
 
 export enum FetchStateTypes {
     LOADING,
@@ -20,6 +20,7 @@ export enum FetchStateTypes {
 
 function Hovedmal () {
     const registreringsData = useContext(RegistreringDataContext);
+    const sisteSituasjon = useContext(SisteSituasjonContext);
     const modus = new URL(window.location.href).searchParams.get('modus');
     const [endreVisning, setSkalEndreState] = useState(modus === 'rediger');
     const [alternativState, setSituasjonState] = useState(HovedmalAlternativ.IKKE_OPPGITT);
@@ -51,7 +52,7 @@ function Hovedmal () {
                 setSkalEndreState(false);
                 setSituasjonState(situasjon.alternativId);
                 setFetchState(FetchStateTypes.OK);
-                loggEndretHovedMal(registreringsData, alternativState, situasjon.alternativId);
+                loggEndretHovedMal(registreringsData, alternativState, situasjon.alternativId, sisteSituasjon);
             })
             .catch(() => {
                 setFetchState(FetchStateTypes.FAILURE);
