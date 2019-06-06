@@ -7,7 +7,7 @@ function MalBanner () {
         <div className="mal-banner">
             <InfoSvg/>
             <Normaltekst className="mal-banner-beskrivelse">
-                Beskriv målet ditt og hva du mener må til for å nå det. Da kan veilederen din gi deg riktigere veiledning.
+                Legg til målet ditt, slik at vi kan veilede deg bedre.
             </Normaltekst>
         </div>
     );

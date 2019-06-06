@@ -3,6 +3,7 @@ import CvIkon from './svg/cv';
 import JobbprofilIkon from './svg/jobbprofil';
 import MotereferatIkon from './svg/motereferat';
 import SykfravarIkon from './svg/sykfravar';
+import DialogIkon from './svg/dialog';
 import './InformasjonsLenker.less';
 import LenkeMedInfo from './LenkeMedInfo';
 import { SYKMELDT } from '../../../../datatyper/registreringData';
@@ -15,7 +16,7 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 visible={skalViseCvOgJobbprofil}
                 ikon={<CvIkon/>}
                 tittel="CV"
-                beskrivelse="Hold opplysningene oppdatert for å få riktig veiledning."
+                beskrivelse="Hold CV-en oppdatert."
                 lenketekst="Gå til din CV"
                 lenke="https://arbeidsplassen.nav.no/cv"
             />
@@ -23,7 +24,7 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 visible={skalViseCvOgJobbprofil}
                 ikon={<JobbprofilIkon/>}
                 tittel="Jobbprofil"
-                beskrivelse="Legg inn ønsker og krav for fremtidige jobber."
+                beskrivelse="Legg inn jobbønsker."
                 lenketekst="Gå til din jobbprofil"
                 lenke="https://arbeidsplassen.nav.no"
             />
@@ -39,9 +40,17 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 visible={props.type === SYKMELDT}
                 ikon={<SykfravarIkon/>}
                 tittel="Ditt sykefravær"
-                beskrivelse="Sykemeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt."
+                beskrivelse="Referater fra møter mellom deg og veilederen din."
                 lenketekst="Gå til ditt sykefravær"
                 lenke="/sykefravaer"
+            />
+            <LenkeMedInfo
+                visible={true}
+                ikon={<DialogIkon/>}
+                tittel="Dialog"
+                beskrivelse="Meldingene mellom deg og veilederen din."
+                lenketekst="Gå til dialog"
+                lenke="/aktivitetsplan/dialog"
             />
         </ul>
     );

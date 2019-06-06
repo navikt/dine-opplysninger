@@ -4,6 +4,7 @@ import { distanceInWordsToNow } from 'date-fns';
 import Element from 'nav-frontend-typografi/lib/element';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import noLocale  from 'date-fns/locale/nb';
+import { teksterMaal } from '../tekster';
 
 interface HistorikkListeProps {
     element: HistorikkType;
@@ -24,11 +25,10 @@ function HistorikkElement (props: HistorikkListeProps) {
                     new Date(element.dato || new Date()),
                     {includeSeconds: true, locale: noLocale},
                 )} siden</span>
-                <span className="info__hvem">, skrevet av {element.endretAv}</span>
             </div>
             <Element>Mål</Element>
             <Normaltekst className="tekst">{tekst} </Normaltekst>
-            <Element>Forklaring og delmål</Element>
+            <Element>{teksterMaal.delMalTittel}</Element>
             <Normaltekst className="tekst">{mal}</Normaltekst>
         </div>
     );

@@ -11,7 +11,7 @@ function VeilederBanner () {
                 kompakt={true}
                 svg={<img src={veilederSvg}/>}
             >
-                Her er en oversikt over informasjonen veilederen din bruker for å vurdere behovene dine for veiledning. Du bør holde den oppdatert for å få riktig oppfølging.
+                Veilederen din bruker opplysningene under for å vurdere hvor mye veiledning du trenger. Sørg derfor for at opplysningene er oppdaterte.
             </Veilederpanel>
         </div>
     );

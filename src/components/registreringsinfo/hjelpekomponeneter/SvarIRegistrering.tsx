@@ -41,11 +41,11 @@ export default function SvarIRegistrering(props: {registrering: RegistreringsTyp
 
     return (
         <section className="svar-i-registrering">
-            <Element tag="h2" className="svar-i-registrering__tittel">  Svar fra registrering  </Element>
+            <Element tag="h2" className="svar-i-registrering__tittel">  Opplysninger fra registeringen din  </Element>
             <Normaltekst className="svar-i-registrering__beskrivelse">
-                Opplysningene du registrerte {opprettet}
+                Her er opplysningene du registrerte {opprettet}
             </Normaltekst>
-            <Lesmerpanel lukkTekst="" apneTekst="Se besvarelsen din">
+            <Lesmerpanel lukkTekst="" apneTekst="Se opplysningene ">
                 <ul className="svar-i-registrering__liste">
                     {
                         teksterForBesvarelse
@@ -55,8 +55,7 @@ export default function SvarIRegistrering(props: {registrering: RegistreringsTyp
                     <SisteStilingLinje sisteStilling={props.registrering.sisteStilling}/>
                 </ul>
                 <Normaltekst className="kontaktVeileder">
-                    Du bør informere veilederen din dersom situasjonen din endrer seg. <br />
-                    Du kan endre her eller i <a href="/aktivitetsplan/dialog/ny" className="lenke">dialogen med veileder.</a>
+                    <a href="/aktivitetsplan/dialog/ny" className="lenke">Gi beskjed til veilederen din</a> hvis situasjonen din endrer seg
                 </Normaltekst>
             </Lesmerpanel>
         </section>

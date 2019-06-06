@@ -3,13 +3,11 @@ import Lenke from 'nav-frontend-lenker';
 import personSvg from './person.svg';
 import './brodsmuler.less';
 import { registreringDataContextConsumerHoc } from '../../context/registreringData/RegistreringDataProvider';
-import { ORDINAER, RegistreringDataType } from '../../datatyper/registreringData';
 
 const DITTNAV_PATH = '/dittnav';
 const VEIENTILARBEID_PATH = '/veientilarbeid';
 
-const Brodsmuler = (props: RegistreringDataType) => {
-    const {type} = props;
+const Brodsmuler = () => {
     return (
         <div className="brodsmuler">
             <img src={personSvg} className="brodsmuler__illustrasjon"/>
@@ -21,15 +19,11 @@ const Brodsmuler = (props: RegistreringDataType) => {
                 </li>
                 <li className="brodsmuler__item">
                     <Lenke href={VEIENTILARBEID_PATH}>
-                        {
-                            type === ORDINAER
-                                ? 'Veien til arbeid'
-                                : 'Veiledning'
-                        }
+                        Veien til arbeid
                     </Lenke>
                 </li>
                 <li className="brodsmuler__item">
-                    Veiledningsinformasjon
+                    Dine opplysninger
                 </li>
             </ol>
         </div>
