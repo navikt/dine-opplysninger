@@ -18,7 +18,7 @@ function Hensyn() {
                 titel="Helseproblemer"
                 start={initHelseproblemer}
                 onSave={(svar) => {
-                    loggEndretHelsehinder(registreringsData, sisteSituasjon.helseHinder, svar);
+                    loggEndretHelsehinder(registreringsData, sisteSituasjon.helseHinder, svar, sisteSituasjon);
                     return oppdaterHelseHinder(svar);
                 }}
             />
@@ -26,7 +26,7 @@ function Hensyn() {
                 titel="Andre problemer"
                 start={initAndreproblemer}
                 onSave={(svar) => {
-                    loggEndretAndrehinder(registreringsData, sisteSituasjon.andreHinder, svar);
+                    loggEndretAndrehinder(registreringsData, sisteSituasjon.andreHinder, svar, sisteSituasjon);
                     return oppdaterAndreHinder(svar);
                 }}
             />

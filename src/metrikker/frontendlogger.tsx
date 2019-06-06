@@ -1,5 +1,5 @@
 import { RegistreringDataType } from '../datatyper/registreringData';
-import { HensynType } from '../datatyper/situasjon';
+import { HensynType, SisteSituasjon } from '../datatyper/situasjon';
 import { loggTidBruktFraRegistreringTilForsteEndring } from './utils';
 
 export interface Frontendlogger {
@@ -28,23 +28,22 @@ export function loggLenkeKlikk(value: string) {
     frontendLogger('infoommeg.lenkeklikk', undefined, {'lenketittel': value});
 }
 
-export function loggEndretHovedMal(registrering: RegistreringDataType, fra: string, til: string) {
-    loggTidBruktFraRegistreringTilForsteEndring(registrering);
+export function loggEndretHovedMal(registrering: RegistreringDataType, fra: string, til: string, sisteSituasjon: SisteSituasjon) {
+    loggTidBruktFraRegistreringTilForsteEndring(registrering, sisteSituasjon);
     frontendLogger('infoommeg.endreHovedmal', undefined, constructLoggerItem(registrering, fra, til));
 }
 
 export function loggEndretDelmal(registrering: string) {
-    loggTidBruktFraRegistreringTilForsteEndring(registrering);
     frontendLogger('infoommeg.endreDelmal', undefined, {'registreringstype': registrering});
 }
 
-export function loggEndretHelsehinder(registrering: RegistreringDataType, fra: HensynType | undefined, til: string) {
-    loggTidBruktFraRegistreringTilForsteEndring(registrering);
+export function loggEndretHelsehinder(registrering: RegistreringDataType, fra: HensynType | undefined, til: string, sisteSituasjon: SisteSituasjon) {
+    loggTidBruktFraRegistreringTilForsteEndring(registrering, sisteSituasjon);
     frontendLogger('infoommeg.endreHelsehinder', undefined, constructLoggerItem(registrering, fra!.verdi, til));
 }
 
-export function loggEndretAndrehinder(registrering: RegistreringDataType, fra: HensynType | undefined, til: string) {
-    loggTidBruktFraRegistreringTilForsteEndring(registrering);
+export function loggEndretAndrehinder(registrering: RegistreringDataType, fra: HensynType | undefined, til: string, sisteSituasjon: SisteSituasjon) {
+    loggTidBruktFraRegistreringTilForsteEndring(registrering, sisteSituasjon);
     frontendLogger('infoommeg.endreAndrehinder', undefined, constructLoggerItem(registrering, fra!.verdi, til));
 }
 

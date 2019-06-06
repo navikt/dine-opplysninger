@@ -11,7 +11,7 @@ const OrdinaerHarMistetJobben = {
     'registrering': {
         'manueltRegistrertAv': null,
         'id': 1287,
-        'opprettetDato': '2019-03-28T09:59:04.634592+01:00',
+        'opprettetDato': '2019-06-05T11:51:26.206342+02:00',
         'besvarelse': {
             'utdanning': 'HOYERE_UTDANNING_5_ELLER_MER',
             'utdanningBestatt': 'NEI',
@@ -84,7 +84,7 @@ const OrdinaerMistetJobbenIngenUtdanning = {
             }
         },
         'id': 1282,
-        'opprettetDato': '2019-03-27T08:54:52.485711+01:00',
+        'opprettetDato': '2019-06-05T11:51:26.206342+02:00',
         'besvarelse': {
             'utdanning': 'INGEN_UTDANNING',
             'utdanningBestatt': 'INGEN_SVAR',
@@ -151,7 +151,7 @@ const OrdinaerHarJobbOnskerFortsette = {
     'registrering': {
         'manueltRegistrertAv': null,
         'id': 1295,
-        'opprettetDato': '2019-03-28T16:30:56.161891+01:00',
+        'opprettetDato': '2019-06-05T11:51:26.206342+02:00',
         'besvarelse': {
             'utdanning': 'INGEN_SVAR',
             'utdanningBestatt': 'INGEN_SVAR',
@@ -224,7 +224,7 @@ const SykmeldtSammeArbeidsgiverFullStilling = {
     'registrering': {
         'manueltRegistrertAv': null,
         'id': 92,
-        'opprettetDato': '2018-12-07T10:12:37.510892+01:00',
+        'opprettetDato': '2019-06-05T11:51:26.206342+02:00',
         'besvarelse': {
             'utdanning': null,
             'utdanningBestatt': null,
@@ -256,7 +256,7 @@ const SykmeldtNyArbeidsgiverIngenUtdanning = {
     'registrering': {
         'manueltRegistrertAv': null,
         'id': 204,
-        'opprettetDato': '2019-01-22T13:00:40.151411+01:00',
+        'opprettetDato': '2019-06-05T11:51:26.206342+02:00',
         'besvarelse': {
             'utdanning': 'INGEN_UTDANNING',
             'utdanningBestatt': 'INGEN_SVAR',
@@ -303,7 +303,7 @@ const SykmeldtUsikker = {
     'registrering': {
         'manueltRegistrertAv': null,
         'id': 262,
-        'opprettetDato': '2019-03-25T13:35:42.341968+01:00',
+        'opprettetDato': '2019-06-05T11:51:26.206342+02:00',
         'besvarelse': {
             'utdanning': 'INGEN_UTDANNING',
             'utdanningBestatt': 'INGEN_SVAR',
@@ -350,7 +350,7 @@ const SykmeldtIngenPasser = {
     'registrering': {
         'manueltRegistrertAv': null,
         'id': 105,
-        'opprettetDato': '2018-12-10T20:54:29.394719+01:00',
+        'opprettetDato': '2019-06-05T11:51:26.206342+02:00',
         'besvarelse': {
             'utdanning': null,
             'utdanningBestatt': null,
