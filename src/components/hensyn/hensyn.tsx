@@ -5,7 +5,7 @@ import { RegistreringDataContext, SisteSituasjonContext, } from '../../context/r
 import { oppdaterAndreHinder, oppdaterHelseHinder } from '../../api/api';
 import JaNeiPanel from './jaNeiPanel';
 import { JaNeiIkke } from '../../datatyper/situasjon';
-import { loggEndretAndrehinder, loggEndretHelsehinder } from '../../metrikker/frontendlogger';
+import { INFOOMMEG_ENDREANDREHINDER, INFOOMMEG_ENDREHELSEHINDER, loggEndret } from '../../metrikker/frontendlogger';
 
 function Hensyn() {
     const sisteSituasjon = useContext(SisteSituasjonContext);
@@ -18,7 +18,7 @@ function Hensyn() {
                 titel="Helseproblemer"
                 start={initHelseproblemer}
                 onSave={(svar) => {
-                    loggEndretHelsehinder(registreringsData, sisteSituasjon.helseHinder, svar, sisteSituasjon);
+                    loggEndret(INFOOMMEG_ENDREHELSEHINDER, registreringsData, sisteSituasjon.helseHinder, svar, sisteSituasjon);
                     return oppdaterHelseHinder(svar);
                 }}
             />
@@ -26,7 +26,8 @@ function Hensyn() {
                 titel="Andre problemer"
                 start={initAndreproblemer}
                 onSave={(svar) => {
-                    loggEndretAndrehinder(registreringsData, sisteSituasjon.andreHinder, svar, sisteSituasjon);
+                    loggEndret(INFOOMMEG_ENDREANDREHINDER, registreringsData, sisteSituasjon.andreHinder, svar, sisteSituasjon);
+
                     return oppdaterAndreHinder(svar);
                 }}
             />

@@ -7,6 +7,7 @@ import EndreRegistreringerMock from './mock/EndreRegistreringerMock';
 import Brodsmuler from './components/brodsmuler/brodsmuler';
 import Hensyn from './components/hensyn/hensyn';
 import { TimeoutModal } from '@navikt/fo-session-timeout-modal';
+import { loggAntallBesokPaaSiden } from './metrikker/frontendlogger';
 
 interface State {}
 
@@ -16,6 +17,7 @@ class App extends React.Component<AppProps, State> {
 
     constructor(props: AppProps) {
         super(props);
+        loggAntallBesokPaaSiden();
     }
 
     render() {

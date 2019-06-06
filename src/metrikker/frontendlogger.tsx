@@ -2,6 +2,9 @@ import { RegistreringDataType } from '../datatyper/registreringData';
 import { HensynType, SisteSituasjon } from '../datatyper/situasjon';
 import { diffIDagerFraDatoTilNaa, loggTidBruktFraRegistreringTilForsteEndring } from './utils';
 
+export const INFOOMMEG_ENDREHELSEHINDER = 'infoommeg.endreHelsehinder';
+export const INFOOMMEG_ENDREANDREHINDER = 'infoommeg.endreAndrehinder';
+
 export interface Frontendlogger {
     event: (name: string, fields: object, tags: object) => void;
 }
@@ -40,20 +43,17 @@ export function loggEndretDelmal(registrering: string) {
     frontendLogger('infoommeg.endreDelmal', undefined, {'registreringstype': registrering});
 }
 
-export function loggEndretHelsehinder(registrering: RegistreringDataType, fra: HensynType | undefined, til: string, sisteSituasjon: SisteSituasjon) {
+export function loggEndret(eventNavn: string, registrering: RegistreringDataType, fra: HensynType | undefined, til: string, sisteSituasjon: SisteSituasjon) {
     const antallDagerFraForrigeEndring = diffIDagerFraDatoTilNaa(sisteSituasjon.helseHinder!.dato);
 
     loggTidBruktFraRegistreringTilForsteEndring(registrering, sisteSituasjon);
-    frontendLogger('infoommeg.endreHelsehinder', undefined, constructLoggerItem(registrering, fra!.verdi, til, antallDagerFraForrigeEndring));
-}
-
-export function loggEndretAndrehinder(registrering: RegistreringDataType, fra: HensynType | undefined, til: string, sisteSituasjon: SisteSituasjon) {
-    const antallDagerFraForrigeEndring = diffIDagerFraDatoTilNaa(sisteSituasjon.helseHinder!.dato);
-
-    loggTidBruktFraRegistreringTilForsteEndring(registrering, sisteSituasjon);
-    frontendLogger('infoommeg.endreAndrehinder', undefined, constructLoggerItem(registrering, fra!.verdi, til, antallDagerFraForrigeEndring));
+    frontendLogger(eventNavn, undefined, constructLoggerItem(registrering, fra!.verdi, til, antallDagerFraForrigeEndring));
 }
 
 export function loggFeilTilBruker(value: string) {
     frontendLogger('infoommeg.aksjonfeilet', undefined, {'aksjonstype': value});
+}
+
+export function loggAntallBesokPaaSiden() {
+    frontendLogger('infoommeg.antall.besok', undefined, {});
 }
