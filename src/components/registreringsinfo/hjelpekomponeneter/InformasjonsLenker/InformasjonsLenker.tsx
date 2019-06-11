@@ -32,7 +32,7 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 visible={true}
                 ikon={<MotereferatIkon/>}
                 tittel="Møtereferater"
-                beskrivelse="Møtene mellom deg og veilederen din."
+                beskrivelse="Referater fra møter mellom deg og veilederen din."
                 lenketekst="Se referatene"
                 lenke="/aktivitetsplan?filter=mote&filter=samtalereferat"
             />
@@ -40,7 +40,7 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 visible={props.type === SYKMELDT}
                 ikon={<SykfravarIkon/>}
                 tittel="Ditt sykefravær"
-                beskrivelse="Referater fra møter mellom deg og veilederen din."
+                beskrivelse="Sykemeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt."
                 lenketekst="Gå til ditt sykefravær"
                 lenke="/sykefravaer"
             />
