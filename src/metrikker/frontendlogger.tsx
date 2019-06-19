@@ -1,6 +1,6 @@
 import { RegistreringDataType } from '../datatyper/registreringData';
 import { HensynType, SisteSituasjon } from '../datatyper/situasjon';
-import { diffIDagerFraDatoTilNaa, loggTidBruktFraRegistreringTilForsteEndring } from './utils';
+import { diffIDagerFraDatoTilNaa, harBrukerAlleredeGjortEndringer } from './utils';
 
 export const INFOOMMEG_ENDREHELSEHINDER = 'infoommeg.endreHelsehinder';
 export const INFOOMMEG_ENDREANDREHINDER = 'infoommeg.endreAndrehinder';
@@ -57,3 +57,10 @@ export function loggFeilTilBruker(value: string) {
 export function loggAntallBesokPaaSiden() {
     frontendLogger('infoommeg.antall.besok', undefined, {});
 }
+
+const loggTidBruktFraRegistreringTilForsteEndring = (registrering: RegistreringDataType, sisteSituasjon: SisteSituasjon) => {
+    if (!harBrukerAlleredeGjortEndringer(registrering, sisteSituasjon)) {
+        const tidBruktIDager = diffIDagerFraDatoTilNaa(registrering.registrering.opprettetDato);
+        frontendLogger('infoommeg.tidBruktFraRegistreringTilEndring', undefined, {tidBruktIDager});
+    }
+};
