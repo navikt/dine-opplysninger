@@ -33,7 +33,7 @@ export function loggLenkeKlikk(value: string) {
 }
 
 export function loggEndretHovedMal(registrering: RegistreringDataType, fra: string, til: string, sisteSituasjon: SisteSituasjon) {
-    const antallDagerFraForrigeEndring = diffIDagerFraDatoTilNaa(sisteSituasjon.helseHinder!.dato);
+    const antallDagerFraForrigeEndring = diffIDagerFraDatoTilNaa(sisteSituasjon.fremtidigSituasjonData!.dato);
 
     loggTidBruktFraRegistreringTilForsteEndring(registrering, sisteSituasjon);
     frontendLogger('infoommeg.endreHovedmal', undefined, constructLoggerItem(registrering, fra, til, antallDagerFraForrigeEndring));
@@ -44,7 +44,12 @@ export function loggEndretDelmal(registrering: string) {
 }
 
 export function loggEndret(eventNavn: string, registrering: RegistreringDataType, fra: HensynType | undefined, til: string, sisteSituasjon: SisteSituasjon) {
-    const antallDagerFraForrigeEndring = diffIDagerFraDatoTilNaa(sisteSituasjon.helseHinder!.dato);
+    let antallDagerFraForrigeEndring = 0;
+    if (eventNavn === INFOOMMEG_ENDREANDREHINDER) {
+        antallDagerFraForrigeEndring = diffIDagerFraDatoTilNaa(sisteSituasjon.andreHinder!.dato);
+    } else if (eventNavn === INFOOMMEG_ENDREHELSEHINDER) {
+        antallDagerFraForrigeEndring = diffIDagerFraDatoTilNaa(sisteSituasjon.helseHinder!.dato);
+    }
 
     loggTidBruktFraRegistreringTilForsteEndring(registrering, sisteSituasjon);
     frontendLogger(eventNavn, undefined, constructLoggerItem(registrering, fra!.verdi, til, antallDagerFraForrigeEndring));

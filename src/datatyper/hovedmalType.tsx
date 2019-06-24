@@ -3,7 +3,7 @@ import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer
 export interface HovedmalType {
     alternativId: HovedmalAlternativ;
     endretAv?: string;
-    dato?: string | null;
+    dato: string;
 }
 
 export interface HistorikkType {
