@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Hovedmal.less';
 import { HovedmalAlternativ } from '../registreringsinfo/Alternativer';
 import { HovedmalType } from '../../datatyper/hovedmalType';
@@ -9,6 +9,8 @@ import NavFrontendSpinner from 'nav-frontend-spinner';
 import GrunnPanel from '../felleskomponenter/grunnPanel';
 import LenkeKnapp from '../felleskomponenter/lenkeknap';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
+import { loggEndretHovedMal, loggFeilTilBruker } from '../../metrikker/frontendlogger';
+import { RegistreringDataContext, SisteSituasjonContext } from '../../context/registreringData/RegistreringDataProvider';
 
 export enum FetchStateTypes {
     LOADING,
@@ -17,6 +19,8 @@ export enum FetchStateTypes {
 }
 
 function Hovedmal () {
+    const registreringsData = useContext(RegistreringDataContext);
+    const sisteSituasjon = useContext(SisteSituasjonContext);
     const modus = new URL(window.location.href).searchParams.get('modus');
     const [endreVisning, setSkalEndreState] = useState(modus === 'rediger');
     const [alternativState, setSituasjonState] = useState(HovedmalAlternativ.IKKE_OPPGITT);
@@ -48,9 +52,11 @@ function Hovedmal () {
                 setSkalEndreState(false);
                 setSituasjonState(situasjon.alternativId);
                 setFetchState(FetchStateTypes.OK);
+                loggEndretHovedMal(registreringsData, alternativState, situasjon.alternativId, sisteSituasjon);
             })
             .catch(() => {
                 setFetchState(FetchStateTypes.FAILURE);
+                loggFeilTilBruker('oppdaterHovedmal');
             });
     }
 

@@ -11,6 +11,9 @@ import { fremtidigSituasjon, opprettSituasjon, sisteSituasjon, situasjonListe } 
 import { API_VEILARBVEDTAKINFO_HOVEDMAL, API_VEILARBVEDTAKINFO } from '../api/api';
 import { oppdaterHensyn } from './hensyn';
 
+const PRINT_FRONTENDLOGGER = true;
+const DELAY = 500;
+
 const loggingMiddleware: Middleware = (request, response) => {
     // tslint:disable
     console.groupCollapsed(request.url);
@@ -38,6 +41,15 @@ const mock = FetchMock.configure({
         loggingMiddleware
     )
 });
+
+if (PRINT_FRONTENDLOGGER) {
+    (window as any).frontendlogger = { // tslint:disable-line
+        event: (name: string, fields: any, tags: any) => { // tslint:disable-line
+            console.log('frontendlogger', {name, fields, tags}); // tslint:disable-line
+        }
+    };
+}
+
 /*
 const noContent = ResponseUtils.statusCode(204);
 const internalServerError = ResponseUtils.combine(ResponseUtils.statusCode(500), ResponseUtils.json({
@@ -50,7 +62,7 @@ const internalServerError = ResponseUtils.combine(ResponseUtils.statusCode(500),
     }
 }));
 */
-const DELAY = 500;
+
 mock.get('/veilarbregistrering/api/registrering', ResponseUtils.delayed(DELAY, Registrering));
 // Mock med 204 respons
 // mock.get('/veilarbregistrering/api/registrering', ResponseUtils.statusCode(500));

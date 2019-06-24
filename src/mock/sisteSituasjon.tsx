@@ -37,10 +37,10 @@ export function opprettSituasjon(body: { alternativId: string, tekst: string }) 
 
 export function sisteSituasjon() {
     return {
-        helseHinder: {'dato': '2019-05-21T14:19:25.435+02:00', 'verdi': 'JA'},
-        andreHinder: {'dato': '2019-05-21T14:19:25.435+02:00', 'verdi': 'INGEN_SVAR'},
+        helseHinder: {'dato': '2019-06-05T11:51:26.206+02:00', 'verdi': 'JA'},
+        andreHinder: {'dato': '2019-06-05T11:51:26.206+02:00', 'verdi': 'INGEN_SVAR'},
         fremtidigSituasjonData: {
-            'dato': '2019-05-21T14:19:25.435+02:00',
+            'dato': '2019-06-05T11:51:26.206+02:00',
             'alternativId': 'NY_ARBEIDSGIVER',
             'tekst': null,
             'endretAv': 'BRUKER'

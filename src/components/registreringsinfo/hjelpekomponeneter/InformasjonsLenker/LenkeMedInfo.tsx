@@ -3,6 +3,7 @@ import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import Element from 'nav-frontend-typografi/lib/element';
 import Chevron from 'nav-frontend-chevron/lib/chevron';
 import './InformasjonsLenker.less';
+import { loggLenkeKlikk } from '../../../../metrikker/frontendlogger';
 interface LenkeProps {
     ikon: React.ReactElement<HTMLObjectElement>;
     tittel: string;
@@ -24,6 +25,7 @@ const LenkeMedInfo = (props: LenkeProps) => {
             <a
                 href={props.lenke}
                 className="lenke lenke-med-info__lenke"
+                onClick={() => loggLenkeKlikk(props.tittel)}
             >
                 {props.lenketekst}
                 <Chevron type={'høyre'} />
