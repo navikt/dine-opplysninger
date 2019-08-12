@@ -1,4 +1,4 @@
-Registreringsinformasjon
+Dine Opplysninger
 ================
 
 En frontendapp som viser brukeres registreringsinformasjon. 
