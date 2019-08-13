@@ -12,7 +12,9 @@
     "eject": "craco eject",
     "heroku-serve": "node heroku-server.js",
     "heroku-postbuild": "cross-env REACT_APP_MOCK=true npm run build",
-    "uu": "nav-ally -f wcag.yml -r yes"
+    "uu": "nav-ally -f wcag.yml -r yes",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -24,7 +26,7 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@craco/craco": "^3.4.1",
+    "@craco/craco": "^5.2.0",
     "@navikt/fo-session-timeout-modal": "^1.0.2",
     "@types/classnames": "2.2.7",
     "@types/fetch-mock": "7.2.2",
@@ -81,9 +83,10 @@
     "react-intl": "^2.8.0",
     "react-modal": "^3.8.1",
     "react-motion": "^0.5.2",
-    "react-scripts": "2.1.3",
+    "react-scripts": "3.0.0",
     "typescript": "^3.3.1",
-    "url-polyfill": "^1.1.5"
+    "url-polyfill": "^1.1.5",
+    "snyk": "^1.216.2"
   },
   "devDependencies": {
     "@types/enzyme": "^3.9.1",
@@ -99,5 +102,6 @@
     "tslint": "^5.12.1",
     "tslint-react": "^3.6.0",
     "yet-another-fetch-mock": "^2.4.0"
-  }
+  },
+  "snyk": true
 }
