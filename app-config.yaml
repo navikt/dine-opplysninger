@@ -33,6 +33,8 @@ resources:
 
 fasitResources:
   used:
+    - alias: loadbalancer:dine-opplysninger
+      resourceType: loadbalancerconfig
     - alias: appres.cms
       resourceType: baseUrl
     - alias: appdynamics
