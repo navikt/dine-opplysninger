@@ -9,10 +9,10 @@ port: 8080
 
 healthcheck:
   liveness:
-    path: /internal/isAlive
+    path: /arbeid/dineopplysninger/internal/isAlive
     initialDelay: 60
   readiness:
-    path: /internal/isReady
+    path: /arbeid/dineopplysninger/internal/isReady
     initialDelay: 60
 
 team: bos
