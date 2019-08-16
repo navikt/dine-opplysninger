@@ -2,6 +2,7 @@
   "name": "dine-opplysninger",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/arbeid/dineopplysninger",
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'  --fix --format verbose",
     "tslint:fix": "tslint -c tslint.json 'src/**/*.ts*' --fix",
