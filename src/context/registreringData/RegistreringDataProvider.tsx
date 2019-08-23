@@ -8,8 +8,9 @@ import { SisteSituasjon } from '../../datatyper/situasjon';
 import Lenke from 'nav-frontend-lenker';
 import HoyreChevron from 'nav-frontend-chevron/lib/hoyre-chevron';
 import Feilmelding from '../../components/feilmelding/feilmelding';
+import { CONTEXT_PATH } from '../../utils/constants';
 
-const ARBEIDSSOKERREGISTRERING_URL = '/arbeid/dineopplysninger/arbeidssokerregistrering';
+const ARBEIDSSOKERREGISTRERING_URL = `${CONTEXT_PATH}/arbeidssokerregistrering`;
 
 export const initalStateRegistreringData: RegistreringDataType = {
     type: '',

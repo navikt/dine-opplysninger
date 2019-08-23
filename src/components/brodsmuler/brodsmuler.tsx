@@ -3,8 +3,9 @@ import Lenke from 'nav-frontend-lenker';
 import personSvg from './person.svg';
 import './brodsmuler.less';
 import { registreringDataContextConsumerHoc } from '../../context/registreringData/RegistreringDataProvider';
+import { CONTEXT_PATH } from '../../utils/constants';
 
-const DITTNAV_PATH = '/arbeid/dineopplysninger/dittnav';
+const DITTNAV_PATH = `${CONTEXT_PATH}/dittnav`;
 
 const Brodsmuler = () => {
     return (
