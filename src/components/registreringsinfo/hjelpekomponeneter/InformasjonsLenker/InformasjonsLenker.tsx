@@ -34,7 +34,7 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 tittel="Møtereferater"
                 beskrivelse="Referater fra møter mellom deg og veilederen din."
                 lenketekst="Se referatene"
-                lenke="/aktivitetsplan?filter=mote&filter=samtalereferat"
+                lenke="/arbeid/dineopplysninger/aktivitetsplan?filter=mote&filter=samtalereferat"
             />
             <LenkeMedInfo
                 visible={props.type === SYKMELDT}
@@ -42,7 +42,7 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 tittel="Ditt sykefravær"
                 beskrivelse="Sykemeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt."
                 lenketekst="Gå til ditt sykefravær"
-                lenke="/sykefravaer"
+                lenke="/arbeid/dineopplysninger/sykefravaer"
             />
             <LenkeMedInfo
                 visible={true}
@@ -50,7 +50,7 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 tittel="Dialog"
                 beskrivelse="Meldingene mellom deg og veilederen din."
                 lenketekst="Gå til dialog"
-                lenke="/aktivitetsplan/dialog"
+                lenke="/arbeid/dineopplysninger/aktivitetsplan/dialog"
             />
         </ul>
     );

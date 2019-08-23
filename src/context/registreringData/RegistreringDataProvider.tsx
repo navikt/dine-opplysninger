@@ -9,7 +9,7 @@ import Lenke from 'nav-frontend-lenker';
 import HoyreChevron from 'nav-frontend-chevron/lib/hoyre-chevron';
 import Feilmelding from '../../components/feilmelding/feilmelding';
 
-const ARBEIDSSOKERREGISTRERING_URL = '/arbeidssokerregistrering';
+const ARBEIDSSOKERREGISTRERING_URL = '/arbeid/dineopplysninger/arbeidssokerregistrering';
 
 export const initalStateRegistreringData: RegistreringDataType = {
     type: '',

@@ -5,11 +5,11 @@ import { HistorikkType, HovedmalType } from '../datatyper/hovedmalType';
 import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer';
 import { HensynType, JaNeiIkke, SisteSituasjon } from '../datatyper/situasjon';
 
-export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
-export const API_VEILARBVEDTAKINFO = '/veilarbvedtakinfo/api';
+export const API_VEILARBREGISTRERING = '/arbeid/dineopplysninger/veilarbregistrering/api/registrering';
+export const API_VEILARBVEDTAKINFO = '/arbeid/dineopplysninger/veilarbvedtakinfo/api';
 export const API_VEILARBVEDTAKINFO_HOVEDMAL = `${API_VEILARBVEDTAKINFO}/fremtidigsituasjon`;
 
-export const API_VEILARBOPPFOLGING = '/veilarboppfolging/api/oppfolging';
+export const API_VEILARBOPPFOLGING = '/arbeid/dineopplysninger/veilarboppfolging/api/oppfolging';
 
 export interface OppfolgingStatusType {
     underOppfolging: boolean;

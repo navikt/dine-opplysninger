@@ -55,7 +55,7 @@ export default function SvarIRegistrering(props: {registrering: RegistreringsTyp
                     <SisteStilingLinje sisteStilling={props.registrering.sisteStilling}/>
                 </ul>
                 <Normaltekst className="kontaktVeileder">
-                    <a href="/aktivitetsplan/dialog/ny" className="lenke">Gi beskjed til veilederen din</a> hvis situasjonen din endrer seg
+                    <a href="/arbeid/dineopplysninger/aktivitetsplan/dialog/ny" className="lenke">Gi beskjed til veilederen din</a> hvis situasjonen din endrer seg
                 </Normaltekst>
             </Lesmerpanel>
         </section>

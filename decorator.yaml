@@ -5,21 +5,21 @@ auth:
    loginUrl: {{ LOGINSERVICE_URL }}
 
 proxy:
-  - contextPath: "/veilarboppfolging"
+  - contextPath: "/arbeid/dineopplysninger/veilarboppfolging"
     baseUrl: "http://veilarbproxy"
-  - contextPath: "/veilarbregistrering"
+  - contextPath: "/arbeid/dineopplysninger/veilarbregistrering"
     baseUrl: "http://veilarbproxy"
-  - contextPath: "/veilarbvedtakinfo"
+  - contextPath: "/arbeid/dineopplysninger/veilarbvedtakinfo"
     baseUrl: "http://veilarbproxy"
 
 redirect:
-  - from: /sykefravaer
+  - from: /arbeid/dineopplysninger/sykefravaer
     to: {{ SYKEFRAVAER_URL }}
-  - from: /dittnav
+  - from: /arbeid/dineopplysninger/dittnav
     to: {{ DITTNAV_LINK_URL }}
-  - from: /veientilarbeid
+  - from: /arbeid/dineopplysninger/veientilarbeid
     to: {{ VEIENTILARBEID_URL }}
-  - from: /aktivitetsplan
+  - from: /arbeid/dineopplysninger/aktivitetsplan
     to: {{ AKTIVITETSPLAN_URL }}
-  - from: /arbeidssokerregistrering
+  - from: /arbeid/dineopplysninger/arbeidssokerregistrering
     to: {{ ARBEIDSSOKERREGISTRERING_URL }}

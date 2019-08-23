@@ -4,7 +4,7 @@ import personSvg from './person.svg';
 import './brodsmuler.less';
 import { registreringDataContextConsumerHoc } from '../../context/registreringData/RegistreringDataProvider';
 
-const DITTNAV_PATH = '/dittnav';
+const DITTNAV_PATH = '/arbeid/dineopplysninger/dittnav';
 
 const Brodsmuler = () => {
     return (

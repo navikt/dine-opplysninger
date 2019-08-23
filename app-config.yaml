@@ -22,7 +22,7 @@ alertProfiles:
 
 prometheus:
   enabled: true
-  path: /internal/metrics
+  path: /arbeid/dineopplysninger/internal/metrics
 
 resources:
   limits:
