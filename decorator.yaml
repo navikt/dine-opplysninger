@@ -6,11 +6,14 @@ auth:
 
 proxy:
   - contextPath: "/arbeid/dineopplysninger/veilarboppfolging"
-    baseUrl: "http://veilarbproxy"
+    baseUrl: "http://veilarbproxy//veilarboppfolging"
+    requestRewrite: REMOVE_CONTEXT_PATH
   - contextPath: "/arbeid/dineopplysninger/veilarbregistrering"
-    baseUrl: "http://veilarbproxy"
+    baseUrl: "http://veilarbproxy/veilarbregistrering"
+    requestRewrite: REMOVE_CONTEXT_PATH
   - contextPath: "/arbeid/dineopplysninger/veilarbvedtakinfo"
-    baseUrl: "http://veilarbproxy"
+    baseUrl: "http://veilarbproxy/veilarbvedtakinfo"
+    requestRewrite: REMOVE_CONTEXT_PATH
 
 redirect:
   - from: /arbeid/dineopplysninger/sykefravaer
