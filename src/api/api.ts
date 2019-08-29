@@ -4,12 +4,13 @@ import { MalType } from '../components/mal/DelMal/DelMal';
 import { HistorikkType, HovedmalType } from '../datatyper/hovedmalType';
 import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer';
 import { HensynType, JaNeiIkke, SisteSituasjon } from '../datatyper/situasjon';
+import { CONTEXT_PATH } from '../utils/constants';
 
-export const API_VEILARBREGISTRERING = '/veilarbregistrering/api/registrering';
-export const API_VEILARBVEDTAKINFO = '/veilarbvedtakinfo/api';
+export const API_VEILARBREGISTRERING = `${CONTEXT_PATH}/veilarbregistrering/api/registrering`;
+export const API_VEILARBVEDTAKINFO = `${CONTEXT_PATH}/veilarbvedtakinfo/api`;
 export const API_VEILARBVEDTAKINFO_HOVEDMAL = `${API_VEILARBVEDTAKINFO}/fremtidigsituasjon`;
 
-export const API_VEILARBOPPFOLGING = '/veilarboppfolging/api/oppfolging';
+export const API_VEILARBOPPFOLGING = `${CONTEXT_PATH}/veilarboppfolging/api/oppfolging`;
 
 export interface OppfolgingStatusType {
     underOppfolging: boolean;

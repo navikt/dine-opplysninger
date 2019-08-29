@@ -7,6 +7,7 @@ import DialogIkon from './svg/dialog';
 import './InformasjonsLenker.less';
 import LenkeMedInfo from './LenkeMedInfo';
 import { SYKMELDT } from '../../../../datatyper/registreringData';
+import { CONTEXT_PATH } from '../../../../utils/constants';
 
 const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | null}) => {
     const skalViseCvOgJobbprofil = props.type !== SYKMELDT || props.fremtidigSituasjon === 'NY_ARBEIDSGIVER' || props.fremtidigSituasjon === 'USIKKER';
@@ -34,7 +35,7 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 tittel="Møtereferater"
                 beskrivelse="Referater fra møter mellom deg og veilederen din."
                 lenketekst="Se referatene"
-                lenke="/aktivitetsplan?filter=mote&filter=samtalereferat"
+                lenke={`${CONTEXT_PATH}/aktivitetsplan?filter=mote&filter=samtalereferat`}
             />
             <LenkeMedInfo
                 visible={props.type === SYKMELDT}
@@ -42,7 +43,7 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 tittel="Ditt sykefravær"
                 beskrivelse="Sykemeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt."
                 lenketekst="Gå til ditt sykefravær"
-                lenke="/sykefravaer"
+                lenke={`${CONTEXT_PATH}/sykefravaer`}
             />
             <LenkeMedInfo
                 visible={true}
@@ -50,7 +51,7 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 tittel="Dialog"
                 beskrivelse="Meldingene mellom deg og veilederen din."
                 lenketekst="Gå til dialog"
-                lenke="/aktivitetsplan/dialog"
+                lenke={`${CONTEXT_PATH}/aktivitetsplan/dialog`}
             />
         </ul>
     );

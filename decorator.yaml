@@ -1,25 +1,28 @@
-contextPath: /
+contextPath: /arbeid/dineopplysninger
 
 auth:
    enforce: true
    loginUrl: {{ LOGINSERVICE_URL }}
 
 proxy:
-  - contextPath: "/veilarboppfolging"
-    baseUrl: "http://veilarbproxy"
-  - contextPath: "/veilarbregistrering"
-    baseUrl: "http://veilarbproxy"
-  - contextPath: "/veilarbvedtakinfo"
-    baseUrl: "http://veilarbproxy"
+  - contextPath: "/arbeid/dineopplysninger/veilarboppfolging"
+    baseUrl: "http://veilarbproxy/veilarboppfolging"
+    requestRewrite: REMOVE_CONTEXT_PATH
+  - contextPath: "/arbeid/dineopplysninger/veilarbregistrering"
+    baseUrl: "http://veilarbproxy/veilarbregistrering"
+    requestRewrite: REMOVE_CONTEXT_PATH
+  - contextPath: "/arbeid/dineopplysninger/veilarbvedtakinfo"
+    baseUrl: "http://veilarbproxy/veilarbvedtakinfo"
+    requestRewrite: REMOVE_CONTEXT_PATH
 
 redirect:
-  - from: /sykefravaer
+  - from: /arbeid/dineopplysninger/sykefravaer
     to: {{ SYKEFRAVAER_URL }}
-  - from: /dittnav
+  - from: /arbeid/dineopplysninger/dittnav
     to: {{ DITTNAV_LINK_URL }}
-  - from: /veientilarbeid
+  - from: /arbeid/dineopplysninger/veientilarbeid
     to: {{ VEIENTILARBEID_URL }}
-  - from: /aktivitetsplan
+  - from: /arbeid/dineopplysninger/aktivitetsplan
     to: {{ AKTIVITETSPLAN_URL }}
-  - from: /arbeidssokerregistrering
+  - from: /arbeid/dineopplysninger/arbeidssokerregistrering
     to: {{ ARBEIDSSOKERREGISTRERING_URL }}

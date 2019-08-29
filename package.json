@@ -26,7 +26,7 @@
   ],
   "dependencies": {
     "@craco/craco": "^3.4.1",
-    "@navikt/fo-session-timeout-modal": "^1.0.2",
+    "@navikt/fo-session-timeout-modal": "^1.1.1",
     "@types/classnames": "2.2.7",
     "@types/fetch-mock": "7.2.2",
     "@types/lodash": "4.14.120",

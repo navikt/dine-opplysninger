@@ -5,11 +5,12 @@ import Registreringsinfo from './components/registreringsinfo/Registreringsinfo'
 import Brodsmuler from './components/brodsmuler/brodsmuler';
 import { TimeoutModal } from '@navikt/fo-session-timeout-modal';
 import EndreRegistreringerMock from './mock/EndreRegistreringerMock';
+import { CONTEXT_PATH } from './utils/constants';
 
 const App = () =>
     (
         <AppProviders>
-            <TimeoutModal/>
+            <TimeoutModal authUrl={`${CONTEXT_PATH}/api/auth`}/>
             <EndreRegistreringerMock/>
             <Brodsmuler/>
             <VeilederBanner/>

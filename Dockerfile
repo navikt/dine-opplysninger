@@ -11,4 +11,3 @@ RUN npm run build
 FROM docker.adeo.no:5000/pus/decorator
 COPY --from=builder /source/build /app
 ADD decorator.yaml /decorator.yaml
-ENV CONTEXT_PATH /

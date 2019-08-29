@@ -7,6 +7,7 @@ import './SvarIRegistrering.less';
 import { RegistreringsType, SvarTekster } from '../../../datatyper/registreringData';
 import Lesmerpanel from 'nav-frontend-lesmerpanel';
 import Element from 'nav-frontend-typografi/lib/element';
+import { CONTEXT_PATH } from '../../../utils/constants';
 
 const VinsingsLinje = (props: SvarTekster) => (
     <li>
@@ -55,7 +56,9 @@ export default function SvarIRegistrering(props: {registrering: RegistreringsTyp
                     <SisteStilingLinje sisteStilling={props.registrering.sisteStilling}/>
                 </ul>
                 <Normaltekst className="kontaktVeileder">
-                    <a href="/aktivitetsplan/dialog/ny" className="lenke">Gi beskjed til veilederen din</a> hvis situasjonen din endrer seg
+                    <a href={`${CONTEXT_PATH}/aktivitetsplan/dialog/ny`} className="lenke">
+                        Gi beskjed til veilederen din
+                    </a> hvis situasjonen din endrer seg
                 </Normaltekst>
             </Lesmerpanel>
         </section>
