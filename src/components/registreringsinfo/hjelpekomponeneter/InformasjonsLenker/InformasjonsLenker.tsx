@@ -4,12 +4,15 @@ import JobbprofilIkon from './svg/jobbprofil';
 import MotereferatIkon from './svg/motereferat';
 import SykfravarIkon from './svg/sykfravar';
 import DialogIkon from './svg/dialog';
+import MalIkon from './svg/mal';
 import './InformasjonsLenker.less';
 import LenkeMedInfo from './LenkeMedInfo';
 import { SYKMELDT } from '../../../../datatyper/registreringData';
 
 const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | null}) => {
-    const skalViseCvOgJobbprofil = props.type !== SYKMELDT || props.fremtidigSituasjon === 'NY_ARBEIDSGIVER' || props.fremtidigSituasjon === 'USIKKER';
+    const skalViseCvOgJobbprofil = props.type !== SYKMELDT
+        || props.fremtidigSituasjon === 'NY_ARBEIDSGIVER'
+        || props.fremtidigSituasjon === 'USIKKER';
     return (
         <ul className="informasjons-lenker">
             <LenkeMedInfo
@@ -51,6 +54,14 @@ const InformasjonsLenker = (props: {type: string, fremtidigSituasjon: string | n
                 beskrivelse="Meldingene mellom deg og veilederen din."
                 lenketekst="Gå til dialog"
                 lenke="/aktivitetsplan/dialog"
+            />
+            <LenkeMedInfo
+                visible={true}
+                ikon={<MalIkon/>}
+                tittel="Mål"
+                beskrivelse="Legg til målet ditt, slik at vi kan veilede deg bedre."
+                lenketekst="Gå til mål"
+                lenke="/aktivitetsplan/mal/endre"
             />
         </ul>
     );
