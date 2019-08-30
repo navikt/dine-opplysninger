@@ -8,10 +8,6 @@ const contextPath = pkg.homepage || '/';
 
 app.use(contextPath, express.static(path.join(__dirname, 'build')));
 
-app.get(contextPath, (req, res) => {
-    res.sendFile(path.join(__dirname + '/build/index.html'));
-});
-
 app.get('*', (req, res) => {
     res.redirect(contextPath);
 });

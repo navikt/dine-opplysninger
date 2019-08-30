@@ -1,7 +1,11 @@
 import * as React from 'react';
+import { CONTEXT_PATH } from '../utils/constants';
+
+const lagMockRegistreringUrl = (registreringType: string): string => {
+    return `${CONTEXT_PATH}/?registrering=${registreringType}`;
+};
 
 function EndreRegistreringerMock() {
-
     if (!process.env.REACT_APP_MOCK) {
         return null;
     }
@@ -12,26 +16,40 @@ function EndreRegistreringerMock() {
             </p>
             <ul>
                 <li>
-                    <a href="/?registrering=OrdinaerHarMistetJobben" className="lenke">Ordinær: Har mistet jobben</a>
+                    <a href={lagMockRegistreringUrl('OrdinaerHarMistetJobben')} className="lenke">
+                        Ordinær: Har mistet jobben
+                    </a>
                 </li>
                 <li>
-                    <a href="/?registrering=OrdinaerMistetJobbenIngenUtdanning" className="lenke">Ordinær: Har mistet jobben, har ingen utdanning</a>
+                    <a href={lagMockRegistreringUrl('OrdinaerMistetJobbenIngenUtdanning')} className="lenke">
+                        Ordinær: Har mistet jobben, har ingen utdanning
+                    </a>
                 </li>
                 <li>
-                    <a href="/?registrering=OrdinaerHarJobbOnskerFortsette" className="lenke">Ordinær: Har jobb og ønsker å fortsette</a>
+                    <a href={lagMockRegistreringUrl('OrdinaerHarJobbOnskerFortsette')} className="lenke">
+                        Ordinær: Har jobb og ønsker å fortsette
+                    </a>
                 </li>
                 <li>&nbsp;</li>
                 <li>
-                    <a href="/?registrering=SykmeldtSammeArbeidsgiverFullStilling" className="lenke">Sykmeldt: Skal tilbake til jobben jeg har</a>
+                    <a href={lagMockRegistreringUrl('SykmeldtSammeArbeidsgiverFullStilling')} className="lenke">
+                        Sykmeldt: Skal tilbake til jobben jeg har
+                    </a>
                 </li>
                 <li>
-                    <a href="/?registrering=SykmeldtNyArbeidsgiverIngenUtdanning" className="lenke">Sykmeldt: Trenger ny jobb, har ingen utdanning</a>
+                    <a href={lagMockRegistreringUrl('SykmeldtNyArbeidsgiverIngenUtdanning')} className="lenke">
+                        Sykmeldt: Trenger ny jobb, har ingen utdanning
+                    </a>
                 </li>
                 <li>
-                    <a href="/?registrering=SykmeldtUsikker" className="lenke">Sykmeldt: Usikker</a>
+                    <a href={lagMockRegistreringUrl('SykmeldtUsikker')} className="lenke">
+                        Sykmeldt: Usikker
+                    </a>
                 </li>
                 <li>
-                    <a href="/?registrering=SykmeldtIngenPasser" className="lenke">Sykmeldt: Ingen alternativene passer</a>
+                    <a href={lagMockRegistreringUrl('SykmeldtIngenPasser')} className="lenke">
+                        Sykmeldt: Ingen alternativene passer
+                    </a>
                 </li>
             </ul>
         </div>
