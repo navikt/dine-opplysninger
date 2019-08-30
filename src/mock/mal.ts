@@ -2,7 +2,7 @@ import { MalType } from '../components/mal/DelMal/DelMal';
 import { JSONObject } from 'yet-another-fetch-mock/dist/types/types';
 import { format } from 'date-fns';
 
-export const Mal: MalType & JSONObject = {
+export const malData: MalType & JSONObject = {
     mal: 'hei på deg',
     endretAv: 'BRUKER',
     dato: '2019-04-10T06:19:30.284',
@@ -17,7 +17,7 @@ const tomMal = [
 ];
 
 export const maler: Array<MalType&JSONObject> = [
-    Mal
+    malData
 ].concat(tomMal);
 
 export function malListe() {
