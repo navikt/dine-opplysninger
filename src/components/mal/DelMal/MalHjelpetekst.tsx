@@ -26,5 +26,5 @@ export function MalHjelpetekst() {
                     </span>
             </Hjelpetekst>
         </div>
-    )
+    );
 }

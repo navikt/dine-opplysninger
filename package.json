@@ -4,16 +4,27 @@
   "private": true,
   "homepage": "/arbeid/dineopplysninger",
   "scripts": {
-    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'  --fix --format verbose",
-    "tslint:fix": "tslint -c tslint.json 'src/**/*.ts*' --fix",
-    "test:coverage": "npm test -- --coverage",
     "start": "cross-env REACT_APP_MOCK=true craco start",
     "build": "craco build",
+    "lint": "tslint ./src/**/*.{ts,tsx}",
+    "lint:fix": "tslint --fix ./src/**/*.{ts,tsx}",
     "test": "craco test --env=jsdom",
-    "eject": "craco eject",
+    "test:coverage": "npm test -- --coverage",
     "heroku-serve": "node heroku-server.js",
     "heroku-postbuild": "cross-env REACT_APP_MOCK=true npm run build",
-    "uu": "nav-ally -f wcag.yml -r yes"
+    "prettier": "prettier --write \"src/**/*.{ts,tsx}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.{ts,tsx}": [
+      "prettier --write",
+      "tslint --fix",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
