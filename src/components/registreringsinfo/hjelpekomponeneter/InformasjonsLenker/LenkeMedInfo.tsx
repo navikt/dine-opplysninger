@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import Element from 'nav-frontend-typografi/lib/element';
 import Chevron from 'nav-frontend-chevron/lib/chevron';

@@ -1,15 +1,15 @@
 import FetchMock, { MiddlewareUtils, ResponseData, ResponseUtils } from 'yet-another-fetch-mock';
-import OppfolgingStatus from './oppfolging';
-import registreringData from './registrering';
-import { malData, malListe, opprettMal } from './mal';
-import { fremtidigSituasjon, opprettSituasjon, sisteSituasjon, situasjonListe } from './sisteSituasjon';
+import OppfolgingStatus from './data/oppfolging';
+import registreringData from './data/registrering';
+import { malData, malListe, opprettMal } from './data/mal';
+import { fremtidigSituasjon, opprettSituasjon, sisteSituasjon, situasjonListe } from './data/siste-situasjon';
 import {
 	API_VEILARBVEDTAKINFO_HOVEDMAL,
 	API_VEILARBVEDTAKINFO,
 	API_VEILARBREGISTRERING,
 	API_VEILARBOPPFOLGING
 } from '../api/api';
-import { oppdaterHensyn } from './hensyn';
+import { oppdaterHensyn } from './data/hensyn';
 
 const mock = FetchMock.configure({
 	enableFallback: true,

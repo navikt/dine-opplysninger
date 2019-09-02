@@ -1,7 +1,7 @@
-import * as React from 'react';
-import './Veilederpanel.less';
+import React from 'react';
 import Veilederpanel from 'nav-frontend-veilederpanel';
 import veilederSvg from './veileder.svg';
+import './Veilederpanel.less';
 
 function VeilederBanner() {
 	return (

@@ -38,6 +38,7 @@
     "@craco/craco": "^5.4.0",
     "@navikt/fo-session-timeout-modal": "^1.1.1",
     "classnames": "^2.2.6",
+    "constate": "^1.2.0",
     "craco-less": "^1.12.0",
     "date-fns": "^1.30.1",
     "lodash.throttle": "^4.1.1",

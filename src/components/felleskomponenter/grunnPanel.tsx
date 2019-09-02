@@ -1,6 +1,6 @@
 import PanelBase from 'nav-frontend-paneler';
 import './GrunnPanel.less';
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 function GrunnPanel(props: {

@@ -1,10 +1,10 @@
 import { format } from 'date-fns';
 import noLocale from 'date-fns/locale/nb';
 import { Normaltekst } from 'nav-frontend-typografi';
-import * as React from 'react';
+import React from 'react';
 import './SvarIRegistrering.less';
 
-import { RegistreringsType, SvarTekster } from '../../../datatyper/registreringData';
+import { RegistreringsType, SvarTekster } from '../../../api/data/registrering-data';
 import Lesmerpanel from 'nav-frontend-lesmerpanel';
 import Element from 'nav-frontend-typografi/lib/element';
 import { CONTEXT_PATH } from '../../../utils/constants';

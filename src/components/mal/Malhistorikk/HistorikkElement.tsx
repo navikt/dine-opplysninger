@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { HistorikkType } from '../../../datatyper/hovedmalType';
+import React from 'react';
+import { HistorikkType } from '../../../api/data/hovedmal-type';
 import { distanceInWordsToNow } from 'date-fns';
 import Element from 'nav-frontend-typografi/lib/element';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';

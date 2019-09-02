@@ -1,13 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import './Malhistorikk.less';
 import { useState } from 'react';
-import { HistorikkType } from '../../../datatyper/hovedmalType';
+import { HistorikkType } from '../../../api/data/hovedmal-type';
 import { fetchHistorikken } from './hjelpefunksjoner';
 import Modal from 'nav-frontend-modal';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import Systemtittel from 'nav-frontend-typografi/lib/systemtittel';
 import HistorikkVise from './HistorikkVise';
-import ArkivIkon from './svg/arkiv';
+import { ReactComponent as ArkivIkon } from './arkiv.svg';
 
 function Malhistorikk() {
 	const [visSkjul, setvisSkjul] = useState(false);

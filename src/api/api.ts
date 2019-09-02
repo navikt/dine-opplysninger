@@ -1,15 +1,14 @@
 import { fetchData } from '../utils/fetchData';
-import { RegistreringDataType } from '../datatyper/registreringData';
+import { RegistreringDataType } from './data/registrering-data';
 import { MalType } from '../components/mal/DelMal/DelMal';
-import { HistorikkType, HovedmalType } from '../datatyper/hovedmalType';
+import { HistorikkType, HovedmalType } from './data/hovedmal-type';
 import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer';
-import { HensynType, JaNeiIkke, SisteSituasjon } from '../datatyper/situasjon';
+import { HensynType, JaNeiIkke, SisteSituasjon } from './data/situasjon';
 import { CONTEXT_PATH } from '../utils/constants';
 
 export const API_VEILARBREGISTRERING = `${CONTEXT_PATH}/veilarbregistrering/api/registrering`;
 export const API_VEILARBVEDTAKINFO = `${CONTEXT_PATH}/veilarbvedtakinfo/api`;
 export const API_VEILARBVEDTAKINFO_HOVEDMAL = `${API_VEILARBVEDTAKINFO}/fremtidigsituasjon`;
-
 export const API_VEILARBOPPFOLGING = `${CONTEXT_PATH}/veilarboppfolging/api/oppfolging`;
 
 export interface OppfolgingStatusType {
@@ -25,7 +24,7 @@ function getCookie(name: string) {
 function getHeaders() {
 	return new Headers({
 		'Content-Type': 'application/json',
-		NAV_CSRF_PROTECTION: getCookie('NAV_CSRF_PROTECTION') // eslint-disable-line quote-props
+		NAV_CSRF_PROTECTION: getCookie('NAV_CSRF_PROTECTION')
 	});
 }
 

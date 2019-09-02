@@ -5,7 +5,7 @@ import { Collapse } from 'react-collapse';
 import Lenke from 'nav-frontend-lenker';
 import EndreLagreKnapp from './endreLagreKnapp';
 import JaNeiRadio from './JaNeiRadio';
-import { JaNeiIkke } from '../../datatyper/situasjon';
+import { JaNeiIkke } from '../../api/data/situasjon';
 
 const brukerstoteURL = 'https://www.nav.no/398761/kontakt-teknisk-brukerst%C3%B8tte-nav.no';
 

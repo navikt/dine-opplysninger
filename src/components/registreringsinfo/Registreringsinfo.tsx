@@ -1,12 +1,11 @@
-import * as React from 'react';
-import { registreringDataContextConsumerHoc } from '../../context/registreringData/RegistreringDataProvider';
-import { RegistreringDataType } from '../../datatyper/registreringData';
-import './Registreringsinfo.less';
+import React from 'react';
 import SvarIRegistrering from './hjelpekomponeneter/SvarIRegistrering';
 import InformasjonsLenker from './hjelpekomponeneter/InformasjonsLenker/InformasjonsLenker';
+import { useAppStore } from '../../stores/app-store';
+import './Registreringsinfo.less';
 
-function Registreringsinfo(props: RegistreringDataType) {
-	const { type, registrering } = props;
+function Registreringsinfo() {
+	const { registrering: { registrering, type } } = useAppStore();
 	return (
 		<>
 			<InformasjonsLenker
@@ -18,4 +17,4 @@ function Registreringsinfo(props: RegistreringDataType) {
 	);
 }
 
-export default registreringDataContextConsumerHoc<{}>(Registreringsinfo);
+export default Registreringsinfo;

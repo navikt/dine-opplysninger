@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { teksterMaal } from '../tekster';
 import Textarea from 'nav-frontend-skjema/lib/textarea';

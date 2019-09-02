@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { HovedmalAlternativ } from '../registreringsinfo/Alternativer';
-import * as React from 'react';
+import React from 'react';
 import { KnappeGruppe } from './Knappegruppe';
 import ResponsiveRadioGruppe from '../felleskomponenter/responsiveRadio';
 

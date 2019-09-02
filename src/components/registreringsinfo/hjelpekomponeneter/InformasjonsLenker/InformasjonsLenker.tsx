@@ -7,7 +7,7 @@ import { ReactComponent as DialogIkon } from './svg/dialog.svg';
 import { ReactComponent as MalIkon } from './svg/mal.svg';
 import './InformasjonsLenker.less';
 import LenkeMedInfo from './LenkeMedInfo';
-import { SYKMELDT } from '../../../../datatyper/registreringData';
+import { SYKMELDT } from '../../../../api/data/registrering-data';
 import { CONTEXT_PATH } from '../../../../utils/constants';
 
 const InformasjonsLenker = (props: { type: string; fremtidigSituasjon: string | null }) => {

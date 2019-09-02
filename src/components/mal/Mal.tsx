@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import './Mal.less';
 import DelMal from './DelMal/DelMal';
 import Hovedmal from './Hovedmal';

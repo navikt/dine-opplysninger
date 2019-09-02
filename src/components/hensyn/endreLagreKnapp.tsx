@@ -1,5 +1,5 @@
 import LenkeKnapp from '../felleskomponenter/lenkeknap';
-import * as React from 'react';
+import React from 'react';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 
 function EndreLagreKnapp(props: { endre: boolean; oppdaterer: boolean; onClick: () => void }) {

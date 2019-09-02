@@ -1,4 +1,4 @@
-import { MalType } from '../components/mal/DelMal/DelMal';
+import { MalType } from '../../components/mal/DelMal/DelMal';
 import { JSONObject } from 'yet-another-fetch-mock/dist/types/types';
 import { format } from 'date-fns';
 

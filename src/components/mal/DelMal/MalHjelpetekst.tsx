@@ -1,5 +1,5 @@
 import Hjelpetekst from 'nav-frontend-hjelpetekst';
-import * as React from 'react';
+import React from 'react';
 
 export function MalHjelpetekst() {
 	return (

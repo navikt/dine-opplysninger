@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Hovedmal.less';
 import { HovedmalAlternativ } from '../registreringsinfo/Alternativer';
-import { HovedmalType } from '../../datatyper/hovedmalType';
+import { HovedmalType } from '../../api/data/hovedmal-type';
 import { Collapse } from 'react-collapse';
 import { AlternativGruppe } from './AlternativGruppe';
 import { hentHovedmal, oppdaterHovedmal } from '../../api/api';

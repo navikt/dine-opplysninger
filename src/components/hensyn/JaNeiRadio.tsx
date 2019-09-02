@@ -1,6 +1,6 @@
 import ResponsiveRadioGruppe from '../felleskomponenter/responsiveRadio';
 import { default as React } from 'react';
-import { JaNeiIkke } from '../../datatyper/situasjon';
+import { JaNeiIkke } from '../../api/data/situasjon';
 
 function JaNeiRadio(props: { titel: string; valg: JaNeiIkke; onChange: (selected: JaNeiIkke) => void }) {
 	return (

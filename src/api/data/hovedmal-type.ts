@@ -1,4 +1,4 @@
-import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer';
+import { HovedmalAlternativ } from '../../components/registreringsinfo/Alternativer';
 
 export interface HovedmalType {
 	alternativId: HovedmalAlternativ;

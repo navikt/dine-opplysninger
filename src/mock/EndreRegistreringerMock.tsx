@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { CONTEXT_PATH } from '../utils/constants';
 
 const lagMockRegistreringUrl = (registreringType: string): string => {

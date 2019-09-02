@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { HistorikkType } from '../../../datatyper/hovedmalType';
+import React from 'react';
+import { HistorikkType } from '../../../api/data/hovedmal-type';
 import HistorikkElement from './HistorikkElement';
 
 interface VisHistorikkProps {

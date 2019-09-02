@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import './MalBanner.less';
 import { ReactComponent as InfoSvg } from './info.svg';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';

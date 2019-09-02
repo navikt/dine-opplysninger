@@ -1,4 +1,4 @@
-import { RegistreringDataType } from '../datatyper/registreringData';
+import { RegistreringDataType } from '../../api/data/registrering-data';
 import { JSONObject } from 'yet-another-fetch-mock/dist/types/types';
 
 /*
