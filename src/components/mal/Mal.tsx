@@ -5,16 +5,15 @@ import Hovedmal from './Hovedmal';
 import Malhistorikk from './Malhistorikk/Malhistorikk';
 import MalBanner from './MalBanner/MalBanner';
 
-function Mal () {
-
-    return(
-        <section className="mal-container">
-            <MalBanner/>
-            <Hovedmal/>
-            <DelMal/>
-            <Malhistorikk/>
-        </section>
-    );
+function Mal() {
+	return (
+		<section className="mal-container">
+			<MalBanner />
+			<Hovedmal />
+			<DelMal />
+			<Malhistorikk />
+		</section>
+	);
 }
 
 export default Mal;

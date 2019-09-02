@@ -13,110 +13,125 @@ import { CONTEXT_PATH } from '../../utils/constants';
 const ARBEIDSSOKERREGISTRERING_URL = `${CONTEXT_PATH}/arbeidssokerregistrering`;
 
 export const initalStateRegistreringData: RegistreringDataType = {
-    type: '',
-    registrering: {
-        opprettetDato: '',
-        manueltRegistrertAv: null,
-        id: 0,
-        sisteStilling : {
-            label: '',
-            konseptId: 0,
-            styrk08: '',
-        },
-        profilering: {
-            jobbetSammenhengendeSeksAvTolvSisteManeder: false,
-            alder: 0,
-            innsatsgruppe: ''
-        },
-        teksterForBesvarelse: [{
-            sporsmalId: '',
-            sporsmal: '',
-            svar: '',
-        }],
-        besvarelse: {
-            andreForhold: '',
-            dinSituasjon: '',
-            fremtidigSituasjon: '',
-            helseHinder: '',
-            sisteStilling: '',
-            tilbakeIArbeid: '',
-            utdanning: '',
-            utdanningBestatt: '',
-            utdanningGodkjent: ''
-        },
-    }
+	type: '',
+	registrering: {
+		opprettetDato: '',
+		manueltRegistrertAv: null,
+		id: 0,
+		sisteStilling: {
+			label: '',
+			konseptId: 0,
+			styrk08: ''
+		},
+		profilering: {
+			jobbetSammenhengendeSeksAvTolvSisteManeder: false,
+			alder: 0,
+			innsatsgruppe: ''
+		},
+		teksterForBesvarelse: [
+			{
+				sporsmalId: '',
+				sporsmal: '',
+				svar: ''
+			}
+		],
+		besvarelse: {
+			andreForhold: '',
+			dinSituasjon: '',
+			fremtidigSituasjon: '',
+			helseHinder: '',
+			sisteStilling: '',
+			tilbakeIArbeid: '',
+			utdanning: '',
+			utdanningBestatt: '',
+			utdanningGodkjent: ''
+		}
+	}
 };
 
 export const RegistreringDataContext = React.createContext<RegistreringDataType>(initalStateRegistreringData);
 export const SisteSituasjonContext = React.createContext<SisteSituasjon>({});
 
 interface RegistreringDataContextProviderProps {
-    children: React.ReactNode;
+	children: React.ReactNode;
 }
 
 function useFetch<T>(func: () => Promise<T>) {
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(false);
-    const [data, setData] = useState<T | null>(null);
+	const [isLoading, setIsLoading] = useState(true);
+	const [isError, setIsError] = useState(false);
+	const [data, setData] = useState<T | null>(null);
 
-    useEffect(() => {
-        setIsLoading(true);
-        func()
-           .then(response => {
-               setData(response);
-               setIsLoading(false);
-           })
-           .catch(() => {
-               setIsError(true);
-               setIsLoading(false);
-           });
-    }, [func]);
+	useEffect(() => {
+		setIsLoading(true);
+		func()
+			.then(response => {
+				setData(response);
+				setIsLoading(false);
+			})
+			.catch(() => {
+				setIsError(true);
+				setIsLoading(false);
+			});
+	}, [func]);
 
-    return {isLoading, isError, data};
+	return { isLoading, isError, data };
 }
 
 function RegistreringDataProvider(props: RegistreringDataContextProviderProps) {
-    const situasjon = useFetch(hentSituasjon);
-    const registrering = useFetch(hentRegistreringData);
-    const oppfolgingStatus = useFetch(hentOppfolgingStatus);
+	const situasjon = useFetch(hentSituasjon);
+	const registrering = useFetch(hentRegistreringData);
+	const oppfolgingStatus = useFetch(hentOppfolgingStatus);
 
-    if (situasjon.isLoading || registrering.isLoading || oppfolgingStatus.isLoading) {
-        return <div className="spinner-wrapper centered"><NavFrontendSpinner type="XXL"/></div>;
-    }
+	if (situasjon.isLoading || registrering.isLoading || oppfolgingStatus.isLoading) {
+		return (
+			<div className="spinner-wrapper centered">
+				<NavFrontendSpinner type="XXL" />
+			</div>
+		);
+	}
 
-    if ( registrering.isError || oppfolgingStatus.isError || situasjon.isError || registrering.data === null || situasjon.data === null) {
-        return <Feilmelding/>;
-    }
+	if (
+		registrering.isError ||
+		oppfolgingStatus.isError ||
+		situasjon.isError ||
+		registrering.data === null ||
+		situasjon.data === null
+	) {
+		return <Feilmelding />;
+	}
 
-    if (!oppfolgingStatus.data || !oppfolgingStatus.data.underOppfolging) {
-        return (
-            <div id="ikke-under-oppfolgning-container">
-                <AlertStripeAdvarsel className="ikke-under-oppfolgning-boks">
-                    Du må være registrert hos NAV for å se informasjon om deg.
-                    <br/> <Lenke href={ARBEIDSSOKERREGISTRERING_URL}>Registrer deg hos NAV <HoyreChevron/></Lenke>
-                </AlertStripeAdvarsel>
-            </div>
-        );
-    }
+	if (!oppfolgingStatus.data || !oppfolgingStatus.data.underOppfolging) {
+		return (
+			<div id="ikke-under-oppfolgning-container">
+				<AlertStripeAdvarsel className="ikke-under-oppfolgning-boks">
+					Du må være registrert hos NAV for å se informasjon om deg.
+					<br />{' '}
+					<Lenke href={ARBEIDSSOKERREGISTRERING_URL}>
+						Registrer deg hos NAV <HoyreChevron />
+					</Lenke>
+				</AlertStripeAdvarsel>
+			</div>
+		);
+	}
 
-    return (
-        <RegistreringDataContext.Provider value={registrering.data}>
-            <SisteSituasjonContext.Provider value={situasjon.data}>
-                {props.children}
-            </SisteSituasjonContext.Provider>
-        </RegistreringDataContext.Provider>
-    );
+	return (
+		<RegistreringDataContext.Provider value={registrering.data}>
+			<SisteSituasjonContext.Provider value={situasjon.data}>{props.children}</SisteSituasjonContext.Provider>
+		</RegistreringDataContext.Provider>
+	);
 }
 
-//TODO FIKS TYPER
-export function registreringDataContextConsumerHoc<P>(Component: React.ComponentType<P & RegistreringDataType>): React.ComponentType<P> {
-    return (props: P) => (
-        <RegistreringDataContext.Consumer>
-            {(context: RegistreringDataType) => {
-                return <Component {...props} {...context} />;
-            }}
-        </RegistreringDataContext.Consumer>
-    );
+// TODO FIKS TYPER
+export function registreringDataContextConsumerHoc<P>(
+	Component: React.ComponentType<P & RegistreringDataType>
+): React.ComponentType<P> {
+	return (props: P) => (
+		<RegistreringDataContext.Consumer>
+			{(context: RegistreringDataType) => {
+				return <Component {...props} {...context} />;
+			}}
+		</RegistreringDataContext.Consumer>
+	);
 }
 
 export default RegistreringDataProvider;

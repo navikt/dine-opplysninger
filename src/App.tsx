@@ -7,18 +7,17 @@ import { TimeoutModal } from '@navikt/fo-session-timeout-modal';
 import EndreRegistreringerMock from './mock/EndreRegistreringerMock';
 import { CONTEXT_PATH } from './utils/constants';
 
-const App = () =>
-    (
-        <AppProviders>
-            <TimeoutModal authUrl={`${CONTEXT_PATH}/api/auth`}/>
-            <EndreRegistreringerMock/>
-            <Brodsmuler/>
-            <VeilederBanner/>
-            {/* FO-2393: Fjern kommentar når dine-opplysninger er klar ifm personvern */}
-            {/*<Mal/>*/}
-            {/*<Hensyn/>*/}
-            <Registreringsinfo/>
-        </AppProviders>
-    );
+const App = () => (
+	<AppProviders>
+		<TimeoutModal authUrl={`${CONTEXT_PATH}/api/auth`} />
+		<EndreRegistreringerMock />
+		<Brodsmuler />
+		<VeilederBanner />
+		{/* FO-2393: Fjern kommentar når dine-opplysninger er klar ifm personvern */}
+		{/*<Mal/>*/}
+		{/*<Hensyn/>*/}
+		<Registreringsinfo />
+	</AppProviders>
+);
 
 export default App;

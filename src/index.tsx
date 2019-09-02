@@ -6,7 +6,7 @@ import App from './App';
 import './index.less';
 
 if (process.env.REACT_APP_MOCK === 'true') {
-    require('./mock');
+	require('./mock');
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
