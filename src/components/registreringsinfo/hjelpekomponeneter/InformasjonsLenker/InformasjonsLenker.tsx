@@ -1,10 +1,10 @@
-import * as React from 'react';
-import CvIkon from './svg/cv';
-import JobbprofilIkon from './svg/jobbprofil';
-import MotereferatIkon from './svg/motereferat';
-import SykfravarIkon from './svg/sykfravar';
-import DialogIkon from './svg/dialog';
-import MalIkon from './svg/mal';
+import React from 'react';
+import { ReactComponent as CvIkon } from './svg/cv.svg';
+import { ReactComponent as JobbprofilIkon } from './svg/jobbprofil.svg';
+import { ReactComponent as MotereferatIkon } from './svg/motereferat.svg';
+import { ReactComponent as SykfravaerIkon } from './svg/sykefravaer.svg';
+import { ReactComponent as DialogIkon } from './svg/dialog.svg';
+import { ReactComponent as MalIkon } from './svg/mal.svg';
 import './InformasjonsLenker.less';
 import LenkeMedInfo from './LenkeMedInfo';
 import { SYKMELDT } from '../../../../datatyper/registreringData';
@@ -43,7 +43,7 @@ const InformasjonsLenker = (props: { type: string; fremtidigSituasjon: string | 
 			/>
 			<LenkeMedInfo
 				visible={props.type === SYKMELDT}
-				ikon={<SykfravarIkon />}
+				ikon={<SykfravaerIkon />}
 				tittel="Ditt sykefravær"
 				beskrivelse="Sykemeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt."
 				lenketekst="Gå til ditt sykefravær"

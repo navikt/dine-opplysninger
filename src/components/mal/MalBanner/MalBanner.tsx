@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './MalBanner.less';
-import InfoSvg from './svg/info';
+import { ReactComponent as InfoSvg } from './info.svg';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 function MalBanner() {
 	return (
