@@ -10,7 +10,7 @@ const DITTNAV_PATH = `${CONTEXT_PATH}/dittnav`;
 const Brodsmuler = () => {
     return (
         <div className="brodsmuler">
-            <img src={personSvg} className="brodsmuler__illustrasjon"/>
+            <img src={personSvg} className="brodsmuler__illustrasjon" alt=""/>
             <ol className="brodsmuler__list typo-normal">
                 <li className="brodsmuler__item">
                     <Lenke href={DITTNAV_PATH}>

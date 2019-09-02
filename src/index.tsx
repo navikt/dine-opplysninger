@@ -1,10 +1,9 @@
-import 'babel-polyfill';
-import 'url-polyfill';
 import 'react-app-polyfill/ie11';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import './index.less';
+import 'react-app-polyfill/stable';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import App from './App';
+import './index.less';
 
 if (process.env.REACT_APP_MOCK === 'true') {
     require('./mock');
