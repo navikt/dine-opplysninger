@@ -15,8 +15,7 @@
 
     &--kompakt.nav-veilederpanel--plakat {
         margin: 1rem 1rem 2rem 1rem;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+        padding: 0.5rem 2rem;
     }
   }
 }
@@ -25,14 +24,21 @@
 @media (min-width: @screen-sm-min) {
   .veileder-banner {
     padding-top: 3rem;
+
     .nav-veilederpanel {
       margin: 0;
-      width: 742px;
+      width: 710px;
+
       .nav-veileder { display: block; }
 
       &--kompakt.nav-veilederpanel--plakat {
-        padding-top: 4rem;
+        padding: 0;
+      }
+
+      &__content {
+        margin: 4rem 2rem 2rem 2rem;
       }
     }
+
   }
 }

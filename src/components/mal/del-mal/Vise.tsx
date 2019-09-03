@@ -22,7 +22,6 @@ const Vise = (props: ViseProps) => {
 
 			{fetchStatus === FetchStateTypes.FAILURE ? (
 				<Normaltekst className="feil">
-					{' '}
 					Feil ved henting av forklaring og delmål. Prøv på nytt senere.
 				</Normaltekst>
 			) : null}

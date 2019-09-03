@@ -6,8 +6,7 @@ function EndreLagreKnapp(props: { endre: boolean; oppdaterer: boolean; onClick: 
 	if (props.oppdaterer) {
 		return (
 			<LenkeKnapp disabled={true}>
-				{' '}
-				<NavFrontendSpinner type="S" />{' '}
+				<NavFrontendSpinner type="S" />
 			</LenkeKnapp>
 		);
 	}

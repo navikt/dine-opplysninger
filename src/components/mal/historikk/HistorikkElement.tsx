@@ -21,7 +21,7 @@ function HistorikkElement(props: HistorikkListeProps) {
 					{formatDistanceToNow(new Date(element.dato || new Date()), {
 						includeSeconds: true,
 						locale: noLocale
-					})}{' '}
+					})}
 					siden
 				</span>
 			</div>

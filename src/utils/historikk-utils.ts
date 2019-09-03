@@ -1,4 +1,4 @@
-import {HistorikkType, HovedmalAlternativ} from '../api/data/hovedmal-type';
+import { HistorikkType, HovedmalAlternativ } from '../api/data/hovedmal-type';
 import { hentFremtidigSituasjonList, hentMalList } from '../api/api';
 import { Dispatch, SetStateAction } from 'react';
 

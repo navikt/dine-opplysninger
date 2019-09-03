@@ -6,8 +6,8 @@
   "scripts": {
     "start": "cross-env REACT_APP_MOCK=true craco start",
     "build": "craco build",
-    "lint": "tslint ./src/**/*.{ts,tsx}",
-    "lint:fix": "tslint --fix ./src/**/*.{ts,tsx}",
+    "lint": "tslint ./src/**/**/**/**/*.{ts,tsx}",
+    "lint:fix": "tslint --fix ./src/**/**/**/**/*.{ts,tsx}",
     "test": "craco test --env=jsdom",
     "test:coverage": "npm test -- --coverage",
     "heroku-serve": "node heroku-server.js",

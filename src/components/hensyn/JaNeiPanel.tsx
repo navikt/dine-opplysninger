@@ -13,7 +13,7 @@ export function Feilmelding(props: { vises: boolean }) {
 	return (
 		<div hidden={!props.vises} role="alert" className="grunnpanel feiltekst">
 			<Normaltekst>
-				Denne ble ikke oppdatert. Du kan prøve på nytt senere eller kontakte{' '}
+				Denne ble ikke oppdatert. Du kan prøve på nytt senere eller kontakte
 				<Lenke href={brukerstoteURL}>teknisk brukerstøtte</Lenke>
 			</Normaltekst>
 		</div>
@@ -70,8 +70,7 @@ function JaNeiPanel(props: {
 			<GrunnPanel feil={error} hidden={props.hidden} border={true}>
 				<div className="spacebetween">
 					<Normaltekst>
-						{' '}
-						<Element tag="span"> {props.titel}: </Element> <JaNeiUndefined svar={status} />{' '}
+						<Element tag="span"> {props.titel}: </Element> <JaNeiUndefined svar={status} />
 					</Normaltekst>
 					<EndreLagreKnapp endre={edit} onClick={click} oppdaterer={oppdaterer} />
 				</div>
