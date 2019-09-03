@@ -1,11 +1,11 @@
 import { RadioPanelGruppe, RadioPanelGruppeProps } from 'nav-frontend-skjema';
 import React from 'react';
 import classNames from 'classnames';
-import './responsiveRadio.less';
+import './ResponsivRadio.less';
 
-function ResponsiveRadioGruppe(props: RadioPanelGruppeProps) {
+function ResponsivRadioGruppe(props: RadioPanelGruppeProps) {
 	const { className, ...rest } = props;
 	return <RadioPanelGruppe className={classNames(className, 'responsivRadio')} {...rest} />;
 }
 
-export default ResponsiveRadioGruppe;
+export default ResponsivRadioGruppe;

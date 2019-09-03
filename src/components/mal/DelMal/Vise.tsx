@@ -4,7 +4,7 @@ import { teksterMaal } from '../tekster';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import Element from 'nav-frontend-typografi/lib/element';
-import GrunnPanel from '../../felleskomponenter/grunnPanel';
+import GrunnPanel from '../../felleskomponenter/GrunnPanel';
 import { FetchStateTypes } from '../Hovedmal';
 
 interface ViseProps {

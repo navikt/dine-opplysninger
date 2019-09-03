@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { hentOppfolgingStatus, hentRegistreringData, hentSituasjon } from '../api/api';
 import { useFetch } from '../utils/use-fetch';
 import NavFrontendSpinner from 'nav-frontend-spinner';
-import Feilmelding from './feilmelding/feilmelding';
+import Feilmelding from './feilmelding/Feilmelding';
 import AlertStripeAdvarsel from 'nav-frontend-alertstriper/lib/advarsel-alertstripe';
 import Lenke from 'nav-frontend-lenker';
 import HoyreChevron from 'nav-frontend-chevron/lib/hoyre-chevron';

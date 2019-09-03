@@ -1,9 +1,9 @@
 import React from 'react';
 import { oppdaterAndreHinder, oppdaterHelseHinder } from '../../api/api';
-import JaNeiPanel from './jaNeiPanel';
+import JaNeiPanel from './JaNeiPanel';
 import { JaNeiIkke } from '../../api/data/situasjon';
 import { useAppStore } from '../../stores/app-store';
-import './hensyn.less';
+import './Hensyn.less';
 
 function Hensyn() {
 	const { situasjon: { helseHinder, andreHinder } } = useAppStore();

@@ -1,5 +1,5 @@
 import React from 'react';
-import LenkeKnapp from '../felleskomponenter/lenkeknap';
+import LenkeKnapp from '../felleskomponenter/LenkeKnapp';
 
 interface KnappegruppeProps {
 	onSave: () => void;

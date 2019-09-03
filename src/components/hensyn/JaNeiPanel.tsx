@@ -1,11 +1,11 @@
-import { default as React, useState } from 'react';
-import GrunnPanel from '../felleskomponenter/grunnPanel';
+import React, { useState } from 'react';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { Collapse } from 'react-collapse';
 import Lenke from 'nav-frontend-lenker';
-import EndreLagreKnapp from './endreLagreKnapp';
+import EndreLagreKnapp from './EndreLagreKnapp';
 import JaNeiRadio from './JaNeiRadio';
 import { JaNeiIkke } from '../../api/data/situasjon';
+import GrunnPanel from '../felleskomponenter/GrunnPanel';
 
 const brukerstoteURL = 'https://www.nav.no/398761/kontakt-teknisk-brukerst%C3%B8tte-nav.no';
 
@@ -37,7 +37,7 @@ function JaNeiPanel(props: {
 	onSave: (status: JaNeiIkke) => Promise<{}>;
 }) {
 	const [status, setStatus] = useState(props.start);
-	const [eddit, setEddit] = useState(false);
+	const [edit, setEdit] = useState(false);
 	const [error, setError] = useState(false);
 	const [valgt, setValgt] = useState(props.start);
 	const [oppdaterer, setOppdaterer] = useState(false);
@@ -47,7 +47,7 @@ function JaNeiPanel(props: {
 			return;
 		}
 
-		if (eddit && status !== valgt) {
+		if (edit && status !== valgt) {
 			setOppdaterer(true);
 			setError(false);
 			props
@@ -62,7 +62,7 @@ function JaNeiPanel(props: {
 				});
 		}
 
-		setEddit(!eddit);
+		setEdit(!edit);
 	}
 
 	return (
@@ -73,9 +73,9 @@ function JaNeiPanel(props: {
 						{' '}
 						<Element tag="span"> {props.titel}: </Element> <JaNeiUndefined svar={status} />{' '}
 					</Normaltekst>
-					<EndreLagreKnapp endre={eddit} onClick={click} oppdaterer={oppdaterer} />
+					<EndreLagreKnapp endre={edit} onClick={click} oppdaterer={oppdaterer} />
 				</div>
-				<Collapse isOpened={eddit}>
+				<Collapse isOpened={edit}>
 					<JaNeiRadio titel={props.titel} valg={valgt} onChange={setValgt} />
 				</Collapse>
 			</GrunnPanel>

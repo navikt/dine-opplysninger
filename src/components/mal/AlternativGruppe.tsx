@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { HovedmalAlternativ } from '../registreringsinfo/Alternativer';
 import React from 'react';
 import { KnappeGruppe } from './Knappegruppe';
-import ResponsiveRadioGruppe from '../felleskomponenter/responsiveRadio';
+import ResponsivRadioGruppe from '../felleskomponenter/ResponsivRadio';
 
 interface AlternativContainerProps {
 	lagretSvar: string;
@@ -28,7 +28,7 @@ export function AlternativGruppe(props: AlternativContainerProps) {
 
 	return (
 		<>
-			<ResponsiveRadioGruppe
+			<ResponsivRadioGruppe
 				name="alternativ-gruppe"
 				legend=""
 				radios={alternativer}

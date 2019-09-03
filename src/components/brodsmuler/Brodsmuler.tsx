@@ -2,7 +2,7 @@ import React from 'react';
 import Lenke from 'nav-frontend-lenker';
 import { CONTEXT_PATH } from '../../utils/constants';
 import personSvg from './person.svg';
-import './brodsmuler.less';
+import './Brodsmuler.less';
 
 const DITTNAV_PATH = `${CONTEXT_PATH}/dittnav`;
 

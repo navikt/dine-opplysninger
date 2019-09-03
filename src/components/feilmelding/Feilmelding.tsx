@@ -1,7 +1,7 @@
 import React from 'react';
 import Veilederpanel from 'nav-frontend-veilederpanel';
 import { ReactComponent as VeilederSvg } from './nav-ansatt.svg';
-import './feilmelding.less';
+import './Feilmelding.less';
 import Lenke from 'nav-frontend-lenker';
 
 const Feilmelding = () => {

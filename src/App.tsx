@@ -1,7 +1,7 @@
 import React from 'react';
 import VeilederBanner from './components/veilederpanel/Veilederpanel';
 import Registreringsinfo from './components/registreringsinfo/Registreringsinfo';
-import Brodsmuler from './components/brodsmuler/brodsmuler';
+import Brodsmuler from './components/brodsmuler/Brodsmuler';
 import { TimeoutModal } from '@navikt/fo-session-timeout-modal';
 import EndreRegistreringerMock from './mock/EndreRegistreringerMock';
 import { CONTEXT_PATH } from './utils/constants';

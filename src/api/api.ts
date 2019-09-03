@@ -1,4 +1,4 @@
-import { fetchData } from '../utils/fetchData';
+import { fetchData } from '../utils/fetch-data';
 import { RegistreringDataType } from './data/registrering-data';
 import { MalType } from '../components/mal/DelMal/DelMal';
 import { HistorikkType, HovedmalType } from './data/hovedmal-type';

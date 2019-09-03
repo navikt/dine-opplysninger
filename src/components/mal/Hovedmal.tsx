@@ -6,8 +6,8 @@ import { Collapse } from 'react-collapse';
 import { AlternativGruppe } from './AlternativGruppe';
 import { hentHovedmal, oppdaterHovedmal } from '../../api/api';
 import NavFrontendSpinner from 'nav-frontend-spinner';
-import GrunnPanel from '../felleskomponenter/grunnPanel';
-import LenkeKnapp from '../felleskomponenter/lenkeknap';
+import GrunnPanel from '../felleskomponenter/GrunnPanel';
+import LenkeKnapp from '../felleskomponenter/LenkeKnapp';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 
 export enum FetchStateTypes {

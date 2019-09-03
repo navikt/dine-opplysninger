@@ -1,6 +1,6 @@
 /*tslint:disable*/
-import { kombinerHistorikk } from './hjelpefunksjoner';
-import { HistorikkType } from '../../../api/data/hovedmal-type';
+import { kombinerHistorikk } from './historikk-utils';
+import { HistorikkType } from '../api/data/hovedmal-type';
 
 describe('utils test', () => {
 	it('kombiner rikig historikk', () => {

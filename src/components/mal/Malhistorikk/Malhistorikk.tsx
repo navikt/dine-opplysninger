@@ -2,7 +2,7 @@ import React from 'react';
 import './Malhistorikk.less';
 import { useState } from 'react';
 import { HistorikkType } from '../../../api/data/hovedmal-type';
-import { fetchHistorikken } from './hjelpefunksjoner';
+import { fetchHistorikken } from '../../../utils/historikk-utils';
 import Modal from 'nav-frontend-modal';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import Systemtittel from 'nav-frontend-typografi/lib/systemtittel';

@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import './lenkeKnapp.less';
+import './LenkeKnapp.less';
 
 function LenkeKnapp(props: React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>) {
 	const { className, ...rest } = props;

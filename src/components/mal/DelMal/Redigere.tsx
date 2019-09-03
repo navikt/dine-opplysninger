@@ -7,8 +7,8 @@ import { KnappeGruppe } from '../Knappegruppe';
 import { oppdaterMal } from '../../../api/api';
 import Element from 'nav-frontend-typografi/lib/element';
 import { MalHjelpetekst } from './MalHjelpetekst';
-import { Feilmelding } from '../../hensyn/jaNeiPanel';
-import GrunnPanel from '../../felleskomponenter/grunnPanel';
+import { Feilmelding } from '../../hensyn/JaNeiPanel';
+import GrunnPanel from '../../felleskomponenter/GrunnPanel';
 
 interface RedigerDelMalProps {
 	malState: string;

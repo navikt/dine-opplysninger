@@ -1,6 +1,6 @@
-import { HovedmalAlternativ } from '../../registreringsinfo/Alternativer';
-import { HistorikkType } from '../../../api/data/hovedmal-type';
-import { hentFremtidigSituasjonList, hentMalList } from '../../../api/api';
+import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer';
+import { HistorikkType } from '../api/data/hovedmal-type';
+import { hentFremtidigSituasjonList, hentMalList } from '../api/api';
 import { Dispatch, SetStateAction } from 'react';
 
 interface FetchHistorikkenPropTypes {
