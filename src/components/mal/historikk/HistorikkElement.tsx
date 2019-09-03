@@ -1,6 +1,6 @@
 import React from 'react';
 import { HistorikkType } from '../../../api/data/hovedmal-type';
-import { distanceInWordsToNow } from 'date-fns';
+import { formatDistanceToNow } from 'date-fns';
 import Element from 'nav-frontend-typografi/lib/element';
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import noLocale from 'date-fns/locale/nb';
@@ -18,7 +18,7 @@ function HistorikkElement(props: HistorikkListeProps) {
 		<div className="mal-historikk__liste-element">
 			<div className="info typo-element">
 				<span className="info__dato">
-					{distanceInWordsToNow(new Date(element.dato || new Date()), {
+					{formatDistanceToNow(new Date(element.dato || new Date()), {
 						includeSeconds: true,
 						locale: noLocale
 					})}{' '}

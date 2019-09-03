@@ -1,5 +1,5 @@
 import React from 'react';
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import noLocale from 'date-fns/locale/nb';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { RegistreringsType, SvarTekster } from '../../api/data/registrering-data';
@@ -45,7 +45,7 @@ export default function Registreringsinfo() {
 	}
 
 	const { opprettetDato, besvarelse, teksterForBesvarelse } = registreringData.registrering;
-	const opprettet = format(opprettetDato, 'DD. MMMM YYYY', { locale: noLocale });
+	const opprettet = format(parseISO(opprettetDato), 'dd. MMMM yyyy', { locale: noLocale });
 
 	return (
 		<section className="registreringsinfo">

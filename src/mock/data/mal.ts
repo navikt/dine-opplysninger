@@ -1,6 +1,5 @@
 import { MalType } from '../../components/mal/del-mal/DelMal';
 import { JSONObject } from 'yet-another-fetch-mock/dist/types/types';
-import { format } from 'date-fns';
 
 export const malData: MalType & JSONObject = {
 	mal: 'hei på deg',
@@ -33,7 +32,7 @@ export function opprettMal(mal: string) {
 	const nyMal = {
 		mal,
 		endretAv: 'BRUKER',
-		dato: format(new Date())
+		dato: new Date().toISOString()
 	};
 	maler.push(nyMal);
 	return nyMal;

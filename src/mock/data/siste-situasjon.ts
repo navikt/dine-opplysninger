@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
 
 export const fremtidigSituasjon = {
 	alternativId: 'NY_ARBEIDSGIVER',
@@ -27,7 +26,7 @@ export function opprettSituasjon(body: { alternativId: string; tekst: string }) 
 		alternativId: body.alternativId,
 		tekst: body.tekst,
 		endretAv: 'BRUKER',
-		dato: format(new Date())
+		dato: new Date().toISOString()
 	};
 	situasjoner.push(nySituasjon);
 	return nySituasjon;
