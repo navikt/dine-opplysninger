@@ -8,6 +8,7 @@ import Lenke from 'nav-frontend-lenker';
 import HoyreChevron from 'nav-frontend-chevron/lib/hoyre-chevron';
 import { ARBEIDSSOKERREGISTRERING_URL } from '../utils/constants';
 import { useAppStore } from '../stores/app-store';
+import {isNothingOrEmpty} from "../utils";
 
 export const DataLaster = (props: { children: any }) => {
 	const situasjonFetch = useFetch(hentSituasjon);
@@ -20,15 +21,15 @@ export const DataLaster = (props: { children: any }) => {
 	} = useAppStore();
 
 	useEffect(() => {
-		if (situasjonFetch.data && !situasjon) {
+		if (situasjonFetch.data && isNothingOrEmpty(situasjon)) {
 			setSituasjon(situasjonFetch.data);
 		}
 
-		if (registreringFetch.data && !registrering) {
+		if (registreringFetch.data && isNothingOrEmpty(registrering)) {
 			setRegistrering(registreringFetch.data);
 		}
 
-		if (oppfolgingStatusFetch.data && !oppfolgingStatus) {
+		if (oppfolgingStatusFetch.data && isNothingOrEmpty(oppfolgingStatus)) {
 			setOppfolgingStatus(oppfolgingStatusFetch.data);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { HovedmalAlternativ } from '../registreringsinfo/Alternativer';
 import React from 'react';
 import { KnappeGruppe } from './Knappegruppe';
 import ResponsivRadioGruppe from '../felleskomponenter/ResponsivRadio';
+import {HovedmalAlternativ} from "../../api/data/hovedmal-type";
 
 interface AlternativContainerProps {
 	lagretSvar: string;

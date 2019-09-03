@@ -7,14 +7,17 @@ import { ReactComponent as DialogIkon } from './svg/dialog.svg';
 import { ReactComponent as MalIkon } from './svg/mal.svg';
 import './InformasjonsLenker.less';
 import LenkeMedInfo from './LenkeMedInfo';
-import { SYKMELDT } from '../../../../api/data/registrering-data';
-import { CONTEXT_PATH } from '../../../../utils/constants';
+import { SYKMELDT } from '../../api/data/registrering-data';
+import { CONTEXT_PATH } from '../../utils/constants';
+import { useAppStore } from '../../stores/app-store';
 
-const InformasjonsLenker = (props: { type: string; fremtidigSituasjon: string | null }) => {
+const InformasjonsLenker = () => {
+	const { registrering: { registrering, type } } = useAppStore();
+	const fremtidigSituasjon = registrering ? registrering.besvarelse.fremtidigSituasjon : null;
 	const skalViseCvOgJobbprofil =
-		props.type !== SYKMELDT ||
-		props.fremtidigSituasjon === 'NY_ARBEIDSGIVER' ||
-		props.fremtidigSituasjon === 'USIKKER';
+		type !== SYKMELDT ||
+		fremtidigSituasjon === 'NY_ARBEIDSGIVER' ||
+		fremtidigSituasjon === 'USIKKER';
 	return (
 		<ul className="informasjons-lenker">
 			<LenkeMedInfo
@@ -42,7 +45,7 @@ const InformasjonsLenker = (props: { type: string; fremtidigSituasjon: string | 
 				lenke={`${CONTEXT_PATH}/aktivitetsplan?filter=mote&filter=samtalereferat`}
 			/>
 			<LenkeMedInfo
-				visible={props.type === SYKMELDT}
+				visible={type === SYKMELDT}
 				ikon={<SykfravaerIkon />}
 				tittel="Ditt sykefravær"
 				beskrivelse="Sykemeldinger, oppfølgingsplaner og annen relevant informasjon om sykefraværet ditt."

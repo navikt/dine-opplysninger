@@ -1,8 +1,7 @@
 import { fetchData } from '../utils/fetch-data';
 import { RegistreringDataType } from './data/registrering-data';
-import { MalType } from '../components/mal/DelMal/DelMal';
-import { HistorikkType, HovedmalType } from './data/hovedmal-type';
-import { HovedmalAlternativ } from '../components/registreringsinfo/Alternativer';
+import { MalType } from '../components/mal/del-mal/DelMal';
+import {HistorikkType, HovedmalAlternativ, HovedmalType} from './data/hovedmal-type';
 import { HensynType, JaNeiIkke, SisteSituasjon } from './data/situasjon';
 import { CONTEXT_PATH } from '../utils/constants';
 

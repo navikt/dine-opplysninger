@@ -7,6 +7,7 @@ import EndreRegistreringerMock from './mock/EndreRegistreringerMock';
 import { CONTEXT_PATH } from './utils/constants';
 import StoreProvider from './stores/StoreProvider';
 import { DataLaster } from './components/DataLaster';
+import InformasjonsLenker from './components/informasjonslenker/InformasjonsLenker';
 
 const App = () => (
 	<StoreProvider>
@@ -14,6 +15,7 @@ const App = () => (
 			<EndreRegistreringerMock />
 			<Brodsmuler />
 			<VeilederBanner />
+			<InformasjonsLenker />
 			{/* FO-2393: Fjern kommentar når dine-opplysninger er klar ifm personvern */}
 			{/*<Mal/>*/}
 			{/*<Hensyn/>*/}
