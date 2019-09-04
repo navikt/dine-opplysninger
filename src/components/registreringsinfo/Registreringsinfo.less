@@ -1,9 +1,53 @@
 @import '~nav-frontend-core/less/_variabler';
 
+.registreringsinfo {
+  padding: 3.75rem 1rem;
+  background-color: @navLysGra;
+
+  .kontaktVeileder {
+    text-align: center;
+  }
+
+  .lesMerPanel__toggleTekst {
+    border-bottom: 1px solid @navGra20;
+    font-size: 1rem;
+  }
+
+  .lesMerPanel__mer {
+    padding: 0;
+  }
+
+  .lesMerPanel {
+    padding: 0;
+    background-color: transparent;
+  }
+
+  &__tittel,
+  &__beskrivelse {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &__liste {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      padding-bottom: 1rem;
+    }
+
+    li.lenke-element {
+      display: block;
+    }
+  }
+}
+
 @media (min-width: @screen-sm-min) {
-  .registrerings-info {
-    width: 770px;
-    margin: 2rem auto;
+  .registreringsinfo {
+    &__liste {
+      width: 570px;
+      margin: 1.5rem auto 1.5rem auto;
+    }
   }
 }
 

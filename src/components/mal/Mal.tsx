@@ -1,20 +1,19 @@
-import * as React from 'react';
+import React from 'react';
 import './Mal.less';
-import DelMal from './DelMal/DelMal';
+import DelMal from './del-mal/DelMal';
 import Hovedmal from './Hovedmal';
-import Malhistorikk from './Malhistorikk/Malhistorikk';
-import MalBanner from './MalBanner/MalBanner';
+import Malhistorikk from './historikk/Malhistorikk';
+import MalBanner from './banner/MalBanner';
 
-function Mal () {
-
-    return(
-        <section className="mal-container">
-            <MalBanner/>
-            <Hovedmal/>
-            <DelMal/>
-            <Malhistorikk/>
-        </section>
-    );
+function Mal() {
+	return (
+		<section className="mal-container">
+			<MalBanner />
+			<Hovedmal />
+			<DelMal />
+			<Malhistorikk />
+		</section>
+	);
 }
 
 export default Mal;
