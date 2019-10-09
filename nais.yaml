@@ -27,18 +27,18 @@ spec:
     limits:
       cpu: 500m
       memory: 2Gi
-prometheus:
-  enabled: true
-  path: /arbeid/dineopplysninger/internal/metrics
-webproxy: true
-ingresses:
-  - www.nav.no/arbeid/dineopplysninger
-env:
-  - LOGINSERVICE_URL
-  - APPRES_CMS_URL
-  - UNLEASH_API_URL
-  - SYKEFRAVAER_URL
-  - AKTIVITETSPLAN_URL
-  - VEIENTILARBEID_URL
-  - ARBEIDSSOKERREGISTRERING_URL
-  - DITTNAV_URL
+  prometheus:
+    enabled: true
+    path: /arbeid/dineopplysninger/internal/metrics
+  webproxy: true
+  ingresses:
+    - www.nav.no/arbeid/dineopplysninger
+  env:
+    - LOGINSERVICE_URL
+    - APPRES_CMS_URL
+    - UNLEASH_API_URL
+    - SYKEFRAVAER_URL
+    - AKTIVITETSPLAN_URL
+    - VEIENTILARBEID_URL
+    - ARBEIDSSOKERREGISTRERING_URL
+    - DITTNAV_URL
