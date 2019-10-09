@@ -19,7 +19,7 @@ redirect:
   - from: /arbeid/dineopplysninger/sykefravaer
     to: {{ SYKEFRAVAER_URL }}
   - from: /arbeid/dineopplysninger/dittnav
-    to: {{ DITTNAV_LINK_URL }}
+    to: {{ DITTNAV_URL }}
   - from: /arbeid/dineopplysninger/veientilarbeid
     to: {{ VEIENTILARBEID_URL }}
   - from: /arbeid/dineopplysninger/aktivitetsplan

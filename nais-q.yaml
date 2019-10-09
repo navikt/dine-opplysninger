@@ -12,14 +12,14 @@ spec:
   port: 8080
   liveness:
     path: /arbeid/dineopplysninger/internal/isAlive
-    initialDelay: 10
+    initialDelay: 15
   readiness:
     path: /arbeid/dineopplysninger/internal/isReady
-    initialDelay: 10
+    initialDelay: 15
   replicas:
     min: 1
     max: 2
-    cpuThresholdPercentage: 80
+    cpuThresholdPercentage: 75
   resources:
     requests:
       cpu: 250m
@@ -30,6 +30,15 @@ spec:
 prometheus:
   enabled: true
   path: /arbeid/dineopplysninger/internal/metrics
+webproxy: true
 ingresses:
-  - dine-opplysninger-{{namespace}}.nais.oera-q.local/arbeid/dineopplysninger
   - www-{{namespace}}.nav.no/arbeid/dineopplysninger
+env:
+  - LOGINSERVICE_URL
+  - APPRES_CMS_URL
+  - UNLEASH_API_URL
+  - SYKEFRAVAER_URL
+  - AKTIVITETSPLAN_URL
+  - VEIENTILARBEID_URL
+  - ARBEIDSSOKERREGISTRERING_URL
+  - DITTNAV_URL
