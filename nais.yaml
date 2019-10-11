@@ -32,7 +32,7 @@ spec:
     path: /arbeid/dineopplysninger/internal/metrics
   webproxy: true
   ingresses:
-    - www.nav.no/arbeid/dineopplysninger
+    - https://www.nav.no/arbeid/dineopplysninger
   env:
     - LOGINSERVICE_URL
     - APPRES_CMS_URL
