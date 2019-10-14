@@ -3,30 +3,28 @@ kind: "Application"
 metadata:
   name: dine-opplysninger
   namespace: {{namespace}}
-  cluster:
-    - dev-sbs
+  cluster: dev-sbs
   labels:
     team: pto
 spec:
   image: docker.pkg.github.com/navikt/dine-opplysninger/dine-opplysninger:{{version}}
-  port: 8080
   liveness:
     path: /arbeid/dineopplysninger/internal/isAlive
-    initialDelay: 15
+    initialDelay: 30
   readiness:
     path: /arbeid/dineopplysninger/internal/isReady
-    initialDelay: 15
+    initialDelay: 30
   replicas:
     min: 1
     max: 2
     cpuThresholdPercentage: 75
   resources:
-    requests:
-      cpu: 250m
-      memory: 1Gi
     limits:
-      cpu: 500m
+      cpu: "1"
       memory: 2Gi
+    requests:
+      cpu: 500m
+      memory: 1Gi
   prometheus:
     enabled: true
     path: /arbeid/dineopplysninger/internal/metrics
