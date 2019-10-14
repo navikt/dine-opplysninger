@@ -10,12 +10,6 @@ metadata:
 spec:
   image: docker.pkg.github.com/navikt/dine-opplysninger/dine-opplysninger:{{version}}
   port: 8080
-  liveness:
-    path: /arbeid/dineopplysninger/internal/isAlive
-    initialDelay: 15
-  readiness:
-    path: /arbeid/dineopplysninger/internal/isReady
-    initialDelay: 15
   replicas:
     min: 1
     max: 2
