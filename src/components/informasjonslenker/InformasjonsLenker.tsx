@@ -66,7 +66,7 @@ const InformasjonsLenker = () => {
 				tittel="Mål"
 				beskrivelse="Legg til målet ditt, slik at vi kan veilede deg bedre."
 				lenketekst="Gå til mål"
-				lenke="/aktivitetsplan/mal/endre"
+				lenke={`${CONTEXT_PATH}/aktivitetsplan/mal/endre`}
 			/>
 		</ul>
 	);
