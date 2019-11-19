@@ -1,7 +1,6 @@
 import React from 'react';
 import { ReactComponent as CvIkon } from './svg/cv.svg';
 import { ReactComponent as JobbprofilIkon } from './svg/jobbprofil.svg';
-import { ReactComponent as MotereferatIkon } from './svg/motereferat.svg';
 import { ReactComponent as SykfravaerIkon } from './svg/sykefravaer.svg';
 import { ReactComponent as DialogIkon } from './svg/dialog.svg';
 import { ReactComponent as MalIkon } from './svg/mal.svg';
@@ -35,14 +34,6 @@ const InformasjonsLenker = () => {
 				beskrivelse="Legg inn jobbønsker."
 				lenketekst="Gå til din jobbprofil"
 				lenke="https://arbeidsplassen.nav.no"
-			/>
-			<LenkeMedInfo
-				visible={true}
-				ikon={<MotereferatIkon />}
-				tittel="Møtereferater"
-				beskrivelse="Referater fra møter mellom deg og veilederen din."
-				lenketekst="Se referatene"
-				lenke={`${CONTEXT_PATH}/aktivitetsplan?filter=mote&filter=samtalereferat`}
 			/>
 			<LenkeMedInfo
 				visible={type === SYKMELDT}
